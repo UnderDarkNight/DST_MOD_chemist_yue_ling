@@ -15,7 +15,7 @@ local start_inv = {
 -- 当人物复活的时候
 local function onbecamehuman(inst)
 	-- 设置人物的移速（1表示1倍于wilson）
-	inst.components.locomotor:SetExternalSpeedMultiplier(inst, "chemist_yue_ling_speed_mod", 1.25)
+	inst.components.locomotor:SetExternalSpeedMultiplier(inst, "chemist_yue_ling_speed_mod", 1.2)
 	--（也可以用以前的那种
 	--inst.components.locomotor.walkspeed = 4
 	--inst.components.locomotor.runspeed = 6）
@@ -51,12 +51,12 @@ local common_postinit = function(inst)
 
 	--------------------------------------------------------------------
 	-- 功能模块嵌入初始化
-		-- if TUNING["chemist_yue_ling.Config"].WHITE_TEMPLATE ~= true then
-		-- 	local main_modules_init_fn = require("prefabs/01_character/hana_key_modules/00_main")
-		-- 	if type(main_modules_init_fn) == "function" then
-		-- 		main_modules_init_fn(inst)
-		-- 	end
-		-- end
+		if TUNING["chemist_yue_ling.Config"].WHITE_TEMPLATE ~= true then
+			local main_modules_init_fn = require("prefabs/01_character/yue_ling_er_key_modules/00_main")
+			if type(main_modules_init_fn) == "function" then
+				main_modules_init_fn(inst)
+			end
+		end
 	--------------------------------------------------------------------
 
 
@@ -75,7 +75,7 @@ local master_postinit = function(inst)
 	inst.components.sanity:SetMax(TUNING[string.upper("chemist_yue_ling").."_SANITY"])
 	
 	-- 伤害系数
-    inst.components.combat.damagemultiplier = 1
+    inst.components.combat.damagemultiplier = 0.5
 	
 	-- 饥饿速度
 	inst.components.hunger.hungerrate = 1 * TUNING.WILSON_HUNGER_RATE

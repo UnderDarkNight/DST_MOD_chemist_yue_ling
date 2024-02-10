@@ -11,13 +11,16 @@ end
 local files_name = {
 
 	---------------------------------------------------------------------------------------
+	-- 02_items
+		"chemist_item_firenettles_medicine_bottle",										--- 火荨麻 药剂瓶	
+		"chemist_item_empty_bottle",										--- 空瓶
+		"chemist_item_herbal_bag",											--- 药材袋
+		"chemist_item_pill_box",											--- 药剂匣
+	---------------------------------------------------------------------------------------
+	-- 03_equipments
+		"chemist_equipment_chemical_launching_gun",											--- 药剂发射器
+		"chemist_equipment_sublime_backpack",												--- 次元背包
 
-		-- "chemist_yue_ling_weapon_scythe",											--- 冥界之镰
-		-- "chemist_yue_ling_weapon_scythe_overcome_confinement",						--- 冲破禁锢
-
-
-		-- "chemist_yue_ling_item_faded_memory",										--- 褪色的记忆
-		-- "chemist_yue_ling_item_blissful_memory",										--- 幸福的记忆
 	---------------------------------------------------------------------------------------
 
 }

@@ -66,9 +66,11 @@ end
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -----选人界面人物三维显示
-    TUNING[string.upper("chemist_yue_ling").."_HEALTH"] = 150
-    TUNING[string.upper("chemist_yue_ling").."_HUNGER"] = 150
-    TUNING[string.upper("chemist_yue_ling").."_SANITY"] = 150
+    TUNING[string.upper("chemist_yue_ling").."_HUNGER"] = 30
+    TUNING[string.upper("chemist_yue_ling").."_SANITY"] = 80
+    TUNING[string.upper("chemist_yue_ling").."_HEALTH"] = 30
+
+
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -----选人界面初始物品显示，物品相关的prefab
     TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT[string.upper("chemist_yue_ling")] = {"log"}
