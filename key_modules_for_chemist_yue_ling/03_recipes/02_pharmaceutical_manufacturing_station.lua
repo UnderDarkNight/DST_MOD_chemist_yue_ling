@@ -71,26 +71,26 @@
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------
----- 胰岛素注射器(暂留)
+---- 制作站
 --------------------------------------------------------------------------------------------------------------------------------------------
-                -- AddRecipeToFilter("fwd_in_pdt_item_insulin__syringe",string.upper("chemist_building_pharmaceutical_manufacturing_station"))     ---- 添加物品到目标标签
-                -- AddRecipe2(
-                --     "fwd_in_pdt_item_insulin__syringe",            --  --  inst.prefab  实体名字
-                --     { Ingredient("spidergland", 10),Ingredient("stinger", 2) }, 
-                --     TECH[string.upper("chemist_building_pharmaceutical_manufacturing_station")], --- TECH.NONE
-                --     {
-                --         nounlock=true,
-                --         -- no_deconstruction=true,
-                --         -- builder_tag = "npng_tag.has_green_amulet",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
-                --         -- placer = "chemist_building_pharmaceutical_manufacturing_station_placer",                       -------- 建筑放置器        
-                --         atlas = "images/inventoryimages/fwd_in_pdt_item_insulin__syringe.xml",
-                --         image = "fwd_in_pdt_item_insulin__syringe.tex",
-                --     },
-                --     {string.upper("chemist_building_pharmaceutical_manufacturing_station")}
-                -- )
-                -- RemoveRecipeFromFilter("fwd_in_pdt_item_insulin__syringe","MODS")                       -- -- 在【模组物品】标签里移除这个。
+    AddRecipeToFilter("chemist_building_pharmaceutical_manufacturing_station","CHARACTER")     ---- 添加物品到目标标签
+    AddRecipe2(
+        "chemist_building_pharmaceutical_manufacturing_station",            --  --  inst.prefab  实体名字
+        { Ingredient("boards", 10),Ingredient("cutstone", 10),Ingredient("goldnugget", 10) }, 
+        TECH.NONE, --- TECH.NONE
+        {
+            nounlock=true,
+            -- no_deconstruction=true,
+            builder_tag = "chemist_yue_ling",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
+            placer = "chemist_building_pharmaceutical_manufacturing_station_placer",                       -------- 建筑放置器        
+            atlas = "images/map_icons/chemist_building_pharmaceutical_manufacturing_station.xml",
+            image = "chemist_building_pharmaceutical_manufacturing_station.tex",
+        },
+        {"CHARACTER"}
+    )
+    RemoveRecipeFromFilter("chemist_building_pharmaceutical_manufacturing_station","MODS")                       -- -- 在【模组物品】标签里移除这个。
 --------------------------------------------------------------------------------------------------------------------------------------------
-local function Add_Recipe_2_Machine(cmd_table)
+    local function Add_Recipe_2_Machine(cmd_table)
     -- cmd_table = {
     --     prefab = "",
     --     Ingredients = {},
@@ -123,15 +123,59 @@ local function Add_Recipe_2_Machine(cmd_table)
         {string.upper("chemist_building_pharmaceutical_manufacturing_station")}
     )
     RemoveRecipeFromFilter(cmd_table.prefab,"MODS")                       -- -- 在【模组物品】标签里移除这个。
-end
+    end
 
 --------------------------------------------------------------------------------------------------------------------------------------------
---- 
+--- 空瓶子
 --------------------------------------------------------------------------------------------------------------------------------------------
     Add_Recipe_2_Machine({
-        prefab = "chemist_item_firenettles_medicine_bottle",
-        Ingredients = { Ingredient("firenettles", 1),Ingredient("ash", 1),Ingredient("chemist_item_empty_bottle", 1)  },
+        prefab = "chemist_item_empty_bottle",
+        Ingredients = { Ingredient("moonglass", 5)  },
         -- builder_tag = "fwd_in_pdt_test33333333333366666",
-        atlas = "images/inventoryimages/chemist_item_firenettles_medicine_bottle.xml",
-        image = "chemist_item_firenettles_medicine_bottle.tex",
+        atlas = "images/inventoryimages/chemist_item_empty_bottle.xml",
+        image = "chemist_item_empty_bottle.tex",
+    })
+
+-- --------------------------------------------------------------------------------------------------------------------------------------------
+-- --- 火荨麻药剂
+-- --------------------------------------------------------------------------------------------------------------------------------------------
+--     Add_Recipe_2_Machine({
+--         prefab = "chemist_item_firenettles_medicine_bottle",
+--         Ingredients = { Ingredient("firenettles", 1),Ingredient("ash", 1),Ingredient("chemist_item_empty_bottle", 1)  },
+--         -- builder_tag = "fwd_in_pdt_test33333333333366666",
+--         atlas = "images/inventoryimages/chemist_item_firenettles_medicine_bottle.xml",
+--         image = "chemist_item_firenettles_medicine_bottle.tex",
+--     })
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+--- 通用恢复药剂 
+--------------------------------------------------------------------------------------------------------------------------------------------
+    Add_Recipe_2_Machine({
+        prefab = "chemist_item_restorative_medicine_bottle",
+        Ingredients = { Ingredient("spidergland", 1),Ingredient("honey", 1),Ingredient("chemist_food_wisdom_apple", 1),Ingredient("chemist_item_empty_bottle", 1)  },
+        -- builder_tag = "fwd_in_pdt_test33333333333366666",
+        atlas = "images/inventoryimages/chemist_item_restorative_medicine_bottle.xml",
+        image = "chemist_item_restorative_medicine_bottle.tex",
+    })
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+--- 可乐 
+--------------------------------------------------------------------------------------------------------------------------------------------
+    Add_Recipe_2_Machine({
+        prefab = "chemist_item_cola_soda",
+        Ingredients = { Ingredient("ice", 2) , Ingredient("chemist_food_wisdom_apple", 1),Ingredient("chemist_item_empty_bottle", 1)  },
+        -- builder_tag = "fwd_in_pdt_test33333333333366666",
+        atlas = "images/inventoryimages/chemist_item_cola_soda.xml",
+        image = "chemist_item_cola_soda.tex",
+    })
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+--- 植物生长药剂 
+--------------------------------------------------------------------------------------------------------------------------------------------
+    Add_Recipe_2_Machine({
+        prefab = "chemist_item_plant_growth_medicine",
+        Ingredients = { Ingredient("glommerfuel", 1) , Ingredient("spoiled_food", 1) , Ingredient("poop", 1), Ingredient("chemist_item_empty_bottle", 1)  },
+        -- builder_tag = "fwd_in_pdt_test33333333333366666",
+        atlas = "images/inventoryimages/chemist_item_plant_growth_medicine.xml",
+        image = "chemist_item_plant_growth_medicine.tex",
     })

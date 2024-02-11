@@ -13,7 +13,10 @@ CHEMIST_COM_ACCEPTABLE_ACTION.fn = function(act)    --- 只在服务端执行~
     local target = act.target
     local doer = act.doer
     if item and target and doer and target.components.chemist_com_acceptable then
-        return target.components.chemist_com_acceptable:OnAccept(item,doer)
+        local replica_com = target.replica.chemist_com_acceptable or target.replica._.chemist_com_acceptable
+        if replica_com and replica_com:Test(item,doer) then
+            return target.components.chemist_com_acceptable:OnAccept(item,doer)
+        end
     end
     return false
 end

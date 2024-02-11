@@ -4,7 +4,10 @@
 return function(inst)
 
     if TheWorld.ismastersim then
-        inst:AddComponent("chemist_com_database") --- 通用用数据库
+        if inst.components.chemist_com_database == nil then
+            inst:AddComponent("chemist_com_database") --- 通用用数据库
+        end
+        
         inst:AddComponent("chemist_com_rpc_event") --- RPC 信道封装
     end
 

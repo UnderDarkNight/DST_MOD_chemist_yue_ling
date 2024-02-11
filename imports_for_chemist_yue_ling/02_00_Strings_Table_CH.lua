@@ -50,6 +50,31 @@ TUNING["chemist_yue_ling.Strings"][this_language] = TUNING["chemist_yue_ling.Str
                 ["inspect_str"] = "只能放置药剂",
                 ["recipe_desc"] = "只能放置药剂",
             },
+            ["chemist_item_restorative_medicine_bottle"] = {
+                ["name"] = "通用恢复药剂",
+                ["inspect_str"] = "回复血量",
+                ["recipe_desc"] = "回复血量",
+            },
+            ["chemist_item_cola_soda"] = {
+                ["name"] = "宅男的爱（可乐）",
+                ["inspect_str"] = "奔跑速度加快一段时间",
+                ["recipe_desc"] = "奔跑速度加快一段时间",
+            },
+            ["chemist_item_plant_growth_medicine"] = {
+                ["name"] = "植物生长药剂",
+                ["inspect_str"] = "让植物长得旺盛些",
+                ["recipe_desc"] = "让植物长得旺盛些",
+            },
+            ["chemist_item_wisdom_medicine"] = {
+                ["name"] = "智慧药剂",
+                ["inspect_str"] = "喝了这墨水会更聪明",
+                ["recipe_desc"] = "喝了这墨水会更聪明",
+            },
+            ["chemist_item_jinkela_medicine"] = {
+                ["name"] = "金坷垃药剂",
+                ["inspect_str"] = "对植物使用",
+                ["recipe_desc"] = "对植物使用",
+            },
         --------------------------------------------------------------------
         --- 03_equipments
             ["chemist_equipment_chemical_launching_gun"] = {
@@ -67,9 +92,23 @@ TUNING["chemist_yue_ling.Strings"][this_language] = TUNING["chemist_yue_ling.Str
             ["chemist_building_pharmaceutical_manufacturing_station"] = {
                 ["name"] = "药剂制作站",
                 ["inspect_str"] = "药剂制作站",
+                ["inspect_str_burnt"] = "烧毁了不能用了",
                 ["recipe_desc"] = "药剂制作站",
             },
         --------------------------------------------------------------------
+        --- 07_foods        
+            ["chemist_food_wisdom_apple"] = {
+                ["name"] = "智慧果",
+                ["inspect_str"] = "智慧树上智慧果，智慧树下你和我",
+                ["recipe_desc"] = "智慧树上智慧果，智慧树下你和我",
+            },
+        --------------------------------------------------------------------
+        --- 09_spells
+            ["chemist_spell_empty_bottle_maker"] = {
+                ["name"] = "空药剂瓶",
+                ["inspect_str"] = "空药剂瓶",
+                ["recipe_desc"] = "空药剂瓶",
+            },
         --------------------------------------------------------------------
 }
 

@@ -28,15 +28,7 @@ local Prefabs_addr_base = string.sub(temp_addr,1,temp_str_index2) .. "/"    --- 
 local prefabs_name_list = {
 
 
-    "01_firenettles_medicine_bottle",           --- 火荨麻 药剂瓶
-    "02_empty_bottle",                          -- 空药剂瓶
-    "03_herbal_bag",                            -- 药材袋
-    "04_pillbox",                               -- 药剂匣
-    "05_restorative_medicine_bottle",           -- 通用恢复药水
-    "06_cola_soda",                             -- 可乐
-    "07_plant_growth_medicine",                 -- 植物生长药剂
-    "08_wisdom_medicine",                       -- 智慧药剂
-    "09_jinkela_medicine",                      -- 金坷垃药剂
+    "01_empty_bottle_maker",                           --- 药剂师 制作空瓶
 
 }
 

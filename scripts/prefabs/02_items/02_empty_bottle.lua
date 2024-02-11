@@ -30,9 +30,40 @@ local function fn()
     -- inst.pickupsound = "wood"
     inst:AddTag("medicine_bottle")
 
+    -- inst:AddTag("quick_drink")
+
     MakeInventoryFloatable(inst, "med", 0.1, 0.75)
 
     inst.entity:SetPristine()
+
+
+    ---------------------------------------------------------------------------------------------------------
+    --- 示例用 喝下去 组件
+            -- if TheWorld.ismastersim then
+
+            --     inst:AddComponent("chemist_com_drinkable")
+            --     inst.components.chemist_com_drinkable:SetOnDrinkFn(function(inst,doer)
+            --         inst.components.stackable:Get():Remove()
+            --         print("info  喝下去")
+            --         return true
+            --     end)
+            -- end
+
+            -- inst:DoTaskInTime(0,function()
+            --     local replica_com = inst.replica.chemist_com_drinkable or inst.replica._.chemist_com_drinkable
+            --     if replica_com then
+            --         replica_com:SetTestFn(function(inst,doer)
+            --             -- print("info chemist_com_drinkable test ")
+            --             -- return true
+            --             return inst.replica.inventoryitem:IsGrandOwner(doer)    --- 在背包里才能使用
+            --         end)
+
+            --         replica_com:SetLayer("horn01")
+            --         replica_com:SetBuild("chemist_item_empty_bottle")
+            --     end
+            -- end)
+
+    ---------------------------------------------------------------------------------------------------------
 
     if not TheWorld.ismastersim then
         return inst
@@ -69,7 +100,14 @@ local function fn()
         inst:ListenForEvent("on_landed",shadow_init)
         shadow_init(inst)
     -------------------------------------------------------------------
-
+    ---- 制作栏出来、保持和技能逻辑一样
+        inst.OnBuiltFn = function(inst,builder)
+           if builder and builder:HasTag("chemist_yue_ling") then
+            if builder.components.sanity:IsLunacyMode() then    --- 启蒙状态做瓶子  随机得 1-5
+                inst.components.stackable.stacksize = math.random(5)
+            end
+           end
+        end
     -------------------------------------------------------------------
     return inst
 end

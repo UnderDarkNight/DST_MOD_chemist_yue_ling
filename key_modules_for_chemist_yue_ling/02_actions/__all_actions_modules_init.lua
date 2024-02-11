@@ -10,3 +10,9 @@ modimport("key_modules_for_chemist_yue_ling/02_actions/02_gun_shoot_action_sg.lu
 
 
 modimport("key_modules_for_chemist_yue_ling/02_actions/03_item_acceptable.lua")  --- 物品接受交互
+
+modimport("key_modules_for_chemist_yue_ling/02_actions/04_drinkable_com_action.lua")  --- 喝药剂 交互注册
+modimport("key_modules_for_chemist_yue_ling/02_actions/05_drinkable_sg_action.lua")  --- 喝药剂 sg
+modimport("key_modules_for_chemist_yue_ling/02_actions/06_drinkable_sg_action_quick.lua")  --- 喝药剂 sg quick
+
+modimport("key_modules_for_chemist_yue_ling/02_actions/07_com_action_item_use_to.lua")  --- 物品使用组件

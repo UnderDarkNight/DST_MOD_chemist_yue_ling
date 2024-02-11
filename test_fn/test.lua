@@ -37,10 +37,15 @@ local flg,error_code = pcall(function()
             -- end
 
             -- ThePlayer.replica.chemist_com_rpc_event:PushEvent("rpc_test_data_from_client",1)
-            for i = 1, 10, 1 do
-                ThePlayer.replica.chemist_com_rpc_event:PushEvent("rpc_test_data_from_client",i)
+            -- for i = 1, 10, 1 do
+            --     ThePlayer.replica.chemist_com_rpc_event:PushEvent("rpc_test_data_from_client",i)
                 
-            end
+            -- end
+
+    ----------------------------------------------------------------------------------------------------------------
+    ---- 启蒙状态
+
+                print(ThePlayer.components.sanity:IsLunacyMode())
 
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")

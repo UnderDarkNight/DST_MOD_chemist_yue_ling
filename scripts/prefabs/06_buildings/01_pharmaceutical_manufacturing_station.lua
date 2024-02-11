@@ -8,6 +8,14 @@
 ]]--
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+    local function GetStringsTable(name)
+        local prefab_name = name or "chemist_building_pharmaceutical_manufacturing_station"
+        local LANGUAGE = type(TUNING["chemist_yue_ling.Language"]) == "function" and TUNING["chemist_yue_ling.Language"]() or TUNING["chemist_yue_ling.Language"]
+        return TUNING["chemist_yue_ling.Strings"][LANGUAGE][prefab_name] or {}
+    end
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 
@@ -31,7 +39,6 @@ local function fn()
     MakeObstaclePhysics(inst, 1)
 
     inst.MiniMapEntity:SetIcon("chemist_building_pharmaceutical_manufacturing_station.tex")
---{anim="level1", sound="dontstarve/common/campfire", radius=2, intensity=.75, falloff=.33, colour = {197/255,197/255,170/255}},
     -- inst.Light:SetFalloff(1)
     -- inst.Light:SetIntensity(.5)
     -- inst.Light:SetRadius(1)
@@ -58,47 +65,50 @@ local function fn()
     ----------------------------------------------------------------
     ---- 玩家检查说的话
         inst:AddComponent("inspectable")
-        -- inst.components.inspectable.descriptionfn = function()
-        --     if inst:HasTag("burnt") then
-        --         return GetStringsTable()["inspect_str_burnt"]
-        --     else
-        --         return GetStringsTable()["inspect_str"]
-        --     end
-        -- end
+        inst.components.inspectable.descriptionfn = function()
+            if inst:HasTag("burnt") then
+                return GetStringsTable()["inspect_str_burnt"]
+            else
+                return GetStringsTable()["inspect_str"]
+            end
+        end
     ----------------------------------------------------------------
     ----- 玩家靠近
-        local playerprox = inst:AddComponent("playerprox")
-        inst.components.playerprox:SetTargetMode(playerprox.TargetModes.AllPlayers) --- 检测每一个进出的玩家
-        inst.components.playerprox:SetPlayerAliveMode(playerprox.AliveModes.AliveOnly)    --- 只检测活着的
+        -- local playerprox = inst:AddComponent("playerprox")
+        -- inst.components.playerprox:SetTargetMode(playerprox.TargetModes.AllPlayers) --- 检测每一个进出的玩家
+        -- inst.components.playerprox:SetPlayerAliveMode(playerprox.AliveModes.AliveOnly)    --- 只检测活着的
 
-        inst.components.playerprox:SetDist(5.5, 7)
-        inst.components.playerprox:SetOnPlayerNear(function(inst,player)
-            if inst:HasTag("burnt") or player:HasTag("playerghost") then
-                return
-            end
+        -- inst.components.playerprox:SetDist(5.5, 7)
+        -- inst.components.playerprox:SetOnPlayerNear(function(inst,player)
+        --     if inst:HasTag("burnt") or player:HasTag("playerghost") then
+        --         return
+        --     end
 
-            -- inst.AnimState:PlayAnimation("working", true)
+        --     -- inst.AnimState:PlayAnimation("working", true)
 
-            -- player:AddTag("near_pharmaceutical_manufacturing_station")
+        --     -- player:AddTag("near_pharmaceutical_manufacturing_station")
 
-        end)
-        inst.components.playerprox:SetOnPlayerFar(function(inst,player)
-            if inst:HasTag("burnt") or ( player and player:HasTag("playerghost") ) then
-                return
-            end
-            -- inst.AnimState:PlayAnimation("idle", true)
+        -- end)
+        -- inst.components.playerprox:SetOnPlayerFar(function(inst,player)
+        --     if inst:HasTag("burnt") or ( player and player:HasTag("playerghost") ) then
+        --         return
+        --     end
+        --     -- inst.AnimState:PlayAnimation("idle", true)
 
-            -- player:RemoveTag("near_pharmaceutical_manufacturing_station")
+        --     -- player:RemoveTag("near_pharmaceutical_manufacturing_station")
 
-        end)
+        -- end)
 
     ----------------------------------------------------------------
     --- 敲打拆除
-
+        inst:AddComponent("lootdropper")
         inst:AddComponent("workable")
         inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
         inst.components.workable:SetWorkLeft(4)
         inst.components.workable:SetOnFinishCallback(function()
+            if not inst:HasTag("burnt") then
+                inst.components.lootdropper:DropLoot()
+            end
             SpawnPrefab("chemist_fx_collapse"):PushEvent("Set",{
                 pt = Vector3(inst.Transform:GetWorldPosition())
             })
@@ -138,7 +148,7 @@ local function fn()
                 end
             end)
             inst:ListenForEvent("onburnt",function()
-                inst:RemoveComponent("playerprox")  --- 移除组件
+                -- inst:RemoveComponent("playerprox")  --- 移除组件
                 inst:RemoveComponent("prototyper")  --- 移除组件
             end)
     --------------------------------------------------------
@@ -165,6 +175,5 @@ local function fn()
     return inst
 end
 
-return Prefab("chemist_building_pharmaceutical_manufacturing_station", fn, assets)
--- ,
---         MakePlacer("chemist_building_pharmaceutical_manufacturing_station_placer", "chemist_building_pharmaceutical_manufacturing_station", "chemist_building_pharmaceutical_manufacturing_station", "idle")
+return Prefab("chemist_building_pharmaceutical_manufacturing_station", fn, assets),
+        MakePlacer("chemist_building_pharmaceutical_manufacturing_station_placer", "chemist_building_pharmaceutical_manufacturing_station", "chemist_building_pharmaceutical_manufacturing_station", "idle")

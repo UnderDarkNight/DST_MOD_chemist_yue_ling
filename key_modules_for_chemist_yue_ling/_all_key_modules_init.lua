@@ -19,4 +19,7 @@ modimport("key_modules_for_chemist_yue_ling/03_recipes/__all_recipes_modules_ini
 modimport("key_modules_for_chemist_yue_ling/04_origin_prefabs_upgrade/__all_prefabs_init.lua") 
 -- 官方prefab修改
 
+modimport("key_modules_for_chemist_yue_ling/05_origin_components_upgrade/__all_com_init.lua") 
+-- 官方component 修改
+
 
