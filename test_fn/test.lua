@@ -45,8 +45,19 @@ local flg,error_code = pcall(function()
     ----------------------------------------------------------------------------------------------------------------
     ---- 启蒙状态
 
-                print(ThePlayer.components.sanity:IsLunacyMode())
+                -- print(ThePlayer.components.sanity:IsLunacyMode())
 
+    ----------------------------------------------------------------------------------------------------------------
+    --- 
+        -- ThePlayer.components.chemist_com_level_sys:LevelUp(200)
+        ThePlayer.components.chemist_com_level_sys:Add_Exp(100)
+        -- local current_level = 1
+
+        -- for i = 1, 50, 1 do
+        --     local nex_level_exp = math.floor(current_level/10) + 1
+        --     print("Current:",current_level,"NextEXP:",nex_level_exp)
+        --     current_level = current_level + 1
+        -- end
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

@@ -21,6 +21,7 @@ local files_name = {
 		"chemist_item_plant_growth_medicine",								--- 植物生长药剂
 		"chemist_item_wisdom_medicine",										--- 智慧药剂
 		"chemist_item_jinkela_medicine",									--- 金坷垃药剂
+		"chemist_item_exp_medicine",										--- 经验药剂
 	---------------------------------------------------------------------------------------
 	-- 03_equipments
 		"chemist_equipment_chemical_launching_gun",											--- 药剂发射器

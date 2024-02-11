@@ -18,3 +18,6 @@ AddReplicableComponent("chemist_com_rpc_event")  --- RPC 组件注册
 AddReplicableComponent("chemist_com_drinkable")  --- 喝药剂组件
 
 AddReplicableComponent("chemist_com_item_use_to")  --- 物品使用组件
+
+
+AddReplicableComponent("chemist_com_level_sys")  --- 角色等级

@@ -75,6 +75,11 @@ TUNING["chemist_yue_ling.Strings"][this_language] = TUNING["chemist_yue_ling.Str
                 ["inspect_str"] = "对植物使用",
                 ["recipe_desc"] = "对植物使用",
             },
+            ["chemist_item_exp_medicine"] = {
+                ["name"] = "经验药剂",
+                ["inspect_str"] = "独属于药剂师的药剂",
+                ["recipe_desc"] = "独属于药剂师的药剂",
+            },
         --------------------------------------------------------------------
         --- 03_equipments
             ["chemist_equipment_chemical_launching_gun"] = {

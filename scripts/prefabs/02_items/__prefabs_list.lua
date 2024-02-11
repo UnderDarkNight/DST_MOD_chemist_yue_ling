@@ -37,6 +37,7 @@ local prefabs_name_list = {
     "07_plant_growth_medicine",                 -- 植物生长药剂
     "08_wisdom_medicine",                       -- 智慧药剂
     "09_jinkela_medicine",                      -- 金坷垃药剂
+    "10_exp_medicine",                          -- 经验药剂
 
 }
 

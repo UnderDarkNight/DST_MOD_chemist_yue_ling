@@ -13,6 +13,8 @@ return function(inst)
 
     local modules = {
         "prefabs/01_character/yue_ling_er_key_modules/01_beard_container_setup",                    ---- 安装胡子容器
+        "prefabs/01_character/yue_ling_er_key_modules/02_level_sys",                    ---- 等级系统
+        "prefabs/01_character/yue_ling_er_key_modules/03_double_dropper",                    ---- 双倍掉落检查
 
     }
     for k, lua_addr in pairs(modules) do

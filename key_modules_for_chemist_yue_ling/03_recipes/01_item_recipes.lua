@@ -188,3 +188,23 @@
     )
     RemoveRecipeFromFilter("chemist_food_wisdom_apple","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 经验药剂
+--------------------------------------------------------------------------------------------------------------------------------------------
+    AddRecipeToFilter("chemist_item_exp_medicine","CHARACTER")     ---- 添加物品到目标标签
+    AddRecipe2(
+        "chemist_item_exp_medicine",            --  --  inst.prefab  实体名字
+        { Ingredient("petals", 1) ,  Ingredient("boneshard", 1) , Ingredient("chemist_food_wisdom_apple", 1) ,  }, 
+        TECH.NONE, 
+        {
+            -- no_deconstruction=true,
+            builder_tag = "chemist_yue_ling",
+            atlas = "images/inventoryimages/chemist_item_exp_medicine.xml",
+            -- atlas = GetInventoryItemAtlas("underworld_hana_item_blissful_memory.tex"),
+            image = "chemist_item_exp_medicine.tex",
+        },
+        {"CHARACTER"}
+    )
+    RemoveRecipeFromFilter("chemist_item_exp_medicine","MODS")                       -- -- 在【模组物品】标签里移除这个。
+

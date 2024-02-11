@@ -11,8 +11,8 @@ local function builder_onbuilt(inst, builder)
 
         local item = SpawnPrefab("chemist_item_empty_bottle")
 
-        if builder.components.sanity:IsLunacyMode() then    --- 启蒙状态做瓶子  随机得 1-5
-            item.components.stackable.stacksize = math.random(5)
+        if builder.components.sanity:IsLunacyMode() then    --- 启蒙状态做瓶子  随机得 1-3
+            item.components.stackable.stacksize = math.random(3)
         end
         
         builder.components.inventory:GiveItem(item)
