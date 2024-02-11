@@ -2,8 +2,9 @@ local assets =
 {
     -- Asset("ANIM", "anim/backpack.zip"),
     -- Asset("ANIM", "anim/swap_krampus_sack.zip"),
-    Asset( "IMAGE", "images/widget/chemist_other_beard_container_widget_bg.tex" ), 
-    Asset( "ATLAS", "images/widget/chemist_other_beard_container_widget_bg.xml" ),
+    Asset("ANIM", "anim/chemist_other_beard_container.zip"),
+    -- Asset( "IMAGE", "images/widget/chemist_other_beard_container_widget_bg.tex" ), 
+    -- Asset( "ATLAS", "images/widget/chemist_other_beard_container_widget_bg.xml" ),
 }
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -24,17 +25,17 @@ local assets =
                 {
                     slotpos =
                     {
-                        Vector3(-(64 + 12)/2, 0, 0),
-                        Vector3( (64 + 12)/2, 0, 0),
+                        Vector3(-(64 + 12)/2, -5, 0),
+                        Vector3( (64 + 12)/2, -5, 0),
                     },
-                    slotbg =
-                    {
-                        { image = "chemist_other_beard_container_widget_bg.tex" ,atlas = "images/widget/chemist_other_beard_container_widget_bg.xml"},
-                        { image = "chemist_other_beard_container_widget_bg.tex" ,atlas = "images/widget/chemist_other_beard_container_widget_bg.xml"},
+                    -- slotbg =
+                    -- {
+                    --     { image = "chemist_other_beard_container_widget_bg.tex" ,atlas = "images/widget/chemist_other_beard_container_widget_bg.xml"},
+                    --     { image = "chemist_other_beard_container_widget_bg.tex" ,atlas = "images/widget/chemist_other_beard_container_widget_bg.xml"},
 
-                    },
-                    animbank = "ui_beard_2x1",
-                    animbuild = "ui_beard_2x1",
+                    -- },
+                    animbank = "chemist_other_beard_container",
+                    animbuild = "chemist_other_beard_container",
                     pos = Vector3(-82, 89, 0),
                     bottom_align_tip = -100,
                 },

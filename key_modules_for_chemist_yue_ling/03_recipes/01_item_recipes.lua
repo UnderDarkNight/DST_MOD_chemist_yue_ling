@@ -111,22 +111,22 @@
 
 
 
---------------------------------------------------------------------------------------------------------------------------------------------
----- 火荨麻 药剂瓶
---------------------------------------------------------------------------------------------------------------------------------------------
-    AddRecipeToFilter("chemist_item_firenettles_medicine_bottle","CHARACTER")     ---- 添加物品到目标标签
-    AddRecipe2(
-        "chemist_item_firenettles_medicine_bottle",            --  --  inst.prefab  实体名字
-        { Ingredient("firenettles", 1),Ingredient("ash", 1),Ingredient("chemist_item_empty_bottle", 1)  }, 
-        TECH.NONE, 
-        {
-            -- no_deconstruction=true,
-            builder_tag = "chemist_yue_ling",
-            atlas = "images/inventoryimages/chemist_item_firenettles_medicine_bottle.xml",
-            -- atlas = GetInventoryItemAtlas("underworld_hana_item_blissful_memory.tex"),
-            image = "chemist_item_firenettles_medicine_bottle.tex",
-        },
-        {"CHARACTER"}
-    )
-    RemoveRecipeFromFilter("chemist_item_firenettles_medicine_bottle","MODS")                       -- -- 在【模组物品】标签里移除这个。
+-- --------------------------------------------------------------------------------------------------------------------------------------------
+-- ---- 火荨麻 药剂瓶
+-- --------------------------------------------------------------------------------------------------------------------------------------------
+--     AddRecipeToFilter("chemist_item_firenettles_medicine_bottle","CHARACTER")     ---- 添加物品到目标标签
+--     AddRecipe2(
+--         "chemist_item_firenettles_medicine_bottle",            --  --  inst.prefab  实体名字
+--         { Ingredient("firenettles", 1),Ingredient("ash", 1),Ingredient("chemist_item_empty_bottle", 1)  }, 
+--         TECH.NONE, 
+--         {
+--             -- no_deconstruction=true,
+--             builder_tag = "chemist_yue_ling",
+--             atlas = "images/inventoryimages/chemist_item_firenettles_medicine_bottle.xml",
+--             -- atlas = GetInventoryItemAtlas("underworld_hana_item_blissful_memory.tex"),
+--             image = "chemist_item_firenettles_medicine_bottle.tex",
+--         },
+--         {"CHARACTER"}
+--     )
+--     RemoveRecipeFromFilter("chemist_item_firenettles_medicine_bottle","MODS")                       -- -- 在【模组物品】标签里移除这个。
 

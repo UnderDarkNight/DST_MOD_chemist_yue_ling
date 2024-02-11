@@ -11,6 +11,7 @@ local file_folders = {
     "03_equipments",        ---- 装备
     "04_projectiles",       ---- 弹药
     "05_fx",                ---- 特效
+    "06_buildings",         ---- 建筑
     
     -- "05_buffs",             ---- buff
     -- "06_spell",             ---- spell

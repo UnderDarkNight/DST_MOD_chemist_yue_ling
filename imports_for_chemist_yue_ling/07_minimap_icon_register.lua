@@ -14,6 +14,7 @@ local files_name = {
 	---- 22_chemist_yue_ling_npc
 	-------------------------------------------------------------------------------------------------
 		"chemist_yue_ling",						--- 小地图图标
+		"chemist_building_pharmaceutical_manufacturing_station",						--- 药剂制作站
 	-------------------------------------------------------------------------------------------------
 	---- 23_chemist_yue_ling_wellness
 

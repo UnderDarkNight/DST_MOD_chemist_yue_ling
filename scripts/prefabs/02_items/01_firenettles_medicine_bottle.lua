@@ -113,13 +113,13 @@ local function fn()
                 bullet:Remove()
             end)
 
-            if inst.components.stackable.stacksize > 1 then
-                inst.components.stackable.stacksize = inst.components.stackable.stacksize - 1
-                print("temp ++++++++++",inst.components.stackable.stacksize )
-            else
-                inst:Remove()
-            end
-            -- inst.components.stackable:Get():Remove()
+            -- if inst.components.stackable.stacksize > 1 then
+            --     inst.components.stackable.stacksize = inst.components.stackable.stacksize - 1
+            --     -- print("temp ++++++++++",inst.components.stackable.stacksize )
+            -- else
+            --     inst:Remove()
+            -- end
+            inst.components.stackable:Get():Remove()
         end)
     -------------------------------------------------------------------
     return inst

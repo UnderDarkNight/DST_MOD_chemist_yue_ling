@@ -63,5 +63,13 @@ TUNING["chemist_yue_ling.Strings"][this_language] = TUNING["chemist_yue_ling.Str
                 ["recipe_desc"] = "能返鲜的容器",
             },
         --------------------------------------------------------------------
+        --- 06_buildings
+            ["chemist_building_pharmaceutical_manufacturing_station"] = {
+                ["name"] = "药剂制作站",
+                ["inspect_str"] = "药剂制作站",
+                ["recipe_desc"] = "药剂制作站",
+            },
+        --------------------------------------------------------------------
+        --------------------------------------------------------------------
 }
 
