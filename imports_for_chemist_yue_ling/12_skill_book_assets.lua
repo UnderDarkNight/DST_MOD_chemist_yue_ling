@@ -12,6 +12,9 @@ local temp_assets = {
     ----- 攻击力倍增药剂
         Asset("IMAGE", "images/widget/chemist_skill_book_attack_power_multiplier_medicine.tex"),
         Asset("ATLAS", "images/widget/chemist_skill_book_attack_power_multiplier_medicine.xml"),
+    ----- 三维恢复药剂
+        Asset("IMAGE", "images/widget/chemist_skill_book_triple_recovery_medicine.tex"),
+        Asset("ATLAS", "images/widget/chemist_skill_book_triple_recovery_medicine.xml"),
 
 
 

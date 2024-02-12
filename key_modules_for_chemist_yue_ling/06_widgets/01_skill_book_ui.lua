@@ -27,7 +27,7 @@ AddPlayerPostInit(function(inst)
     end)
 end)
 
-
+local current_dsp_page_num = 1
 
 AddClassPostConstruct("screens/playerhud",function(self)
     local hud = self
@@ -148,17 +148,75 @@ AddClassPostConstruct("screens/playerhud",function(self)
             --     ---- 每一页 
             -- local fn = require("widgets/mms_scroll_unlock_widget_pages")
             -- -- local fn = dofile(resolvefilepath("scripts/widgets/mms_scroll_unlock_widget_pages.lua"))
+
             root.pages = {}
-            
-            local pages_addr = {
-                [1] = resolvefilepath("scripts/widgets/01_chemist_skill_book_page_1.lua"),
-            }
-            for i, addr in pairs(pages_addr) do
-                local temp_fn = dofile(addr)
-                if type(temp_fn) == "function" then
-                    temp_fn(root,i,main_scale_num)
+            ------------------------------------------------------------------
+                local files_path = {
+                    [1] = "widgets/01_chemist_skill_book_page_1",
+                    [2] = "widgets/02_chemist_skill_book_page_2",
+                }
+            ------------------------------------------------------------------
+            -- 使用 dofile 加载
+                -- local pages_addr = {
+                --     [1] = resolvefilepath("scripts/widgets/01_chemist_skill_book_page_1.lua"),
+                --     [2] = resolvefilepath("scripts/widgets/02_chemist_skill_book_page_2.lua"),
+                -- }
+
+                for i, addr in pairs(files_path) do
+                    local temp_fn = dofile(resolvefilepath("scripts/"..addr..".lua"))
+                    if type(temp_fn) == "function" then
+                        temp_fn(root,i,main_scale_num)
+                    end
                 end
+            ------------------------------------------------------------------
+            -- 使用 require 加载
+                -- for i, addr in pairs(files_path) do
+                --     local temp_fn = require(addr)
+                --     if type(temp_fn) == "function" then
+                --         temp_fn(root,i,main_scale_num)
+                --     end
+                -- end
+            ------------------------------------------------------------------
+
+            for i, temp_page in pairs(root.pages) do
+                temp_page:Hide()
             end
+            local max_pages_num = #root.pages
+            root.pages[current_dsp_page_num or 1]:Show()
+            -------------- 按键切换页面
+                previous_button:SetOnClick(function()
+                    current_dsp_page_num = current_dsp_page_num - 1
+                    if current_dsp_page_num < 1 then
+                        current_dsp_page_num = max_pages_num
+                    end
+                    root.pages[current_dsp_page_num]:Show()
+                    for i, temp_page in pairs(root.pages) do
+                        if i ~= current_dsp_page_num then
+                            temp_page:Hide()
+                        end
+                    end
+                end)
+                next_button:SetOnClick(function()
+                    current_dsp_page_num = current_dsp_page_num + 1
+                    if current_dsp_page_num > max_pages_num then
+                        current_dsp_page_num = 1
+                    end
+                    root.pages[current_dsp_page_num]:Show()
+                    for i, temp_page in pairs(root.pages) do
+                        if i ~= current_dsp_page_num then
+                            temp_page:Hide()
+                        end
+                    end
+                end)
+
+        ----------------------------------------------------------------
+        ------- 声音播报
+            -- ThePlayer.replica.chemist_com_skill_point_sys:AddDataUpdateFn(function()
+            --     -- if root.inst.SoundEmitter == nil then
+            --     --     root.inst.entity:AddSoundEmitter()
+            --     -- end
+            --     ThePlayer.SoundEmitter:PlaySound("dontstarve/common/together/celestial_orb/active")
+            -- end)
         ----------------------------------------------------------------
         ------- 
             if TUNING.test_ui_fn then

@@ -102,11 +102,9 @@ local function fn()
     -------------------------------------------------------------------
     ---- 制作栏出来、保持和技能逻辑一样
         inst.OnBuiltFn = function(inst,builder)
-           if builder and builder:HasTag("chemist_yue_ling") then
-            if builder.components.sanity:IsLunacyMode() then    --- 启蒙状态做瓶子  随机得 1-3
-                inst.components.stackable.stacksize = math.random(3)
+            if builder then
+                builder:PushEvent("chemist_empty_bottle_maked",inst)
             end
-           end
         end
     -------------------------------------------------------------------
     return inst
