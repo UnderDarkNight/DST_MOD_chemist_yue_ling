@@ -107,32 +107,47 @@ local flg,error_code = pcall(function()
     ----------------------------------------------------------------------------------------------------------------
     --- UI 调试
 
-        -- ThePlayer.HUD:Chemist_Skill_Book_Close()
-        -- local main_scale_num = 0.6
-        -- TUNING.test_ui_fn = function(root)
+        ThePlayer.HUD:Chemist_Skill_Book_Close()
+        local main_scale_num = 0.6
+        TUNING.test_ui_fn = function(root)
             
 
-        --     -- local info_text = root:AddChild(Image())
-        --     -- root.info_text = info_text
-        --     -- info_text:SetTexture("images/widget/chemist_skill_book_base.xml","info_text.tex")
-        --     -- info_text:SetPosition(-330,170)
-        --     -- info_text:Show()
-        --     -- info_text:SetScale(main_scale_num,main_scale_num,main_scale_num)
+            -- local info_text = root:AddChild(Image())
+            -- root.info_text = info_text
+            -- info_text:SetTexture("images/widget/chemist_skill_book_base.xml","info_text.tex")
+            -- info_text:SetPosition(-330,170)
+            -- info_text:Show()
+            -- info_text:SetScale(main_scale_num,main_scale_num,main_scale_num)
+
+            -- --------- 玩家等级
+            --     local level_text = root:AddChild(Text(CODEFONT,38,"XXX",{ 255/255 , 255/255 ,255/255 , 1}))
+            --     level_text:SetPosition(-240,192)
+            --     level_text:SetString("000")
+            --     local level_num = ThePlayer.replica.chemist_com_level_sys:GetCurrentLevel()
+            --     level_text:SetString("Lv."..tostring(level_num))
+            -- --------- 下一级经验
+            --     local next_level_text = root:AddChild(Text(CODEFONT,38,"XXX",{ 255/255 , 255/255 ,255/255 , 1}))
+            --     next_level_text:SetPosition(-240,165)
+            --     next_level_text:SetString("0/10")
+            --     local next_level_exp = tostring( ThePlayer.replica.chemist_com_level_sys:GetNextLevelExp() or 0 )
+            --     local current_exp = tostring( ThePlayer.replica.chemist_com_level_sys:GetCurrentExp() or 0)
+            --     local ret_text = current_exp .. "/" .. next_level_exp
+            --     next_level_text:SetString(ret_text)
 
 
-        --     -- local level_text = root:AddChild(Text(CODEFONT,40,"XXX",{ 255/255 , 255/255 ,255/255 , 1}))
-        --     -- level_text:SetPosition(-240,182)
-        --     -- level_text:SetString("000")
+            
+            -- --------- 剩余技能点            
+            --     local free_points_text = root:AddChild(Text(CODEFONT,38,"XXX",{ 255/255 , 255/255 ,255/255 , 1}))
+            --     free_points_text:SetPosition(-240,140)
+            --     free_points_text:SetString("000")
+            --     local free_points = ThePlayer.replica.chemist_com_skill_point_sys.free_points or 0
+            --     free_points_text:SetString(tostring(free_points))
 
-        --     -- local free_points_text = root:AddChild(Text(CODEFONT,40,"XXX",{ 255/255 , 255/255 ,255/255 , 1}))
-        --     -- free_points_text:SetPosition(-240,150)
-        --     -- free_points_text:SetString("000")
 
-
-        -- end
-        -- ThePlayer.HUD:Chemist_Skill_Book_Open()
+        end
+        ThePlayer.HUD:Chemist_Skill_Book_Open()
     ----------------------------------------------------------------------------------------------------------------
-        ThePlayer.components.chemist_com_skill_point_sys:FreePointDelta(3)
+        -- ThePlayer.components.chemist_com_skill_point_sys:FreePointDelta(3)
 
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")

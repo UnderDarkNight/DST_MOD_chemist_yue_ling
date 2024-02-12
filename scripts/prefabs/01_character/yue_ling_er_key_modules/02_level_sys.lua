@@ -15,6 +15,9 @@ return function(inst)
         return
     end
     --------------------------------------------------------------------------------
+        inst:AddComponent("chemist_com_level_sys")
+
+    --------------------------------------------------------------------------------
         local function level_refresh()
             local level = inst.components.chemist_com_level_sys:Get_Level()
             --------------------------------------------------------------------------------
@@ -47,7 +50,6 @@ return function(inst)
 
         end
     --------------------------------------------------------------------------------
-        inst:AddComponent("chemist_com_level_sys")
         inst.components.chemist_com_level_sys.max_level = 200
         inst.components.chemist_com_level_sys:Add_Level_Changed_Fn(level_refresh)
         inst.components.chemist_com_level_sys:SetOnLoadFn(level_refresh)
@@ -57,7 +59,14 @@ return function(inst)
             inst.components.chemist_com_level_sys:Add_Level_Event(i,function()
                 print("info 等级到达：",i)
             end)
+            if i%2 == 0 then
+                inst.components.chemist_com_level_sys:Add_Level_Event(i,function()
+                    inst.components.chemist_com_skill_point_sys:FreePointDelta(1)
+                end)
+            end
         end
+    --------------------------------------------------------------------------------
+    ----
     --------------------------------------------------------------------------------
     ---- 换角色的时候保存玩家等级.
         inst:ListenForEvent("ms_playerreroll",function()    --- 通过绚丽之门选角色的时候触发

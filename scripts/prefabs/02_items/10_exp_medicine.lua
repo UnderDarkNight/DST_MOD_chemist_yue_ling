@@ -30,7 +30,7 @@ local function fn()
     -- inst.pickupsound = "wood"
     inst:AddTag("medicine_bottle")
 
-    -- inst:AddTag("quick_drink")
+    inst:AddTag("quick_drink")
 
     MakeInventoryFloatable(inst, "med", 0.1, 0.75)
 

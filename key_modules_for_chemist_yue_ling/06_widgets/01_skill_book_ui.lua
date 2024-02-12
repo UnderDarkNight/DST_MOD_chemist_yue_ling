@@ -103,6 +103,7 @@ AddClassPostConstruct("screens/playerhud",function(self)
                 -- end)
         ----------------------------------------------------------------
         ---- 显示文本
+            
             local info_text = root:AddChild(Image())
             root.info_text = info_text
             info_text:SetTexture("images/widget/chemist_skill_book_base.xml","info_text.tex")
@@ -111,24 +112,37 @@ AddClassPostConstruct("screens/playerhud",function(self)
             info_text:SetScale(main_scale_num,main_scale_num,main_scale_num)
 
             --------- 玩家等级
-                local level_text = root:AddChild(Text(CODEFONT,40,"XXX",{ 255/255 , 255/255 ,255/255 , 1}))
-                level_text:SetPosition(-240,182)
-                -- level_text:SetString("000")
-                local level_num = ThePlayer.replica.chemist_com_level_sys:GetCurrentLevel()
-                level_text:SetString(tostring(level_num))
-            
-            --------- 剩余技能点            
-                local free_points_text = root:AddChild(Text(CODEFONT,40,"XXX",{ 255/255 , 255/255 ,255/255 , 1}))
-                free_points_text:SetPosition(-240,150)
-                -- free_points_text:SetString("000")
-                local free_points = ThePlayer.replica.chemist_com_skill_point_sys.free_points or 0
-                free_points_text:SetString(tostring(free_points))
+                local level_text = root:AddChild(Text(CODEFONT,38,"XXX",{ 255/255 , 255/255 ,255/255 , 1}))
+                level_text:SetPosition(-240,192)
+                level_text:SetString("000")
 
-            ---- 添加刷新函数
-                ThePlayer.replica.chemist_com_skill_point_sys:AddDataUpdateFn(function()
+            --------- 下一级经验
+                local next_level_text = root:AddChild(Text(CODEFONT,38,"XXX",{ 255/255 , 255/255 ,255/255 , 1}))
+                next_level_text:SetPosition(-240,165)
+                next_level_text:SetString("0/10")
+        
+            --------- 剩余技能点            
+                local free_points_text = root:AddChild(Text(CODEFONT,38,"XXX",{ 255/255 , 255/255 ,255/255 , 1}))
+                free_points_text:SetPosition(-240,140)
+                free_points_text:SetString("000")
+
+            --------- 数据更新
+                local level_data_update_fn = function()
+                    local level_num = ThePlayer.replica.chemist_com_level_sys:GetCurrentLevel()
+                    level_text:SetString("Lv."..tostring(level_num))
+
+                    local next_level_exp = tostring( ThePlayer.replica.chemist_com_level_sys:GetNextLevelExp() or 0 )
+                    local current_exp = tostring( ThePlayer.replica.chemist_com_level_sys:GetCurrentExp() or 0)
+                    local ret_text = current_exp .. "/" .. next_level_exp
+                    next_level_text:SetString(ret_text)    
+
                     local free_points = ThePlayer.replica.chemist_com_skill_point_sys:GetFreePoints() or 0
                     free_points_text:SetString(tostring(free_points))
-                end)
+
+                end
+                level_data_update_fn()
+                root.inst:DoPeriodicTask(0.5,level_data_update_fn)
+                ThePlayer.replica.chemist_com_skill_point_sys:AddDataUpdateFn(level_data_update_fn)
         ----------------------------------------------------------------
         ------- 
             --     ---- 每一页 
@@ -147,9 +161,9 @@ AddClassPostConstruct("screens/playerhud",function(self)
             end
         ----------------------------------------------------------------
         ------- 
-            -- if TUNING.test_ui_fn then
-            --     TUNING.test_ui_fn(root)
-            -- end
+            if TUNING.test_ui_fn then
+                TUNING.test_ui_fn(root)
+            end
         ----------------------------------------------------------------
 
 
