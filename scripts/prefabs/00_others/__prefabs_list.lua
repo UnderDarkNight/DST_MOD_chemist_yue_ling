@@ -29,6 +29,7 @@ local prefabs_name_list = {
 
 
     "01_beard_container",                           --- 胡子容器
+    "02_level_classified",                           --- 等级系统用的辅助inst
 
 }
 

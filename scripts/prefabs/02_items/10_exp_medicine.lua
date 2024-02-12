@@ -48,8 +48,16 @@ local function fn()
 
                     -- doer.components.chemist_com_level_sys:LevelUp()
                     doer.components.chemist_com_level_sys:Add_Exp(1)
-                    local next_level_exp = doer.components.chemist_com_level_sys:Get_Next_Level_Exp()
-                    print("下一级需要经验",next_level_exp)
+                    -- local next_level_exp = doer.components.chemist_com_level_sys:Get_Next_Level_Exp()
+                    -- print("下一级需要经验",next_level_exp)
+
+
+                    local current_level = doer.replica.chemist_com_level_sys:GetCurrentLevel()
+                    local max_level = doer.replica.chemist_com_level_sys:GetMaxLevel()
+                    local current_exp = doer.replica.chemist_com_level_sys:GetCurrentExp()
+                    local next_level_exp = doer.replica.chemist_com_level_sys:GetNextLevelExp()
+                    print("Current:",current_level,"Max:",max_level,"Exp:",current_exp,"NextEXP:",next_level_exp)
+
                     return true
                 end)
             end

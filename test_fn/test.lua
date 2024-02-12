@@ -50,7 +50,7 @@ local flg,error_code = pcall(function()
     ----------------------------------------------------------------------------------------------------------------
     --- 
         -- ThePlayer.components.chemist_com_level_sys:LevelUp(200)
-        ThePlayer.components.chemist_com_level_sys:Add_Exp(100)
+        -- ThePlayer.components.chemist_com_level_sys:Add_Exp(100)
         -- local current_level = 1
 
         -- for i = 1, 50, 1 do
@@ -58,6 +58,42 @@ local flg,error_code = pcall(function()
         --     print("Current:",current_level,"NextEXP:",nex_level_exp)
         --     current_level = current_level + 1
         -- end
+
+        -- local old_level = 10
+        -- local new_level = 11
+        -- for i = old_level+1, new_level, 1 do
+        --     print(i)
+        -- end
+
+        -- ThePlayer.components.chemist_com_level_sys:LevelUp(200)
+
+        local current_level = ThePlayer.replica.chemist_com_level_sys:GetCurrentLevel()
+        local max_level = ThePlayer.replica.chemist_com_level_sys:GetMaxLevel()
+        local current_exp = ThePlayer.replica.chemist_com_level_sys:GetCurrentExp()
+        local next_level_exp = ThePlayer.replica.chemist_com_level_sys:GetNextLevelExp()
+        print("Current:",current_level,"Max:",max_level,"Exp:",current_exp,"NextEXP:",next_level_exp)
+
+
+        -- for k, v in pairs(ThePlayer.children) do
+        --     print(k,v)
+        -- end
+
+        -- print(ThePlayer.GUID)
+        -- SpawnPrefab("chemist_other_level_classified").__net_classified_entity_target:set(ThePlayer)
+
+        -- ThePlayer.replica.chemist_com_level_sys.classified.__net_classified_entity_target:set(ThePlayer)
+
+        -- print(ThePlayer.replica.chemist_com_level_sys.classified)
+
+        -- local inst = TheSim:FindFirstEntityWithTag("chemist_other_level_classified")
+        -- inst:Remove()
+
+        -- ThePlayer:SpawnChild("chemist_other_level_classified")
+        -- print(ThePlayer.chemist_other_level_classified)
+
+        -- ThePlayer.replica.chemist_com_level_sys.temp_inst.__net_classified_entity_target:set(ThePlayer)
+
+        -- print()
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

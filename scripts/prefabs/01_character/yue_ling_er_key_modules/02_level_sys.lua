@@ -48,8 +48,15 @@ return function(inst)
     end
 
     inst:AddComponent("chemist_com_level_sys")
+    inst.components.chemist_com_level_sys.max_level = 200
     inst.components.chemist_com_level_sys:Add_Level_Changed_Fn(level_refresh)
-
     inst.components.chemist_com_level_sys:SetOnLoadFn(level_refresh)
+
+
+    for i = 1, 200, 1 do
+        inst.components.chemist_com_level_sys:Add_Level_Event(i,function()
+            print("info 等级到达：",i)
+        end)
+    end
 
 end

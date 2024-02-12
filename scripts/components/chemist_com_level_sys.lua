@@ -17,6 +17,34 @@
 
 ]]--
 ----------------------------------------------------------------------------------------------------------------------------------
+-----
+    local function current_level_fn(self,num)
+        local replica_com = self.inst.replica.chemist_com_level_sys or self.inst.replica._.chemist_com_level_sys
+        if replica_com then
+            replica_com:SetCurrentLevel(num)
+        end
+    end
+
+    local function max_level_fn(self,num)
+        local replica_com = self.inst.replica.chemist_com_level_sys or self.inst.replica._.chemist_com_level_sys
+        if replica_com then
+            replica_com:SetMaxLevel(num)
+        end
+    end
+    local function current_exp_fn(self,num)
+        local replica_com = self.inst.replica.chemist_com_level_sys or self.inst.replica._.chemist_com_level_sys
+        if replica_com then
+            replica_com:SetCurrentExp(num)
+        end
+    end
+
+    local function next_level_exp_fn(self,num)
+        local replica_com = self.inst.replica.chemist_com_level_sys or self.inst.replica._.chemist_com_level_sys
+        if replica_com then
+            replica_com:SetNextLevelExp(num)
+        end
+    end
+----------------------------------------------------------------------------------------------------------------------------------
 local chemist_com_level_sys = Class(function(self, inst)
     self.inst = inst
 
@@ -24,19 +52,59 @@ local chemist_com_level_sys = Class(function(self, inst)
     self.max_level = 200
 
     self.current_exp = 0
+    self.next_level_exp = 1
+    -----------------------------------
+    --- 等级 event fn
+        self.level_events = self.level_events or {}
+        for i = 1, self.max_level, 1 do
+            self.level_events[i] = self.level_events[i] or {}
+        end
+    -----------------------------------
+
+    -----------------------------------
 
 end,
 nil,
 {
+    current_level = current_level_fn,
+    max_level = max_level_fn,
+    current_exp = current_exp_fn,
+    next_level_exp = next_level_exp_fn,
 
 })
 
 
 
 ----------------------------------------------------------------------------------------------------------------------------------
+--- 等级Event
+    function chemist_com_level_sys:Add_Level_Event(level_num,fn)
+        if type(level_num) == "number" and type(fn) == "function" then
+            self.level_events = self.level_events or {}
+            self.level_events[level_num] = self.level_events[level_num] or {}
+            self.level_events[level_num][fn] = true
+        end
+    end
+    function chemist_com_level_sys:Remove_Level_Event(level_num,fn)
+        if type(level_num) == "number" and type(fn) == "function" then
+            self.level_events = self.level_events or {}
+            self.level_events[level_num] = self.level_events[level_num] or {}
+            self.level_events[level_num][fn] = false
+        end
+    end
+    function chemist_com_level_sys:Push_Level_Event(level_num)
+        if type(level_num) == "number" then
+            for fn,flag in pairs(self.level_events[level_num]) do
+                if fn and flag then
+                    fn()
+                end
+            end
+        end
+    end
+----------------------------------------------------------------------------------------------------------------------------------
 --- 等级的增加
 
     function chemist_com_level_sys:LevelUp(num)
+        local old_level = self.current_level
         num = num or 1
         self.current_level = self.current_level + num
         if self.current_level > self.max_level then
@@ -46,7 +114,15 @@ nil,
         if self._on_level_changed_fn then
             self._on_level_changed_fn(self.current_level)
         end
+        local new_level = self.current_level
 
+        --------------------------------------------
+        --- 每个等级触发一次event
+            for i = old_level+1, new_level, 1 do
+                -- print(i)
+                self:Push_Level_Event(i)
+            end
+        --------------------------------------------
     end
     
     function chemist_com_level_sys:Get_Level()
@@ -93,10 +169,16 @@ nil,
     end
     function chemist_com_level_sys:Get_Next_Level_Exp()
         local current_level = self:Get_Level()
+        local next_level_exp = 0
         if current_level >= self.max_level then
-            return 0
+            next_level_exp = 0
         end
-        return math.floor(current_level/10) + 1
+
+        next_level_exp = math.floor(current_level/10) + 1
+
+        self.next_level_exp = next_level_exp
+
+        return next_level_exp
     end
 ----------------------------------------------------------------------------------------------------------------------------------
 --- 添加 onload fn
@@ -130,6 +212,7 @@ nil,
         if self._on_load_fn then
             self._on_load_fn()
         end
+        local temp = self:Get_Next_Level_Exp()
     end
 ----------------------------------------------------------------------------------------------------------------------------------
 
