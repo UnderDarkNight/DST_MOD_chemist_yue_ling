@@ -13,7 +13,7 @@ AddPlayerPostInit(function(inst)
     end
 
     if inst.components.chemist_com_database == nil then
-        inst:AddComponent("chemist_com_database") --- 通用用数据库
+        inst:AddComponent("chemist_com_database") --- 通用数据库
     end
 
 end)

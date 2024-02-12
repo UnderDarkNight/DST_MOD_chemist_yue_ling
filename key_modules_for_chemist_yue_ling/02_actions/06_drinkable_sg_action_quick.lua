@@ -10,7 +10,7 @@
 
 AddStategraphState("wilson",State{
     name = "chemist_drinkable_sg_action_quick",
-    tags = { "doing", "busy", "canrotate","nointerrupt" },
+    tags = { "doing", "busy", "canrotate","nointerrupt" ,"chemist_drinking"},
 
     onenter = function(inst)
         if inst.components.playercontroller ~= nil then
@@ -41,8 +41,9 @@ AddStategraphState("wilson",State{
         {
             TimeEvent(10 * FRAMES, function(inst)
                 inst:PerformBufferedAction()                
-                inst.sg:RemoveStateTag("busy")
-                inst.sg:RemoveStateTag("nointerrupt")
+                -- inst.sg:RemoveStateTag("busy")
+                -- inst.sg:RemoveStateTag("nointerrupt")
+                inst.SoundEmitter:PlaySound("dontstarve/HUD/health_up")
 
             end),
         },
@@ -73,7 +74,7 @@ AddStategraphState("wilson",State{
     local TIMEOUT = 2
     AddStategraphState("wilson_client",State{
         name = "chemist_drinkable_sg_action_quick",
-        tags = { "doing", "busy", "canrotate","nointerrupt" },
+        tags = { "doing", "busy", "canrotate","nointerrupt","chemist_drinking" },
         server_states = { "chemist_drinkable_sg_action_quick" },
 
         onenter = function(inst)

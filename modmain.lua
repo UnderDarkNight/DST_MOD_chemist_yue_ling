@@ -59,7 +59,7 @@ PrefabFiles = {  "chemist_yue_ling__all_prefabs"  }		---- 通过总入口 加载
 
 
 
--- if TUNING.CHEMIST_YUE_LING_DEBUGGING_MODE == true then
--- 	modimport("test_fn/_Load_All_debug_fn.lua")	---- 载入测试用的模块
--- end
+if TUNING.CHEMIST_YUE_LING_DEBUGGING_MODE == true then
+	modimport("test_fn/_Load_All_debug_fn.lua")	---- 载入测试用的模块
+end
 -- dofile(resolvefilepath("test_fn/test.lua"))

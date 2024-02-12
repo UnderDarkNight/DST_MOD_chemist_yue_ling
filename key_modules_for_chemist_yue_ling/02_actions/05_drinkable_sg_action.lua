@@ -10,7 +10,7 @@
 
 AddStategraphState("wilson",State{
     name = "chemist_drinkable_sg_action",
-    tags = { "doing", "busy", "canrotate","nointerrupt" },
+    tags = { "doing", "busy", "canrotate","nointerrupt","chemist_drinking" },
 
     onenter = function(inst)
         if inst.components.playercontroller ~= nil then
@@ -21,7 +21,7 @@ AddStategraphState("wilson",State{
         inst.AnimState:PlayAnimation("action_uniqueitem_pre")
         inst.AnimState:PushAnimation("horn", false)
         inst.AnimState:OverrideSymbol("horn01", "horn", "horn01")
-
+        --- 动画总时间 2501 ms
 
         local item = inst.bufferedaction.invobject
 
@@ -40,10 +40,16 @@ AddStategraphState("wilson",State{
         {
             TimeEvent(21 * FRAMES, function(inst)
                 inst:PerformBufferedAction()                
-                inst.sg:RemoveStateTag("busy")
-                inst.sg:RemoveStateTag("nointerrupt")
-
+                -- inst.sg:RemoveStateTag("busy")
+                -- inst.sg:RemoveStateTag("nointerrupt")
+                inst.SoundEmitter:PlaySound("dontstarve/HUD/health_up")
             end),
+            -- TimeEvent(2, function(inst)
+            --     if inst.components.playercontroller ~= nil then
+            --         inst.components.playercontroller:Enable(true)
+            --     end                
+            -- end),
+
         },
     events =
         {
@@ -52,6 +58,9 @@ AddStategraphState("wilson",State{
                     inst.sg:GoToState("idle")
                 end
                 inst.AnimState:ClearOverrideSymbol("horn01")
+                if inst.components.playercontroller ~= nil then
+                    inst.components.playercontroller:Enable(true)
+                end
             end),
         },
     onexit = function(inst)
@@ -68,7 +77,7 @@ AddStategraphState("wilson",State{
     local TIMEOUT = 2
     AddStategraphState("wilson_client",State{
         name = "chemist_drinkable_sg_action",
-        tags = { "doing", "busy", "canrotate","nointerrupt" },
+        tags = { "doing", "busy", "canrotate","nointerrupt" ,"chemist_drinking"},
         server_states = { "chemist_drinkable_sg_action" },
 
         onenter = function(inst)

@@ -65,13 +65,13 @@ local flg,error_code = pcall(function()
         --     print(i)
         -- end
 
-        -- ThePlayer.components.chemist_com_level_sys:LevelUp(200)
+        ThePlayer.components.chemist_com_level_sys:LevelUp(15)
 
-        local current_level = ThePlayer.replica.chemist_com_level_sys:GetCurrentLevel()
-        local max_level = ThePlayer.replica.chemist_com_level_sys:GetMaxLevel()
-        local current_exp = ThePlayer.replica.chemist_com_level_sys:GetCurrentExp()
-        local next_level_exp = ThePlayer.replica.chemist_com_level_sys:GetNextLevelExp()
-        print("Current:",current_level,"Max:",max_level,"Exp:",current_exp,"NextEXP:",next_level_exp)
+        -- local current_level = ThePlayer.replica.chemist_com_level_sys:GetCurrentLevel()
+        -- local max_level = ThePlayer.replica.chemist_com_level_sys:GetMaxLevel()
+        -- local current_exp = ThePlayer.replica.chemist_com_level_sys:GetCurrentExp()
+        -- local next_level_exp = ThePlayer.replica.chemist_com_level_sys:GetNextLevelExp()
+        -- print("Current:",current_level,"Max:",max_level,"Exp:",current_exp,"NextEXP:",next_level_exp)
 
 
         -- for k, v in pairs(ThePlayer.children) do
@@ -94,6 +94,18 @@ local flg,error_code = pcall(function()
         -- ThePlayer.replica.chemist_com_level_sys.temp_inst.__net_classified_entity_target:set(ThePlayer)
 
         -- print()
+    ----------------------------------------------------------------------------------------------------------------
+    ----    绚丽之门 事件追踪
+            -- ThePlayer:ListenForEvent("newstate",function(_,_table)
+            --     if _table and _table.statename then
+            --         print("+++",_table.statename)
+            --     end
+            -- end)
+            -- ThePlayer.SoundEmitter:PlaySound("dontstarve/common/together/spawn_vines/spawnportal_jacob")
+            -- ThePlayer.SoundEmitter:PlaySound("dontstarve/HUD/hunger_up")
+            -- ThePlayer.SoundEmitter:PlaySound("dontstarve/HUD/health_up")
+--             [00:57:22]: 
+-- [00:57:22]: dontstarve/HUD/health_up
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

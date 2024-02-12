@@ -4,4 +4,5 @@
 -- -- 注意文件路径
 
 
-modimport("key_modules_for_chemist_yue_ling/04_origin_prefabs_upgrade/01_player_prefabs.lua")  --- 制作栏
+modimport("key_modules_for_chemist_yue_ling/04_origin_prefabs_upgrade/00_theworld_upgrade.lua")  --- TheWorld
+modimport("key_modules_for_chemist_yue_ling/04_origin_prefabs_upgrade/01_player_prefabs.lua")  --- 玩家

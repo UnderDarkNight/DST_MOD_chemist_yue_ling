@@ -41,7 +41,7 @@ AddAction(CHEMIST_COM_DRINKABLE_ACTION)
 AddComponentAction("INVENTORY", "chemist_com_drinkable", function(item, doer, actions, right_click)   ----
     if doer and item then        
         local chemist_com_drinkable_com = item.replica.chemist_com_drinkable or item.replica._.chemist_com_drinkable        
-        if chemist_com_drinkable_com and chemist_com_drinkable_com:Test(doer) then
+        if chemist_com_drinkable_com and chemist_com_drinkable_com:Test(doer) and not (doer.sg and doer.sg:HasStateTag("chemist_drinking")) then
             table.insert(actions, ACTIONS.CHEMIST_COM_DRINKABLE_ACTION)
         end        
     end
