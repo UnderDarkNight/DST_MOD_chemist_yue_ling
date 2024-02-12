@@ -114,6 +114,11 @@ TUNING["chemist_yue_ling.Strings"][this_language] = TUNING["chemist_yue_ling.Str
                 ["inspect_str"] = "空药剂瓶",
                 ["recipe_desc"] = "空药剂瓶",
             },
+            ["chemist_spell_skill_book_open"] = {
+                ["name"] = "打开技能书",
+                ["inspect_str"] = "打开技能书",
+                ["recipe_desc"] = "打开技能书",
+            },
         --------------------------------------------------------------------
 }
 

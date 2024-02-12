@@ -208,3 +208,24 @@
     )
     RemoveRecipeFromFilter("chemist_item_exp_medicine","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 技能书
+--------------------------------------------------------------------------------------------------------------------------------------------
+    AddRecipeToFilter("chemist_spell_skill_book_open","CHARACTER")     ---- 添加物品到目标标签
+    AddRecipe2(
+        "chemist_spell_skill_book_open",            --  --  inst.prefab  实体名字
+        {}, 
+        TECH.NONE, 
+        {
+            -- no_deconstruction=true,
+            builder_tag = "chemist_yue_ling",
+            atlas = "images/inventoryimages/chemist_spell_skill_book_open.xml",
+            -- atlas = GetInventoryItemAtlas("underworld_hana_item_blissful_memory.tex"),
+            image = "chemist_spell_skill_book_open.tex",
+            sg_state = "give",
+        },
+        {"CHARACTER"}
+    )
+    RemoveRecipeFromFilter("chemist_spell_skill_book_open","MODS")                       -- -- 在【模组物品】标签里移除这个。
+

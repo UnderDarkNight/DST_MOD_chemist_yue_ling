@@ -65,7 +65,7 @@ local flg,error_code = pcall(function()
         --     print(i)
         -- end
 
-        ThePlayer.components.chemist_com_level_sys:LevelUp(15)
+        -- ThePlayer.components.chemist_com_level_sys:LevelUp(15)
 
         -- local current_level = ThePlayer.replica.chemist_com_level_sys:GetCurrentLevel()
         -- local max_level = ThePlayer.replica.chemist_com_level_sys:GetMaxLevel()
@@ -104,8 +104,36 @@ local flg,error_code = pcall(function()
             -- ThePlayer.SoundEmitter:PlaySound("dontstarve/common/together/spawn_vines/spawnportal_jacob")
             -- ThePlayer.SoundEmitter:PlaySound("dontstarve/HUD/hunger_up")
             -- ThePlayer.SoundEmitter:PlaySound("dontstarve/HUD/health_up")
---             [00:57:22]: 
--- [00:57:22]: dontstarve/HUD/health_up
+    ----------------------------------------------------------------------------------------------------------------
+    --- UI 调试
+
+        -- ThePlayer.HUD:Chemist_Skill_Book_Close()
+        -- local main_scale_num = 0.6
+        -- TUNING.test_ui_fn = function(root)
+            
+
+        --     -- local info_text = root:AddChild(Image())
+        --     -- root.info_text = info_text
+        --     -- info_text:SetTexture("images/widget/chemist_skill_book_base.xml","info_text.tex")
+        --     -- info_text:SetPosition(-330,170)
+        --     -- info_text:Show()
+        --     -- info_text:SetScale(main_scale_num,main_scale_num,main_scale_num)
+
+
+        --     -- local level_text = root:AddChild(Text(CODEFONT,40,"XXX",{ 255/255 , 255/255 ,255/255 , 1}))
+        --     -- level_text:SetPosition(-240,182)
+        --     -- level_text:SetString("000")
+
+        --     -- local free_points_text = root:AddChild(Text(CODEFONT,40,"XXX",{ 255/255 , 255/255 ,255/255 , 1}))
+        --     -- free_points_text:SetPosition(-240,150)
+        --     -- free_points_text:SetString("000")
+
+
+        -- end
+        -- ThePlayer.HUD:Chemist_Skill_Book_Open()
+    ----------------------------------------------------------------------------------------------------------------
+        ThePlayer.components.chemist_com_skill_point_sys:FreePointDelta(3)
+
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

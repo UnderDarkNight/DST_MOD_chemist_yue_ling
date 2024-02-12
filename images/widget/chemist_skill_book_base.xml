@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Atlas>
+	<Texture filename="chemist_skill_book_base.tex" />
+	<Elements>
+		<Element name="background.tex" u1="0.1172109375" u2="0.80759375" v2="0.999" v1="0.1289296875" variant="" />
+		<Element name="close_button.tex" u1="0.001" u2="0.04636328125" v2="0.8085703125" v1="0.706078125" variant="" />
+		<Element name="info_text.tex" u1="0.001" u2="0.08542578125" v2="0.9511484375" v1="0.858421875" variant="" />
+		<Element name="next_button.tex" u1="0.001" u2="0.1152109375" v2="0.999" v1="0.9531484375" variant="" />
+		<Element name="previous_button.tex" u1="0.001" u2="0.1152109375" v2="0.856421875" v1="0.8105703125" variant="" />
+	</Elements>
+</Atlas>

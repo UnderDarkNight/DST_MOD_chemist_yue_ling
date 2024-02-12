@@ -9,12 +9,15 @@ return function(inst)
         end
         
         inst:AddComponent("chemist_com_rpc_event") --- RPC 信道封装
+        inst:AddComponent("chemist_com_skill_point_sys") --- 技能册系统
     end
 
     local modules = {
         "prefabs/01_character/yue_ling_er_key_modules/01_beard_container_setup",                    ---- 安装胡子容器
         "prefabs/01_character/yue_ling_er_key_modules/02_level_sys",                    ---- 等级系统
         "prefabs/01_character/yue_ling_er_key_modules/03_double_dropper",                    ---- 双倍掉落检查
+
+        "prefabs/01_character/yue_ling_er_key_modules/04_01_skill_point_page_1",                    ---- 技能册 第一页 执行函数
 
     }
     for k, lua_addr in pairs(modules) do

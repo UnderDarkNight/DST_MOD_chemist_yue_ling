@@ -22,4 +22,7 @@ modimport("key_modules_for_chemist_yue_ling/04_origin_prefabs_upgrade/__all_pref
 modimport("key_modules_for_chemist_yue_ling/05_origin_components_upgrade/__all_com_init.lua") 
 -- 官方component 修改
 
+modimport("key_modules_for_chemist_yue_ling/06_widgets/__all_widgets_setup.lua") 
+-- 界面UI
+
 

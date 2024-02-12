@@ -23,3 +23,5 @@ modimport("imports_for_chemist_yue_ling/09_drawings.lua")	        ---- 立绘用
 modimport("imports_for_chemist_yue_ling/10_load_characters_assets.lua")	        ---- 角色相关的素材文件
 
 modimport("imports_for_chemist_yue_ling/11_load_sounds.lua")	        ---- 声音文件
+
+modimport("imports_for_chemist_yue_ling/12_skill_book_assets.lua")	        ---- 技能书相关UI素材

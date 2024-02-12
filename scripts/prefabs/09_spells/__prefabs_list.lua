@@ -29,6 +29,7 @@ local prefabs_name_list = {
 
 
     "01_empty_bottle_maker",                           --- 药剂师 制作空瓶
+    "02_skill_book",                           --- 技能书打开
 
 }
 
