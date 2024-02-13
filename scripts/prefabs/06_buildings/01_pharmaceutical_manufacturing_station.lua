@@ -165,10 +165,14 @@ local function fn()
         -- inst.components.prototyper.onactivate = prototyper_onactivate
         inst.components.prototyper.trees = TUNING.PROTOTYPER_TREES[string.upper("chemist_building_pharmaceutical_manufacturing_station")]
         -- inst.components.prototyper.trees = TUNING.PROTOTYPER_TREES.ANCIENTALTAR_HIGH
-        inst:ListenForEvent("builditem",function()
+    --------------------------------------------------------
+        inst:ListenForEvent("__builditem",function()
             -- print("item_build")
             inst.AnimState:PlayAnimation("item_build")
             inst.AnimState:PushAnimation("idle",true)
+        end)
+        inst:ListenForEvent("builditem",function()
+            inst:PushEvent("__builditem")
         end)
     --------------------------------------------------------
 

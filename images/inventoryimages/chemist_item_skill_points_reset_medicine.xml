@@ -1,0 +1,6 @@
+<Atlas>
+	<Texture filename="chemist_item_skill_points_reset_medicine.tex" />
+	<Elements>
+		<Element name="chemist_item_skill_points_reset_medicine.tex" u1="0.0078125" u2="0.9921875" v1="0.0078125" v2="0.9921875" />
+	</Elements>
+</Atlas>

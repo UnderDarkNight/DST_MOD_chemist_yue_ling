@@ -42,6 +42,8 @@ local prefabs_name_list = {
     "11_attack_power_multiplier_medicine",              -- 伤害倍增药剂
     "12_triple_recovery_medicine",              -- 三维恢复药剂
 
+    "13_skill_points_reset_medicine",              -- 技能点重置药剂
+
 }
 
 ---------------------------------------------------------------------------

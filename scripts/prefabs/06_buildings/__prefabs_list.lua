@@ -29,6 +29,7 @@ local prefabs_name_list = {
 
 
     "01_pharmaceutical_manufacturing_station",                           --- 药剂制作站
+    "02_mushroom_house",                           --- 神奇蘑菇房
 
 }
 

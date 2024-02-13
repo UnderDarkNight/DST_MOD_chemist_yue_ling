@@ -151,11 +151,25 @@ local flg,error_code = pcall(function()
         -- ThePlayer.replica.chemist_com_skill_point_sys.temp_sound_inst.SoundEmitter:PlaySound("dontstarve/common/together/celestial_orb/active")
         -- TheFrontEnd:GetSound():PlaySound("dontstarve/common/together/celestial_orb/active")
     ----------------------------------------------------------------------------------------------------------------
-            SpawnPrefab("chemist_fx_explode"):PushEvent("Set",{
-                target = ThePlayer,
-                color = Vector3(1,0,0),
-                MultColour_Flag = true
-            })
+    ------
+            -- SpawnPrefab("chemist_fx_explode"):PushEvent("Set",{
+            --     target = ThePlayer,
+            --     color = Vector3(1,0,0),
+            --     MultColour_Flag = true
+            -- })
+    ----------------------------------------------------------------------------------------------------------------
+    ----- 制作栏图标扫描
+                -- for k, v in pairs(AllRecipes["chemist_spell_triple_recovery_medicine_maker"]) do
+                --     print(k,v)
+                -- end
+                -- local file_name = "chemist_item_attack_power_multiplier_medicine_lv_"..tostring(2)..".tex"
+                -- AllRecipes["chemist_spell_attack_power_multiplier_medicine_maker"].atlas = GetInventoryItemAtlas(file_name)
+                -- AllRecipes["chemist_spell_attack_power_multiplier_medicine_maker"].image = file_name
+    ----------------------------------------------------------------------------------------------------------------
+    -----
+        local ents = TheSim:FindEntities(x, y, z, 3, {"chemist_building_pharmaceutical_manufacturing_station"}, {"burnt"}, nil) or {}
+        local station = ents[1]
+        print(station)
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

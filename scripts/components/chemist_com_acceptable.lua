@@ -20,7 +20,7 @@ nil,
 function chemist_com_acceptable:SetOnAcceptFn(fn)
     if type(fn) == "function" then
         self.on_accept_fn = fn
-    end    
+    end
 end
 
 function chemist_com_acceptable:OnAccept(item,doer)

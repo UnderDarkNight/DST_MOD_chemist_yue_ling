@@ -210,12 +210,32 @@
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------
+---- 洗点药剂
+--------------------------------------------------------------------------------------------------------------------------------------------
+    AddRecipeToFilter("chemist_item_skill_points_reset_medicine","CHARACTER")     ---- 添加物品到目标标签
+    AddRecipe2(
+        "chemist_item_skill_points_reset_medicine",            --  --  inst.prefab  实体名字
+        { Ingredient("ice", 80) ,  Ingredient("oceanfish_medium_8_inv", 1) , Ingredient("chemist_food_wisdom_apple", 2) ,  }, 
+        TECH.NONE, 
+        {
+            -- no_deconstruction=true,
+            builder_tag = "chemist_yue_ling",
+            atlas = "images/inventoryimages/chemist_item_skill_points_reset_medicine.xml",
+            -- atlas = GetInventoryItemAtlas("chemist_yue_ling_item_blissful_memory.tex"),
+            image = "chemist_item_skill_points_reset_medicine.tex",
+        },
+        {"CHARACTER"}
+    )
+    RemoveRecipeFromFilter("chemist_item_skill_points_reset_medicine","MODS")                       -- -- 在【模组物品】标签里移除这个。
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
 ---- 攻击药剂
 --------------------------------------------------------------------------------------------------------------------------------------------
     AddRecipeToFilter("chemist_spell_attack_power_multiplier_medicine_maker","CHARACTER")     ---- 添加物品到目标标签
     AddRecipe2(
         "chemist_spell_attack_power_multiplier_medicine_maker",            --  --  inst.prefab  实体名字
-        {  }, 
+        {  Ingredient("pepper", 12) ,  Ingredient("houndstooth", 12) , Ingredient("chemist_food_wisdom_apple", 12) ,  }, 
         TECH.NONE, 
         {
             -- no_deconstruction=true,
@@ -235,7 +255,7 @@
     AddRecipeToFilter("chemist_spell_triple_recovery_medicine_maker","CHARACTER")     ---- 添加物品到目标标签
     AddRecipe2(
         "chemist_spell_triple_recovery_medicine_maker",            --  --  inst.prefab  实体名字
-        {  }, 
+        { Ingredient("red_cap", 12) ,  Ingredient("green_cap", 12) ,  Ingredient("blue_cap", 12) , Ingredient("moon_cap", 12) , Ingredient("chemist_food_wisdom_apple", 12) ,  }, 
         TECH.NONE, 
         {
             -- no_deconstruction=true,
@@ -255,7 +275,7 @@
     AddRecipeToFilter("chemist_spell_skill_book_open","CHARACTER")     ---- 添加物品到目标标签
     AddRecipe2(
         "chemist_spell_skill_book_open",            --  --  inst.prefab  实体名字
-        {}, 
+        { }, 
         TECH.NONE, 
         {
             -- no_deconstruction=true,
@@ -269,3 +289,24 @@
     )
     RemoveRecipeFromFilter("chemist_spell_skill_book_open","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
+
+    
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 神奇蘑菇屋
+--------------------------------------------------------------------------------------------------------------------------------------------
+    AddRecipeToFilter("chemist_building_mushroom_house","CHARACTER")     ---- 添加物品到目标标签
+    AddRecipe2(
+        "chemist_building_mushroom_house",            --  --  inst.prefab  实体名字
+        { Ingredient("red_cap", 10),Ingredient("boards", 10)  }, 
+        TECH.NONE, 
+        {
+            nounlock=true,
+            no_deconstruction=true,
+            builder_tag = "chemist_yue_ling",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
+            placer = "chemist_building_mushroom_house_placer",                       -------- 建筑放置器   
+            atlas = "images/map_icons/chemist_building_mushroom_house.xml",
+            image = "chemist_building_mushroom_house.tex",
+        },
+        {"CHARACTER","STRUCTURES"}
+    )
+    RemoveRecipeFromFilter("chemist_building_mushroom_house","MODS")                       -- -- 在【模组物品】标签里移除这个。

@@ -34,6 +34,8 @@ local files_name = {
 		"chemist_item_triple_recovery_medicine_lv_3",				--- 三维恢复药剂
 		"chemist_item_triple_recovery_medicine_lv_4",				--- 三维恢复药剂
 		"chemist_item_triple_recovery_medicine_lv_5",				--- 三维恢复药剂
+
+		"chemist_item_skill_points_reset_medicine",				--- 技能点重置药剂
 	---------------------------------------------------------------------------------------
 	-- 03_equipments
 		"chemist_equipment_chemical_launching_gun",											--- 药剂发射器

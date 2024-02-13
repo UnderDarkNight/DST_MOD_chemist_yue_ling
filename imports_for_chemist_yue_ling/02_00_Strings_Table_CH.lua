@@ -121,6 +121,10 @@ TUNING["chemist_yue_ling.Strings"][this_language] = TUNING["chemist_yue_ling.Str
                 ["name"] = "五级·三维恢复药剂",
                 ["inspect_str"] = "五级·三维恢复药剂",
             },
+            ["chemist_item_skill_points_reset_medicine"] = {
+                ["name"] = "技能点重置药剂",
+                ["inspect_str"] = "重置技能点",
+            },
         --------------------------------------------------------------------
         --- 03_equipments
             ["chemist_equipment_chemical_launching_gun"] = {
@@ -140,6 +144,11 @@ TUNING["chemist_yue_ling.Strings"][this_language] = TUNING["chemist_yue_ling.Str
                 ["inspect_str"] = "药剂制作站",
                 ["inspect_str_burnt"] = "烧毁了不能用了",
                 ["recipe_desc"] = "药剂制作站",
+            },
+            ["chemist_building_mushroom_house"] = {
+                ["name"] = "神奇的蘑菇屋",
+                ["inspect_str"] = "能培育蘑菇的小房子",
+                ["recipe_desc"] = "能培育蘑菇的小房子",
             },
         --------------------------------------------------------------------
         --- 07_foods        
@@ -167,13 +176,20 @@ TUNING["chemist_yue_ling.Strings"][this_language] = TUNING["chemist_yue_ling.Str
                 ["fail_talks"] = {"又失败了","哎呀，失败了","手抖了"},
                 ["double_talks"] = {"又多做了一些","越来越熟练了","心细就能多做一些"},
             },
+            ["chemist_spell_attack_power_multiplier_medicine_maker2"] = {
+                ["name"] = "攻击药剂",
+                ["recipe_desc"] = "攻击药剂",
+            },
             ["chemist_spell_triple_recovery_medicine_maker"] = {
                 ["name"] = "三维恢复药剂",
                 ["inspect_str"] = "三维恢复药剂",
                 ["recipe_desc"] = "三维恢复药剂",
                 ["fail_talks"] = {"又失败了","哎呀，失败了","手抖了"},
                 ["double_talks"] = {"又多做了一些","越来越熟练了","心细就能多做一些"},
-
+            },
+            ["chemist_spell_triple_recovery_medicine_maker2"] = {
+                ["name"] = "三维恢复药剂",
+                ["recipe_desc"] = "三维恢复药剂",
             },
         --------------------------------------------------------------------
 }

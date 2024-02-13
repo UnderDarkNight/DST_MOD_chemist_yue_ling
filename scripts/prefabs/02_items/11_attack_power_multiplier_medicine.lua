@@ -67,7 +67,33 @@ local function create_fn(level)
                         -- print("info  喝下去")
                         -- if doer.components.health then
                         --     doer.components.health:DoDelta(50)
-                        -- end                    
+                        -- end
+                        ----------------------------------------------------------------------
+                        ---- 添加BUFF、刷新计时器  chemist_yue_ling_buff_attack_power_multiplier_medicine
+                            --- 伤害倍数 +20% / +40% / +60% / +80% / +100%
+                            local mult_with_level = {
+                                [1] = 1.2,
+                                [2] = 1.4,
+                                [3] = 1.6,
+                                [4] = 1.8,
+                                [5] = 2.0,
+                            }
+                            local buff_prefab = "chemist_yue_ling_buff_attack_power_multiplier_medicine"
+                            -- local buff_inst = doer:Get
+                            for i = 1, 10, 1 do ----- 移除已有BUFF，为了保险，多做几次
+                                doer:RemoveDebuff(buff_prefab)
+                            end
+                            local ret_mult = mult_with_level[level] or 1.2
+                            local time = TUNING.CHEMIST_YUE_LING_DEBUGGING_MODE and 15 or 300
+                            doer.components.chemist_com_database:Set(buff_prefab..".timer" , time)
+                            doer.components.chemist_com_database:Set(buff_prefab..".mult" , ret_mult)
+
+                            while true do
+                                if doer:AddDebuff(buff_prefab,buff_prefab) then
+                                    break
+                                end
+                            end
+                        ----------------------------------------------------------------------
                         return true
                     end)
                 end

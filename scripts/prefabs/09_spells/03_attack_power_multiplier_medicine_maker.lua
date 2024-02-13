@@ -24,8 +24,15 @@ local function builder_onbuilt(inst, builder)
         -- local item = SpawnPrefab("chemist_item_empty_bottle")
         
         -- builder.components.inventory:GiveItem(item)
+        local x,y,z = builder.Transform:GetWorldPosition()
+        local ents = TheSim:FindEntities(x, y, z, 3, {"chemist_building_pharmaceutical_manufacturing_station"}, {"burnt"}, nil) or {}
+        local station = ents[1]
+
         local succeed_rate = 0.1
         if item_level > 0 then
+            succeed_rate = 1
+        end
+        if station then
             succeed_rate = 1
         end
 
@@ -50,7 +57,15 @@ local function builder_onbuilt(inst, builder)
                     end
                 end
 
+                if station and item_level > 0 then
+                    item.components.stackable.stacksize = item.components.stackable.stacksize + 1
+                end
+
                 builder.components.inventory:GiveItem(item)
+
+                if station then
+                    station:PushEvent("__builditem")
+                end
 
         else
             ---- 制作失败
@@ -95,4 +110,5 @@ local function fn()
     return inst
 end
 
-return Prefab("chemist_spell_attack_power_multiplier_medicine_maker", fn,assets)
+return Prefab("chemist_spell_attack_power_multiplier_medicine_maker", fn,assets),
+            Prefab("chemist_spell_attack_power_multiplier_medicine_maker2", fn,assets)

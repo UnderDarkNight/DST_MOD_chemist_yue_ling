@@ -179,3 +179,25 @@
         atlas = "images/inventoryimages/chemist_item_plant_growth_medicine.xml",
         image = "chemist_item_plant_growth_medicine.tex",
     })
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+--- 攻击药剂 
+--------------------------------------------------------------------------------------------------------------------------------------------
+    Add_Recipe_2_Machine({
+        prefab = "chemist_spell_attack_power_multiplier_medicine_maker2",
+        Ingredients = {  Ingredient("pepper", 12) ,  Ingredient("houndstooth", 12) , Ingredient("chemist_food_wisdom_apple", 12) ,  }, 
+        atlas = "images/inventoryimages/chemist_item_attack_power_multiplier_medicine_lv_1.xml",
+        image = "chemist_item_attack_power_multiplier_medicine_lv_1.tex",
+        builder_tag = "chemist_yue_ling",
+    })
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+--- 三维恢复 
+--------------------------------------------------------------------------------------------------------------------------------------------
+    Add_Recipe_2_Machine({
+        prefab = "chemist_spell_triple_recovery_medicine_maker2",
+        Ingredients =  { Ingredient("red_cap", 12) ,  Ingredient("green_cap", 12) ,  Ingredient("blue_cap", 12) , Ingredient("moon_cap", 12) , Ingredient("chemist_food_wisdom_apple", 12) ,  }, 
+        atlas = "images/inventoryimages/chemist_item_triple_recovery_medicine_lv_1.xml",
+        image = "chemist_item_triple_recovery_medicine_lv_1.tex",
+        builder_tag = "chemist_yue_ling",
+    })
