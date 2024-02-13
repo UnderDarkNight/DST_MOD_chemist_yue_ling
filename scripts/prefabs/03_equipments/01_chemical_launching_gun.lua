@@ -150,7 +150,16 @@ local function fn()
     inst.components.weapon:SetDamage(0)
     inst.components.weapon.hitrange = 15
     inst.components.weapon.attackrange = 15
-    inst.components.weapon:SetOnAttack(function(inst,attacker, target)
+    -- inst.components.weapon:SetOnAttack(function(inst,attacker, target)
+    -- end)
+
+    inst.components.weapon:SetOnProjectileLaunch(function(inst,attacker,target,proj)      --- 子弹发射前
+        -- print("SetOnProjectileLaunch +++ ")
+    end)
+    inst.components.weapon:SetOnProjectileLaunched(function(inst,attacker,target,proj)    --- 子弹发射后
+        if proj then
+            proj:Remove()
+        end
             if inst.components.container then
                 local bottle_item = inst.components.container.slots[1]
                 if bottle_item then
@@ -163,16 +172,10 @@ local function fn()
             end
     end)
 
-    inst.components.weapon:SetOnProjectileLaunch(function(inst,attacker,target,proj)      --- 子弹发射前
-    end)
-    inst.components.weapon:SetOnProjectileLaunched(function(inst,attacker,tareget,proj)    --- 子弹发射后
-
-    end)
-
     inst.components.weapon:SetProjectile(nil)
 	inst.components.weapon:SetProjectileOffset(1)
 
-    -- inst.components.weapon:SetProjectile("geats_nine_projectiles_bullet")   --- 弹药的prefab
+    inst.components.weapon:SetProjectile("chemist_projectile_firenettles_bullet")   --- 弹药的prefab
 
     inst:AddComponent("inspectable")
 

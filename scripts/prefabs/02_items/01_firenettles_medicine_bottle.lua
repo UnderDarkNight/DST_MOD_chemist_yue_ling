@@ -138,9 +138,6 @@ local function fn()
             local attacker = _table.attacker
             local target = _table.target
             local weapon = _table.weapon
-            -- local pt = _table.pt
-            -- pt.y = 1.5
-
 
 
             local x,y,z = attacker.Transform:GetWorldPosition()
@@ -169,13 +166,19 @@ local function fn()
     
                 bullet:Remove()
             end)
+            -------------------------------------------------------------------
+            ---- 近距离不显示
+                bullet:Hide()
+                local hide_dissq = 1.3 * 1.3
+                bullet.__dis_dsp_task = bullet:DoPeriodicTask(FRAMES,function()
+                    if bullet:GetDistanceSqToInst(inst) > hide_dissq then
+                        bullet.__dis_dsp_task:Cancel()
+                        bullet:Show()
+                    end
+                end)
+            -------------------------------------------------------------------
 
-            -- if inst.components.stackable.stacksize > 1 then
-            --     inst.components.stackable.stacksize = inst.components.stackable.stacksize - 1
-            --     -- print("temp ++++++++++",inst.components.stackable.stacksize )
-            -- else
-            --     inst:Remove()
-            -- end
+
             inst.components.stackable:Get():Remove()
         end)
     -------------------------------------------------------------------
