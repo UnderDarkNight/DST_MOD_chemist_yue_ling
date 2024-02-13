@@ -19,6 +19,8 @@ AddReplicableComponent("chemist_com_drinkable")  --- 喝药剂组件
 
 AddReplicableComponent("chemist_com_item_use_to")  --- 物品使用组件
 
+AddReplicableComponent("chemist_com_workable")  --- 目标使用组件
+
 
 AddReplicableComponent("chemist_com_level_sys")  --- 角色等级
 AddReplicableComponent("chemist_com_skill_point_sys")  --- 技能点系统

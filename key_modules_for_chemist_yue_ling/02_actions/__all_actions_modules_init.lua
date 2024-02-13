@@ -16,3 +16,4 @@ modimport("key_modules_for_chemist_yue_ling/02_actions/05_drinkable_sg_action.lu
 modimport("key_modules_for_chemist_yue_ling/02_actions/06_drinkable_sg_action_quick.lua")  --- 喝药剂 sg quick
 
 modimport("key_modules_for_chemist_yue_ling/02_actions/07_com_action_item_use_to.lua")  --- 物品使用组件
+modimport("key_modules_for_chemist_yue_ling/02_actions/08_com_action_workable.lua")  --- 目标使用组件

@@ -29,11 +29,68 @@ local function fn()
     
     -- inst.pickupsound = "wood"
     inst:AddTag("medicine_bottle")
+    inst:AddTag("medicine_bottle.projectile")
 
     MakeInventoryFloatable(inst, "med", 0.1, 0.75)
 
     inst.entity:SetPristine()
+    --------------------------------------------------------------------------------------------------------------------------------------
+    --- 右键使用
+        if TheWorld.ismastersim then
+            inst:AddComponent("chemist_com_workable")
+            inst.components.chemist_com_workable:SetActiveFn(function(inst, player)
 
+                local weapon = player.components.combat:GetWeapon()
+                if weapon then
+                    -- weapon.components.container:GiveItem(inst)
+                    local old_item = weapon.components.container:GetItemInSlot(1)
+                    if old_item == nil then
+                        ---- 如果目标位置没有物品
+                        player.components.inventory:DropItem(inst,true)
+                        weapon.components.container:GiveItem(inst)
+                    elseif old_item.prefab == inst.prefab then
+                        ---- 如果目标位置已经有物品
+                        local old_item_num = old_item.components.stackable.stacksize
+                        -- local new_item_num = inst.components.stackable.stacksize
+                        local max_num = inst.components.stackable.maxsize
+
+                        local target_num = max_num - old_item_num
+                        if target_num > 0 then
+                            weapon.components.container:GiveItem(inst.components.stackable:Get(target_num))
+                        end
+
+                    else
+                        --- 换掉原来的
+                        player.components.inventory:DropItem(old_item,true)
+                        weapon.components.container:GiveItem(inst)
+                        player.components.inventory:GiveItem(old_item)
+
+                    end
+                end
+
+                return true
+            end)
+        end
+        inst:DoTaskInTime(0,function()
+            local replica_com = inst.replica.chemist_com_workable or inst.replica._.chemist_com_workable
+            if replica_com then
+
+                replica_com:SetText(inst.prefab,STRINGS.ACTIONS.CHANGE_TACKLE.AMMO)
+                replica_com:SetTestFn(function(inst, player,right_click)
+                    local weapon = player.replica.combat:GetWeapon()
+                    if inst.replica.inventoryitem:IsGrandOwner(player) 
+                        and weapon and weapon:HasTag("chemist_equipment_chemical_launching_gun")
+                            then
+                        return true
+                    end
+                    return false
+                end)
+
+                replica_com:SetSGAction("give")
+                
+            end
+        end)
+    --------------------------------------------------------------------------------------------------------------------------------------
     if not TheWorld.ismastersim then
         return inst
     end

@@ -46,7 +46,7 @@ local function builder_onbuilt(inst, builder)
                 local double_rate = 0.2*double_level
                 if math.random(1000)/1000 <= double_rate then
                     item.components.stackable.stacksize = 2
-                    if builder.components.talker then
+                    if builder.components.talker and math.random(100) < 50 then
                         local double_strings = GetStringsTable()["double_talks"] or {}
                         local double_sting = double_strings[math.random(#double_strings)] or "又多做了一份"
                         builder.components.talker:Say(double_sting)

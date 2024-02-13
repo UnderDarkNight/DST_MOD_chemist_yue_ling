@@ -19,25 +19,23 @@ local assets =
             params[container_widget_name] = {
                 widget =
                 {
-                    slotpos = {
-                        Vector3(0, 2, 0),
+                    slotpos =
+                    {
+                        Vector3(0,   32 + 4,  0),
                     },
-                    -- slotbg =
-                    -- {
-                    --     { image = "turf_slot.tex", atlas = "images/hud2.xml" },
-                    -- },
-                    animbank = "ui_antlionhat_1x1",
-                    animbuild = "ui_antlionhat_1x1",
-                    pos = Vector3(30, 40, 0),
+                    animbank = "ui_cookpot_1x2",
+                    animbuild = "ui_cookpot_1x2",
+                    pos = Vector3(0, 15, 0),
                 },
+                usespecificslotsforitems = true,
                 type = "hand_inv",
-                excludefromcrafting = true,                
+                excludefromcrafting = true,
             }
 
             ------------------------------------------------------------------------------------------
             ---- item test
                 params[container_widget_name].itemtestfn =  function(container_com, item, slot)
-                    if item and item:HasTag("medicine_bottle") then
+                    if item and item:HasTag("medicine_bottle.projectile") then
                         return true
                     end
                     return false
@@ -131,7 +129,9 @@ local function fn()
 
     --weapon (from weapon component) added to pristine state for optimization
     inst:AddTag("weapon")
-    -- inst:AddTag("chemist_equipment_chemical_launching_gun")
+    -- inst:AddTag("rangedweapon")
+
+    inst:AddTag("chemist_equipment_chemical_launching_gun")
     -- inst:AddTag("allow_action_on_impassable")
 
     MakeInventoryFloatable(inst, "med", 0.05, {0.85, 0.45, 0.85}, true, 1)
@@ -151,25 +151,27 @@ local function fn()
     inst.components.weapon.hitrange = 15
     inst.components.weapon.attackrange = 15
     inst.components.weapon:SetOnAttack(function(inst,attacker, target)
-
-        if inst.components.container then
-            local bottle_item = inst.components.container.slots[1]
-            if bottle_item then
-                bottle_item:PushEvent("throw2target",{
-                    target = target,
-                    attacker = attacker,
-                    weapon = inst,
-                })
+            if inst.components.container then
+                local bottle_item = inst.components.container.slots[1]
+                if bottle_item then
+                    bottle_item:PushEvent("throw2target",{
+                        target = target,
+                        attacker = attacker,
+                        weapon = inst,
+                    })
+                end
             end
-        end
-
     end)
+
     inst.components.weapon:SetOnProjectileLaunch(function(inst,attacker,target,proj)      --- 子弹发射前
-        
     end)
     inst.components.weapon:SetOnProjectileLaunched(function(inst,attacker,tareget,proj)    --- 子弹发射后
 
     end)
+
+    inst.components.weapon:SetProjectile(nil)
+	inst.components.weapon:SetProjectileOffset(1)
+
     -- inst.components.weapon:SetProjectile("geats_nine_projectiles_bullet")   --- 弹药的prefab
 
     inst:AddComponent("inspectable")
@@ -190,6 +192,23 @@ local function fn()
 
     MakeHauntableLaunch(inst)
 
+    ---------------------------------------------------------------------
+    --- in_gun
+        inst:ListenForEvent("itemget",function(_,_table)
+            if not (_table and _table.item) then
+                return
+            end
+            local item = _table.item
+            item:AddTag("in_gun")
+        end)
+        inst:ListenForEvent("itemlose",function(_,_table)
+            if not (_table and _table.prev_item) then
+                return
+            end
+            local item = _table.prev_item
+            item:AddTag("in_gun")
+        end)
+    ---------------------------------------------------------------------
     return inst
 end
 

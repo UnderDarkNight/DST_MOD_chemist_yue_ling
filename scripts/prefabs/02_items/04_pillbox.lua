@@ -131,8 +131,44 @@ local function fn()
 
     add_container_before_not_ismastersim_return(inst)
 
-    ------------------------------------------------------------------------------------------------------------
+     ------------------------------------------------------------------------------------------------------------
+    ------ 右键使用
+        if TheWorld.ismastersim then
+            inst:AddComponent("chemist_com_workable")
+            inst.components.chemist_com_workable:SetActiveFn(function(inst, player)
 
+                local beard_container = player.replica.inventory:GetEquippedItem(EQUIPSLOTS.BEARD)
+                if beard_container then
+                    player.components.inventory:DropItem(inst)
+                    if  beard_container.replica.container:IsFull() then --- 如果是满的
+                        local old_box = beard_container.components.container:GetItemInSlot(1)
+                        beard_container.components.container:DropItemBySlot(1)      ---- 丢出第一个
+                        player.components.inventory:GiveItem(old_box)   --- 重新给回玩家
+                    end
+                    beard_container.components.container:GiveItem(inst)
+                end
+                return true
+            end)
+        end
+        inst:DoTaskInTime(0,function()
+            local replica_com = inst.replica.chemist_com_workable or inst.replica._.chemist_com_workable
+            if replica_com then
+
+                replica_com:SetText(inst.prefab,STRINGS.ACTIONS.EQUIP)
+                replica_com:SetTestFn(function(inst, player,right_click)
+                    if inst.replica.inventoryitem:IsGrandOwner(player) and not inst.replica.container:CanBeOpened() then
+                        local beard_container = player.replica.inventory:GetEquippedItem(EQUIPSLOTS.BEARD)
+                        if beard_container then
+                            return true
+                        end
+                    end
+                    return false
+                end)
+
+                replica_com:SetSGAction("give")
+                
+            end
+        end)
     ------------------------------------------------------------------------------------------------------------
 
 

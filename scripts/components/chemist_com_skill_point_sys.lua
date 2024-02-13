@@ -15,6 +15,7 @@ local chemist_com_skill_point_sys = Class(function(self, inst)
     self.TempTable = {}
 
     self.free_points = 0    --- 空余点数
+    self.all_points = 0
 
     self.button_click_fns = {}
 
@@ -39,10 +40,20 @@ nil,
         if self.free_points < 0 then
             self.free_points = 0
         end
+
+        if num > 0 then
+            self.all_points = self.all_points + num
+        end
         self:Data_Synchronization()
     end
     function chemist_com_skill_point_sys:GetFreePoints()
         return self.free_points or 0
+    end
+
+    function chemist_com_skill_point_sys:ResetAllPoints() --- 重置技能书所有点数
+        self.free_points = self.all_points
+        self.DataTable = {}
+        self:Data_Synchronization()
     end
 ----------------------------------------------------------------------------------------------------------------------------------
 ---- 按键事件
@@ -109,6 +120,7 @@ nil,
             {
                 DataTable = self.DataTable,
                 free_points = self.free_points,
+                all_points = self.all_points,
             }
 
             return next(data) ~= nil and data or nil
@@ -120,6 +132,9 @@ nil,
             end
             if data.free_points then
                 self.free_points = data.free_points
+            end
+            if data.all_points then
+                self.all_points = data.all_points
             end
 
             self:Data_Synchronization() --- 同步去client
