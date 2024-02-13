@@ -46,7 +46,7 @@ local assets =
             ------------------------------------------------------------------------------------------
             ---- item test
                 params[container_widget_name].itemtestfn =  function(container_com, item, slot)
-                    -- return item and item.prefab == "underworld_hana_equipment_cape"
+                    -- return item and item.prefab == "chemist_yue_ling_equipment_cape"
                     if item and item:HasTag("chemist_tag.can_go_into_beard_container") then
                         return true
                     end
@@ -134,7 +134,7 @@ local function fn3()
     inst.components.equippable:SetOnUnequip(function(_,owner)
         inst.components.container:Close(owner)
     end)
-    -- inst.components.equippable.retrictedtag = "underworld_hana"
+    -- inst.components.equippable.retrictedtag = "chemist_yue_ling"
 
     -----------------------------------------------------------------------
     ---- 保鲜

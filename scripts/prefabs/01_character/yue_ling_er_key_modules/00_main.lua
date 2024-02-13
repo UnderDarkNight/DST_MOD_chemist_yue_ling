@@ -23,6 +23,8 @@ return function(inst)
 
         "prefabs/01_character/yue_ling_er_key_modules/05_empty_bottle_maker",                    ---- 制作空瓶，有概率 得多几个
 
+        "prefabs/01_character/yue_ling_er_key_modules/06_animstate_hook",                    ---- 角色动画组件hook
+
     }
     for k, lua_addr in pairs(modules) do
         local temp_fn = require(lua_addr)
@@ -40,7 +42,9 @@ return function(inst)
     inst:AddTag("fastpicker")  --- 可采集目标快速采集
 
 
-    -- inst.customidleanim = "idle_wendy" --- 闲置站立动画
+    inst.customidleanim = "idle_wendy"  -- 闲置站立动画
+    inst.soundsname = "wendy"           -- 角色声音
+
     -- inst:AddTag("stronggrip")      --- 不被打掉武器
 
     local scale = 1.2
@@ -51,7 +55,7 @@ return function(inst)
     end
 
 
-    -- if TUNING.UNDERWORLD_HANA_DEBUGGING_MODE then
+    -- if TUNING.chemist_yue_ling_DEBUGGING_MODE then
     -- end
 
     inst:AddComponent("reader")     --- 读书

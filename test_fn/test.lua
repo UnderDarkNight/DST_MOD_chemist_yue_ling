@@ -149,8 +149,13 @@ local flg,error_code = pcall(function()
     ----------------------------------------------------------------------------------------------------------------
         -- ThePlayer.replica.chemist_com_skill_point_sys:PlaySound("dontstarve/common/together/celestial_orb/active")
         -- ThePlayer.replica.chemist_com_skill_point_sys.temp_sound_inst.SoundEmitter:PlaySound("dontstarve/common/together/celestial_orb/active")
-        TheFrontEnd:GetSound():PlaySound("dontstarve/common/together/celestial_orb/active")
+        -- TheFrontEnd:GetSound():PlaySound("dontstarve/common/together/celestial_orb/active")
     ----------------------------------------------------------------------------------------------------------------
+            SpawnPrefab("chemist_fx_explode"):PushEvent("Set",{
+                target = ThePlayer,
+                color = Vector3(1,0,0),
+                MultColour_Flag = true
+            })
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

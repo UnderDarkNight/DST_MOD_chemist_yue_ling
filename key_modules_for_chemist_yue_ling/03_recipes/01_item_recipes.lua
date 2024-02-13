@@ -18,7 +18,7 @@
             -- no_deconstruction=true,
             builder_tag = "chemist_yue_ling",
             atlas = "images/inventoryimages/chemist_equipment_chemical_launching_gun.xml",
-            -- atlas = GetInventoryItemAtlas("underworld_hana_item_blissful_memory.tex"),
+            -- atlas = GetInventoryItemAtlas("chemist_yue_ling_item_blissful_memory.tex"),
             image = "chemist_equipment_chemical_launching_gun.tex",
         },
         {"CHARACTER"}
@@ -38,7 +38,7 @@
             -- no_deconstruction=true,
             builder_tag = "chemist_yue_ling",
             atlas = "images/inventoryimages/chemist_equipment_sublime_backpack.xml",
-            -- atlas = GetInventoryItemAtlas("underworld_hana_item_blissful_memory.tex"),
+            -- atlas = GetInventoryItemAtlas("chemist_yue_ling_item_blissful_memory.tex"),
             image = "chemist_equipment_sublime_backpack.tex",
         },
         {"CHARACTER"}
@@ -59,7 +59,7 @@
             -- no_deconstruction=true,
             builder_tag = "chemist_yue_ling",
             atlas = "images/inventoryimages/chemist_item_pill_box.xml",
-            -- atlas = GetInventoryItemAtlas("underworld_hana_item_blissful_memory.tex"),
+            -- atlas = GetInventoryItemAtlas("chemist_yue_ling_item_blissful_memory.tex"),
             image = "chemist_item_pill_box.tex",
         },
         {"CHARACTER"}
@@ -80,7 +80,7 @@
             -- no_deconstruction=true,
             builder_tag = "chemist_yue_ling",
             atlas = "images/inventoryimages/chemist_item_herbal_bag.xml",
-            -- atlas = GetInventoryItemAtlas("underworld_hana_item_blissful_memory.tex"),
+            -- atlas = GetInventoryItemAtlas("chemist_yue_ling_item_blissful_memory.tex"),
             image = "chemist_item_herbal_bag.tex",
         },
         {"CHARACTER"}
@@ -102,7 +102,7 @@
             -- no_deconstruction=true,
             builder_tag = "chemist_yue_ling",
             atlas = "images/inventoryimages/chemist_item_empty_bottle.xml",
-            -- atlas = GetInventoryItemAtlas("underworld_hana_item_blissful_memory.tex"),
+            -- atlas = GetInventoryItemAtlas("chemist_yue_ling_item_blissful_memory.tex"),
             image = "chemist_item_empty_bottle.tex",
         },
         {"CHARACTER"}
@@ -123,7 +123,7 @@
             -- no_deconstruction=true,
             builder_tag = "chemist_yue_ling",
             atlas = "images/inventoryimages/chemist_item_firenettles_medicine_bottle.xml",
-            -- atlas = GetInventoryItemAtlas("underworld_hana_item_blissful_memory.tex"),
+            -- atlas = GetInventoryItemAtlas("chemist_yue_ling_item_blissful_memory.tex"),
             image = "chemist_item_firenettles_medicine_bottle.tex",
         },
         {"CHARACTER"}
@@ -142,7 +142,7 @@
             -- no_deconstruction=true,
             builder_tag = "chemist_yue_ling",
             atlas = "images/inventoryimages/chemist_item_wisdom_medicine.xml",
-            -- atlas = GetInventoryItemAtlas("underworld_hana_item_blissful_memory.tex"),
+            -- atlas = GetInventoryItemAtlas("chemist_yue_ling_item_blissful_memory.tex"),
             image = "chemist_item_wisdom_medicine.tex",
         },
         {"CHARACTER"}
@@ -161,7 +161,7 @@
             -- no_deconstruction=true,
             builder_tag = "chemist_yue_ling",
             atlas = "images/inventoryimages/chemist_item_jinkela_medicine.xml",
-            -- atlas = GetInventoryItemAtlas("underworld_hana_item_blissful_memory.tex"),
+            -- atlas = GetInventoryItemAtlas("chemist_yue_ling_item_blissful_memory.tex"),
             image = "chemist_item_jinkela_medicine.tex",
         },
         {"CHARACTER"}
@@ -181,7 +181,7 @@
             -- no_deconstruction=true,
             builder_tag = "chemist_yue_ling",
             atlas = "images/inventoryimages/chemist_food_wisdom_apple.xml",
-            -- atlas = GetInventoryItemAtlas("underworld_hana_item_blissful_memory.tex"),
+            -- atlas = GetInventoryItemAtlas("chemist_yue_ling_item_blissful_memory.tex"),
             image = "chemist_food_wisdom_apple.tex",
         },
         {"CHARACTER"}
@@ -201,12 +201,52 @@
             -- no_deconstruction=true,
             builder_tag = "chemist_yue_ling",
             atlas = "images/inventoryimages/chemist_item_exp_medicine.xml",
-            -- atlas = GetInventoryItemAtlas("underworld_hana_item_blissful_memory.tex"),
+            -- atlas = GetInventoryItemAtlas("chemist_yue_ling_item_blissful_memory.tex"),
             image = "chemist_item_exp_medicine.tex",
         },
         {"CHARACTER"}
     )
     RemoveRecipeFromFilter("chemist_item_exp_medicine","MODS")                       -- -- 在【模组物品】标签里移除这个。
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 攻击药剂
+--------------------------------------------------------------------------------------------------------------------------------------------
+    AddRecipeToFilter("chemist_spell_attack_power_multiplier_medicine_maker","CHARACTER")     ---- 添加物品到目标标签
+    AddRecipe2(
+        "chemist_spell_attack_power_multiplier_medicine_maker",            --  --  inst.prefab  实体名字
+        {  }, 
+        TECH.NONE, 
+        {
+            -- no_deconstruction=true,
+            builder_tag = "chemist_yue_ling",
+            atlas = "images/inventoryimages/chemist_item_attack_power_multiplier_medicine_lv_1.xml",
+            -- atlas = GetInventoryItemAtlas("chemist_yue_ling_item_blissful_memory.tex"),
+            image = "chemist_item_attack_power_multiplier_medicine_lv_1.tex",
+        },
+        {"CHARACTER"}
+    )
+    RemoveRecipeFromFilter("chemist_spell_attack_power_multiplier_medicine_maker","MODS")                       -- -- 在【模组物品】标签里移除这个。
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 三维恢复药剂
+--------------------------------------------------------------------------------------------------------------------------------------------
+    AddRecipeToFilter("chemist_spell_triple_recovery_medicine_maker","CHARACTER")     ---- 添加物品到目标标签
+    AddRecipe2(
+        "chemist_spell_triple_recovery_medicine_maker",            --  --  inst.prefab  实体名字
+        {  }, 
+        TECH.NONE, 
+        {
+            -- no_deconstruction=true,
+            builder_tag = "chemist_yue_ling",
+            atlas = "images/inventoryimages/chemist_item_triple_recovery_medicine_lv_1.xml",
+            -- atlas = GetInventoryItemAtlas("chemist_yue_ling_item_blissful_memory.tex"),
+            image = "chemist_item_triple_recovery_medicine_lv_1.tex",
+        },
+        {"CHARACTER"}
+    )
+    RemoveRecipeFromFilter("chemist_spell_triple_recovery_medicine_maker","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------
@@ -221,7 +261,7 @@
             -- no_deconstruction=true,
             builder_tag = "chemist_yue_ling",
             atlas = "images/inventoryimages/chemist_spell_skill_book_open.xml",
-            -- atlas = GetInventoryItemAtlas("underworld_hana_item_blissful_memory.tex"),
+            -- atlas = GetInventoryItemAtlas("chemist_yue_ling_item_blissful_memory.tex"),
             image = "chemist_spell_skill_book_open.tex",
             sg_state = "give",
         },

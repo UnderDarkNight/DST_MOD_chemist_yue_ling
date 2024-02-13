@@ -35,7 +35,7 @@ local prefabs_name_list = {
 
 ---------------------------------------------------------------------------
 ---- 正在测试的物品
-if TUNING.UNDERWORLD_HANA_DEBUGGING_MODE == true then
+if TUNING.chemist_yue_ling_DEBUGGING_MODE == true then
     local debugging_name_list = {
 
 

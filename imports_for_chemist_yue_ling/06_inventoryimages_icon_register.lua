@@ -22,6 +22,18 @@ local files_name = {
 		"chemist_item_wisdom_medicine",										--- 智慧药剂
 		"chemist_item_jinkela_medicine",									--- 金坷垃药剂
 		"chemist_item_exp_medicine",										--- 经验药剂
+
+		"chemist_item_attack_power_multiplier_medicine_lv_1",				--- 攻击倍增药剂
+		"chemist_item_attack_power_multiplier_medicine_lv_2",				--- 攻击倍增药剂
+		"chemist_item_attack_power_multiplier_medicine_lv_3",				--- 攻击倍增药剂
+		"chemist_item_attack_power_multiplier_medicine_lv_4",				--- 攻击倍增药剂
+		"chemist_item_attack_power_multiplier_medicine_lv_5",				--- 攻击倍增药剂
+
+		"chemist_item_triple_recovery_medicine_lv_1",				--- 三维恢复药剂
+		"chemist_item_triple_recovery_medicine_lv_2",				--- 三维恢复药剂
+		"chemist_item_triple_recovery_medicine_lv_3",				--- 三维恢复药剂
+		"chemist_item_triple_recovery_medicine_lv_4",				--- 三维恢复药剂
+		"chemist_item_triple_recovery_medicine_lv_5",				--- 三维恢复药剂
 	---------------------------------------------------------------------------------------
 	-- 03_equipments
 		"chemist_equipment_chemical_launching_gun",											--- 药剂发射器

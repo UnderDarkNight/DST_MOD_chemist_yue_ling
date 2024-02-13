@@ -31,11 +31,14 @@ local prefabs_name_list = {
     "01_empty_bottle_maker",                           --- 药剂师 制作空瓶
     "02_skill_book",                           --- 技能书打开
 
+    "03_attack_power_multiplier_medicine_maker",                           --- 攻击药剂制作
+    "04_triple_recovery_medicine_maker",                           --- 三维恢复药剂制作
+
 }
 
 ---------------------------------------------------------------------------
 ---- 正在测试的物品
-if TUNING.UNDERWORLD_HANA_DEBUGGING_MODE == true then
+if TUNING.chemist_yue_ling_DEBUGGING_MODE == true then
     local debugging_name_list = {
 
 

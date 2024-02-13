@@ -25,4 +25,7 @@ modimport("key_modules_for_chemist_yue_ling/05_origin_components_upgrade/__all_c
 modimport("key_modules_for_chemist_yue_ling/06_widgets/__all_widgets_setup.lua") 
 -- 界面UI
 
+modimport("key_modules_for_chemist_yue_ling/07_AnimState_Hook/_All_Original_AnimState_Upgrade_Init.lua") 
+-- 玩家 animstate 组件修改
+
 
