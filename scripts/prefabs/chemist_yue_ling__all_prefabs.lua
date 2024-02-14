@@ -15,6 +15,7 @@ local file_folders = {
     "07_foods",             ---- 食物
     "08_debuffs",           ---- debuff
     "09_spells",            ---- 技能
+    "10_plant_and_seeds",   ---- 植物和种子
     
 
     

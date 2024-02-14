@@ -16,6 +16,7 @@ local files_name = {
 		"chemist_yue_ling",						--- 小地图图标
 		"chemist_building_pharmaceutical_manufacturing_station",						--- 药剂制作站
 		"chemist_building_mushroom_house",						--- 蘑菇屋
+		"chemist_building_moonshine_converter",						--- 月光转换器
 	-------------------------------------------------------------------------------------------------
 	---- 23_chemist_yue_ling_wellness
 

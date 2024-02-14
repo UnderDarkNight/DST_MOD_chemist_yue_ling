@@ -26,6 +26,7 @@ return function(inst)
         "prefabs/01_character/yue_ling_er_key_modules/06_animstate_hook",                    ---- 角色动画组件hook
 
         "prefabs/01_character/yue_ling_er_key_modules/07_recipes_icon_swticher",                    ---- 制作栏图标切换
+        "prefabs/01_character/yue_ling_er_key_modules/08_pickable_event",                    ---- 采集event
 
     }
     for k, lua_addr in pairs(modules) do

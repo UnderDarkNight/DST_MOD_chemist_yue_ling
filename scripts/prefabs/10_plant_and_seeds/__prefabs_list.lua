@@ -28,9 +28,8 @@ local Prefabs_addr_base = string.sub(temp_addr,1,temp_str_index2) .. "/"    --- 
 local prefabs_name_list = {
 
 
-    "01_pharmaceutical_manufacturing_station",                           --- 药剂制作站
-    "02_mushroom_house",                           --- 神奇蘑菇房
-    "03_moonshine_converter",                      --- 月光转换器
+    "01_firenettle_seed",                           --- 火荨麻种子
+
 
 }
 

@@ -150,6 +150,12 @@ TUNING["chemist_yue_ling.Strings"][this_language] = TUNING["chemist_yue_ling.Str
                 ["inspect_str"] = "能培育蘑菇的小房子",
                 ["recipe_desc"] = "能培育蘑菇的小房子",
             },
+            ["chemist_building_moonshine_converter"] = {
+                ["name"] = "月光转换器",
+                ["inspect_str"] = "可以让月亮蘑菇和月亮碎片相互转换的神奇机器",
+                ["inspect_str_burnt"] = "烧毁了不能用了",
+                ["recipe_desc"] = "让月亮蘑菇和月亮碎片相互转换",
+            },
         --------------------------------------------------------------------
         --- 07_foods        
             ["chemist_food_wisdom_apple"] = {
@@ -190,6 +196,13 @@ TUNING["chemist_yue_ling.Strings"][this_language] = TUNING["chemist_yue_ling.Str
             ["chemist_spell_triple_recovery_medicine_maker2"] = {
                 ["name"] = "三维恢复药剂",
                 ["recipe_desc"] = "三维恢复药剂",
+            },
+        --------------------------------------------------------------------
+        --- 10_plant_and_seeds
+            ["firenettles_seeds"] = {
+                ["name"] = "火荨麻种子",
+                ["inspect_str"] = "火荨麻种子",
+                ["recipe_desc"] = "火荨麻种子",
             },
         --------------------------------------------------------------------
 }
