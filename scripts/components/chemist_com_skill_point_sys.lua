@@ -23,6 +23,10 @@ local chemist_com_skill_point_sys = Class(function(self, inst)
         self:ButtonClick(index)
     end)
 
+    inst:DoTaskInTime(0,function()
+        self:Data_Synchronization() --- 同步去client
+    end)
+    
 end,
 nil,
 {
@@ -137,7 +141,8 @@ nil,
                 self.all_points = data.all_points
             end
 
-            self:Data_Synchronization() --- 同步去client
+            -- self.inst:DoTaskInTime(0,function()
+            -- end)
         end
 ----------------------------------------------------------------------------------------------------------------------------------
 return chemist_com_skill_point_sys
