@@ -204,6 +204,14 @@ TUNING["chemist_yue_ling.Strings"][this_language] = TUNING["chemist_yue_ling.Str
                 ["inspect_str"] = "火荨麻种子",
                 ["recipe_desc"] = "火荨麻种子",
             },
+            ["chemist_plant_wisdom_apple_tree"] = {
+                ["name"] = "智慧树",
+                ["inspect_str"] = "智慧树",
+            },
+            ["chemist_plant_wisdom_apple_tree_item"] = {
+                ["name"] = "智慧树苗",
+                ["inspect_str"] = "智慧树苗",
+            },
         --------------------------------------------------------------------
 }
 

@@ -29,6 +29,8 @@ local prefabs_name_list = {
 
 
     "01_firenettle_seed",                           --- 火荨麻种子
+    "02_wisdom_apple_tree",                           --- 智慧树
+    "03_wisdom_apple_tree_item",                           --- 智慧树苗
 
 
 }

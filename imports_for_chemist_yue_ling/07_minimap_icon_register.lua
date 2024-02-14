@@ -17,6 +17,7 @@ local files_name = {
 		"chemist_building_pharmaceutical_manufacturing_station",						--- 药剂制作站
 		"chemist_building_mushroom_house",						--- 蘑菇屋
 		"chemist_building_moonshine_converter",						--- 月光转换器
+		"chemist_plant_wisdom_apple_tree",						--- 智慧树
 	-------------------------------------------------------------------------------------------------
 	---- 23_chemist_yue_ling_wellness
 
