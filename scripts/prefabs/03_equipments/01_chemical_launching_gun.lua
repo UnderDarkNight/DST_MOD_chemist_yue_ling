@@ -127,6 +127,8 @@ local function fn()
     inst.AnimState:SetBuild("chemist_equipment_chemical_launching_gun")
     inst.AnimState:PlayAnimation("idle")
 
+    local scale = 2
+    inst.AnimState:SetScale(scale, scale, scale)
     --weapon (from weapon component) added to pristine state for optimization
     inst:AddTag("weapon")
     -- inst:AddTag("rangedweapon")
