@@ -126,7 +126,7 @@ AddPrefabPostInit(
                     end
                 end)
                 inst:WatchWorldState("cycles", function()
-                    if TheWorld.state.cycles % 10 == 0 then
+                    if TheWorld.state.cycles % 20 == 0 then
                         local moonbase = TheSim:FindFirstEntityWithTag("moonbase")
                         if moonbase then
                             spawn_apple_trees(moonbase)

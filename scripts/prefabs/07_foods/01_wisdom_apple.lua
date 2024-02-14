@@ -27,6 +27,8 @@ local function fn()
     inst.AnimState:SetBuild("chemist_food_wisdom_apple")
     inst.AnimState:PlayAnimation("idle")
     
+    local sacle_num = 0.7
+    inst.AnimState:SetScale(sacle_num, sacle_num, sacle_num)
 
     MakeInventoryFloatable(inst, "med", 0.1, 0.75)
 

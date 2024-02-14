@@ -229,6 +229,10 @@ local function rock_avocado_bush()
     inst.AnimState:HideSymbol("snow")
     inst.AnimState:HideSymbol("flower")
 
+    if math.random() < 0.5 then
+        inst.AnimState:SetScale(-1, 1, 1)
+    end
+
     MakeSmallObstaclePhysics(inst, .1)
 
     inst:AddTag("plant")
