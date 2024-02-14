@@ -171,7 +171,7 @@ local function fn()
                 bullet:Hide()
                 local hide_dissq = 1.3 * 1.3
                 bullet.__dis_dsp_task = bullet:DoPeriodicTask(FRAMES,function()
-                    if bullet:GetDistanceSqToInst(inst) > hide_dissq then
+                    if bullet:GetDistanceSqToInst(attacker) > hide_dissq then
                         bullet.__dis_dsp_task:Cancel()
                         bullet:Show()
                     end
