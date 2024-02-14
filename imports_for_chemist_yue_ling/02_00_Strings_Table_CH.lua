@@ -206,7 +206,7 @@ TUNING["chemist_yue_ling.Strings"][this_language] = TUNING["chemist_yue_ling.Str
             },
             ["chemist_plant_wisdom_apple_tree"] = {
                 ["name"] = "智慧树",
-                ["inspect_str"] = "智慧树",
+                ["inspect_str"] = "智慧树上智慧果，智慧树下你和我",
             },
             ["chemist_plant_wisdom_apple_tree_item"] = {
                 ["name"] = "智慧树苗",
