@@ -26,7 +26,7 @@ local chemist_com_skill_point_sys = Class(function(self, inst)
     inst:DoTaskInTime(0,function()
         self:Data_Synchronization() --- 同步去client
     end)
-    
+
 end,
 nil,
 {
@@ -78,11 +78,17 @@ nil,
 ----------------------------------------------------------------------------------------------------------------------------------
 ---- 数据同步
     function chemist_com_skill_point_sys:Data_Synchronization()
-        local datas = {
-            free_points = self.free_points,
-            DataTable = self.DataTable,
-        }
-        self.inst.components.chemist_com_rpc_event:PushEvent("chemist_com_skill_point_sys.Data_Synchronization",datas)
+        if self.__rpc_lock_task then
+            self.__rpc_lock_task:Cancel()
+        end
+        self.__rpc_lock_task = self.inst:DoTaskInTime(0.1,function()
+            local datas = {
+                free_points = self.free_points,
+                DataTable = self.DataTable,
+            }
+            self.inst.components.chemist_com_rpc_event:PushEvent("chemist_com_skill_point_sys.Data_Synchronization",datas)
+            self.__rpc_lock_task = nil
+        end)
     end
 ----------------------------------------------------------------------------------------------------------------------------------
 --- 数据储存

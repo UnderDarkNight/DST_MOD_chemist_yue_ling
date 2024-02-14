@@ -171,74 +171,11 @@ local flg,error_code = pcall(function()
         -- local station = ents[1]
         -- print(station)
     ----------------------------------------------------------------------------------------------------------------
-    ---- 智慧树刷新
-    local moonbase = TheSim:FindFirstEntityWithTag("moonbase")
-
-        local function GetSurroundPoints(CMD_TABLE)
-            -- local CMD_TABLE = {
-            --     target = inst or Vector3(),
-            --     range = 8,
-            --     num = 8
-            -- }
-            if CMD_TABLE == nil then
-                return
-            end
-            local theMid = nil
-            if CMD_TABLE.target == nil then
-                theMid = Vector3( self.inst.Transform:GetWorldPosition() )
-            elseif CMD_TABLE.target.x then
-                theMid = CMD_TABLE.target
-            elseif CMD_TABLE.target.prefab then
-                theMid = Vector3( CMD_TABLE.target.Transform:GetWorldPosition() )
-            else
-                return
-            end
-            -- --------------------------------------------------------------------------------------------------------------------
-            -- -- 8 points
-            -- local retPoints = {}
-            -- for i = 1, 8, 1 do
-            --     local tempDeg = (PI/4)*(i-1)
-            --     local tempPoint = theMidPoint + Vector3( Range*math.cos(tempDeg) ,  0  ,  Range*math.sin(tempDeg)    )
-            --     table.insert(retPoints,tempPoint)
-            -- end
-            -- --------------------------------------------------------------------------------------------------------------------
-            local num = CMD_TABLE.num or 8
-            local range = CMD_TABLE.range or 8
-            local retPoints = {}
-            for i = 1, num, 1 do
-                local tempDeg = (2*PI/num)*(i-1)
-                local tempPoint = theMid + Vector3( range*math.cos(tempDeg) ,  0  ,  range*math.sin(tempDeg)    )
-                table.insert(retPoints,tempPoint)
-            end
-
-            return retPoints
-
-
-        end
-        local function find_plant_pt()
-
-            while true do
-                local points = GetSurroundPoints({
-                    target = moonbase,
-                    range = math.random(20,50),
-                    num = 30
-                })
-                local plant_points = {}
-                for k, temp_pt in pairs(points) do
-                    if TheWorld.Map:CanPlantAtPoint(temp_pt.x,0,temp_pt.z) then
-                        table.insert(plant_points,temp_pt)
-                    end
-                end
-                if #plant_points > 0 then
-                    return plant_points[math.random(1,#plant_points)]
-                end
-            end
-
-        end
-        local ret_pt = find_plant_pt()
-
-        ThePlayer.Transform:SetPosition(ret_pt.x, 0, ret_pt.z)
-
+    ---- 
+      
+        local beard_container = ThePlayer.replica.inventory:GetEquippedItem(EQUIPSLOTS.BEARD)
+        print(beard_container)
+        beard_container.components.container:Close()
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
