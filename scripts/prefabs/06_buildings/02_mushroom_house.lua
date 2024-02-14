@@ -271,8 +271,8 @@ local assets =
             local days = inst.components.chemist_com_database:Add("days",1)
             if days >= 3 then
                 inst.components.chemist_com_database:Set("days",0)
-                inst:PushEvent("mushroom_grow")
             end
+            inst:PushEvent("mushroom_grow")
         end)
 
         inst:ListenForEvent("mushroom_grow",function()
