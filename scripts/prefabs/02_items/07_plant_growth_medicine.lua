@@ -152,6 +152,8 @@ local function fn()
                         return target:HasTag("chemist_tag.plants")
 
                 end)
+                replica_com:SetSGAction("dolongaction")
+                replica_com:SetText(inst.prefab,STRINGS.ACTIONS.FERTILIZE)
 
             end
 

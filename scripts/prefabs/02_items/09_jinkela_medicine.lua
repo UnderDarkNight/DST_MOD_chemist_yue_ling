@@ -87,6 +87,8 @@ local function fn()
                         return ( target:HasTag("chemist_tag.plants") and not target:HasTag("chemist_buff_can_not_be_barren") )
 
                 end)
+                replica_com:SetSGAction("give")
+                replica_com:SetText(inst.prefab,STRINGS.ACTIONS.FERTILIZE)
 
             end
 

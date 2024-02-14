@@ -5,6 +5,15 @@
 local CHEMIST_COM_ACCEPTABLE_ACTION = Action({priority = 10})   --- 距离 和 目标物体的 碰撞体积有关，为 0 也没法靠近。
 CHEMIST_COM_ACCEPTABLE_ACTION.id = "CHEMIST_COM_ACCEPTABLE_ACTION"
 CHEMIST_COM_ACCEPTABLE_ACTION.strfn = function(act) --- 客户端检查是否通过,同时返回显示字段
+    local item = act.invobject
+    local target = act.target
+    local doer = act.doer
+    if doer and target and target.replica.chemist_com_acceptable then
+        local replica_com = target.replica.chemist_com_acceptable or target.replica._.chemist_com_acceptable
+        if replica_com then
+            return replica_com:GetTextIndex()
+        end
+    end
     return "DEFAULT"
 end
 
@@ -46,15 +55,51 @@ end)
 
 
 AddStategraphActionHandler("wilson",ActionHandler(CHEMIST_COM_ACCEPTABLE_ACTION,function(player)
+    local creash_flag , ret = pcall(function()
+        local target = player.bufferedaction.target
+        local item = player.bufferedaction.invobject
+        local ret_sg_action = "give"
+        local replica_com = target and ( target.replica.chemist_com_acceptable or target.replica._.chemist_com_acceptable )
+        if replica_com then
+            ret_sg_action = replica_com:GetSGAction()
+            replica_com:DoPreAction(item,player)
+        end
+        return ret_sg_action
+
+    end)
+    if creash_flag == true then
+        return ret
+    else
+        print("error in CHEMIST_COM_ACCEPTABLE_ACTION ActionHandler")
+        print(ret)
+    end
     return "give"
 end))
 AddStategraphActionHandler("wilson_client",ActionHandler(CHEMIST_COM_ACCEPTABLE_ACTION, function(player)    
+    local creash_flag , ret = pcall(function()
+        local target = player.bufferedaction.target
+        local item = player.bufferedaction.invobject
+        local ret_sg_action = "give"
+        local replica_com = target and ( target.replica.chemist_com_acceptable or target.replica._.chemist_com_acceptable )
+        if replica_com then
+            ret_sg_action = replica_com:GetSGAction()
+            replica_com:DoPreAction(item,player)
+        end
+        return ret_sg_action
+
+    end)
+    if creash_flag == true then
+        return ret
+    else
+        print("error in CHEMIST_COM_ACCEPTABLE_ACTION ActionHandler")
+        print(ret)
+    end
     return "give"
 end))
 
 
-STRINGS.ACTIONS.CHEMIST_COM_ACCEPTABLE_ACTION = {
-    DEFAULT = STRINGS.ACTIONS.UPGRADE.GENERIC
+STRINGS.ACTIONS.CHEMIST_COM_ACCEPTABLE_ACTION = STRINGS.ACTIONS.CHEMIST_COM_ACCEPTABLE_ACTION or {
+    DEFAULT = STRINGS.ACTIONS.ADDCOMPOSTABLE
 }
 
 

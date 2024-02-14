@@ -5,6 +5,16 @@
 local CHEMIST_COM_ITEM_USE_ACTION = Action({priority = 10})   --- 距离 和 目标物体的 碰撞体积有关，为 0 也没法靠近。
 CHEMIST_COM_ITEM_USE_ACTION.id = "CHEMIST_COM_ITEM_USE_ACTION"
 CHEMIST_COM_ITEM_USE_ACTION.strfn = function(act) --- 客户端检查是否通过,同时返回显示字段
+    local item = act.invobject
+    local target = act.target
+    local doer = act.doer
+
+    if item and doer and target and item.replica.chemist_com_item_use_to then
+        local replica_com = item.replica.chemist_com_item_use_to or item.replica._.chemist_com_item_use_to
+        if replica_com then
+            return replica_com:GetTextIndex()
+        end
+    end
     return "DEFAULT"
 end
 
@@ -48,16 +58,52 @@ end)
 
 
 AddStategraphActionHandler("wilson",ActionHandler(CHEMIST_COM_ITEM_USE_ACTION,function(player)
-    -- return "doshortaction"
+    local creash_flag , ret = pcall(function()
+        local target = player.bufferedaction.target
+        local item = player.bufferedaction.invobject
+        local ret_sg_action = "dolongaction"
+
+        local replica_com = item and ( item.replica.chemist_com_item_use_to or item.replica._.chemist_com_item_use_to )
+        if replica_com then
+            ret_sg_action = replica_com:GetSGAction()
+            replica_com:DoPreAction(target,player)
+        end
+        return ret_sg_action
+
+    end)
+    if creash_flag == true then
+        return ret
+    else
+        print("error in CHEMIST_COM_ITEM_USE_ACTION ActionHandler")
+        print(ret)
+    end
     return "dolongaction"
 end))
 AddStategraphActionHandler("wilson_client",ActionHandler(CHEMIST_COM_ITEM_USE_ACTION, function(player)    
-    -- return "doshortaction"
+    local creash_flag , ret = pcall(function()
+        local target = player.bufferedaction.target
+        local item = player.bufferedaction.invobject
+        local ret_sg_action = "dolongaction"
+
+        local replica_com = item and ( item.replica.chemist_com_item_use_to or item.replica._.chemist_com_item_use_to )
+        if replica_com then
+            ret_sg_action = replica_com:GetSGAction()
+            replica_com:DoPreAction(target,player)
+        end
+        return ret_sg_action
+
+    end)
+    if creash_flag == true then
+        return ret
+    else
+        print("error in CHEMIST_COM_ITEM_USE_ACTION ActionHandler")
+        print(ret)
+    end
     return "dolongaction"
 end))
 
 
-STRINGS.ACTIONS.CHEMIST_COM_ITEM_USE_ACTION = {
+STRINGS.ACTIONS.CHEMIST_COM_ITEM_USE_ACTION = STRINGS.ACTIONS.CHEMIST_COM_ITEM_USE_ACTION or {
     DEFAULT = STRINGS.ACTIONS.OPEN_CRAFTING.USE
 }
 

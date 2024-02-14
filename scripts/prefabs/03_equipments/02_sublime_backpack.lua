@@ -218,6 +218,8 @@ local function fn()
                     end
                     return false                    
                 end)
+                chemist_com_acceptable:SetText(inst.prefab,STRINGS.ACTIONS.UPGRADE.GENERIC)
+                chemist_com_acceptable:SetSGAction("dolongaction")
             end
         end)
 
