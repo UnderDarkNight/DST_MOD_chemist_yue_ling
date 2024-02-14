@@ -157,6 +157,15 @@ local function fn3()
         --     end
         -- end)
     -----------------------------------------------------------------------
+        -- inst:ListenForEvent("open_widget",function()
+        --     if inst.components.inventoryitem:GetGrandOwner() then
+        --         inst.components.container:Open(inst.components.inventoryitem:GetGrandOwner())
+        --     end
+        -- end)
+        -- inst:ListenForEvent("item_equiped",function()
+        --     inst:PushEvent("open_widget")
+        -- end)
+    -----------------------------------------------------------------------
     MakeHauntableLaunchAndDropFirstItem(inst)
 
     return inst
