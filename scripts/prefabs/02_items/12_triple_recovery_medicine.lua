@@ -76,6 +76,9 @@ local function create_fn(level)
                             [5] = 240,
                         }
                         local delta_num = delta_num_by_lv[level] or 0
+                        if not doer:HasTag("chemist_yue_ling") then
+                            delta_num = delta_num * 0.5
+                        end
                         if doer.components.health then
                             doer.components.health:DoDelta(delta_num)
                         end

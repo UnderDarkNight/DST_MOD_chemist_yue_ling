@@ -11,13 +11,14 @@ local chemist_com_database = Class(function(self, inst)
     self.DataTable = {}
     self.TempTable = {}
     self._onload_fns = {}
+    self._onsave_fns = {}
 end,
 nil,
 {
 
 })
 ---------------------------------------------------------------------------------------------------
------ onload 函数
+----- onload/onsave 函数
     function chemist_com_database:AddOnLoadFn(fn)
         if type(fn) == "function" then
             table.insert(self._onload_fns, fn)
@@ -28,49 +29,47 @@ nil,
             temp_fn(self)
         end
     end
+    function chemist_com_database:AddOnSaveFn(fn)
+        if type(fn) == "function" then
+            table.insert(self._onsave_fns, fn)
+        end
+    end
+    function chemist_com_database:ActiveOnSaveFns()
+        for k, temp_fn in pairs(self._onsave_fns) do
+            temp_fn(self)
+        end
+    end
 ---------------------------------------------------------------------------------------------------
 ----- 数据读取/储存
-    function chemist_com_database:SaveData(DataName_Str,theData)
-        if DataName_Str then
-            self.DataTable[DataName_Str] = theData
+
+    function chemist_com_database:Get(index)
+        if index then
+            return self.DataTable[index]
+        end
+        return nil
+    end
+    function chemist_com_database:Set(index,theData)
+        if index then
+            self.DataTable[index] = theData
         end
     end
 
-    function chemist_com_database:ReadData(DataName_Str)
-        if DataName_Str then
-            if self.DataTable[DataName_Str] then
-                return self.DataTable[DataName_Str]
-            else
-                return nil
-            end
+    function chemist_com_database:Add(index,num)
+        if index then
+            self.DataTable[index] = (self.DataTable[index] or 0) + ( num or 0 )
+            return self.DataTable[index]
         end
-    end
-    function chemist_com_database:Get(DataName_Str)
-        return self:ReadData(DataName_Str)
-    end
-    function chemist_com_database:Set(DataName_Str,theData)
-        self:SaveData(DataName_Str, theData)
-    end
-
-    function chemist_com_database:Add(DataName_Str,num)
-        if self:Get(DataName_Str) == nil then
-            self:Set(DataName_Str, 0)
-        end
-        if type(num) ~= "number" or type(self:Get(DataName_Str))~="number" then
-            return
-        end
-        self:Set(DataName_Str, self:Get(DataName_Str) + num)
-        return self:Get(DataName_Str)
+        return 0
     end
 ------------------------------------------------------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------------------------------------------------------
     function chemist_com_database:OnSave()
+        self:ActiveOnSaveFns()
         local data =
         {
             DataTable = self.DataTable
         }
-
         return next(data) ~= nil and data or nil
     end
 

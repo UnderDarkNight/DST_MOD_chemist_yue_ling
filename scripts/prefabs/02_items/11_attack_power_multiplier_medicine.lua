@@ -72,11 +72,11 @@ local function create_fn(level)
                         ---- 添加BUFF、刷新计时器  chemist_yue_ling_buff_attack_power_multiplier_medicine
                             --- 伤害倍数 +20% / +40% / +60% / +80% / +100%
                             local mult_with_level = {
-                                [1] = 1.2,
-                                [2] = 1.4,
-                                [3] = 1.6,
-                                [4] = 1.8,
-                                [5] = 2.0,
+                                [1] = 0.2,
+                                [2] = 0.4,
+                                [3] = 0.6,
+                                [4] = 0.8,
+                                [5] = 1.0,
                             }
                             local buff_prefab = "chemist_yue_ling_buff_attack_power_multiplier_medicine"
                             -- local buff_inst = doer:Get
@@ -87,7 +87,13 @@ local function create_fn(level)
                                     temp_debuff_inst:Remove()
                                 end
                             end
-                            local ret_mult = mult_with_level[level] or 1.2
+                            ----- 倍增系数
+                                local ret_mult = (mult_with_level[level] or 0.2)
+                                if not doer:HasTag("chemist_yue_ling") then
+                                    ret_mult = ret_mult*0.5
+                                end
+                                ret_mult = ret_mult + 1
+
                             local time = TUNING.CHEMIST_YUE_LING_DEBUGGING_MODE and 60 or 300
                             doer.components.chemist_com_database:Set(buff_prefab..".timer" , time)
                             doer.components.chemist_com_database:Set(buff_prefab..".mult" , ret_mult)

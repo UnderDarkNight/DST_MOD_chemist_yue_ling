@@ -27,5 +27,13 @@ return function(inst)
         inst:ListenForEvent("equip",beard_container_open_fn)
 
 
+        ------------------------------------------------------------------------------------------
+        --- 玩家重选的时候删除
+            inst:ListenForEvent("ms_playerreroll",function()
+                local beard_container = inst.replica.inventory:GetEquippedItem(EQUIPSLOTS.BEARD)
+                beard_container.components.container:DropEverything()
+                beard_container:Remove()
+            end)
+        ------------------------------------------------------------------------------------------
     end)
 end
