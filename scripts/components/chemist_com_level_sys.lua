@@ -54,6 +54,12 @@ local chemist_com_level_sys = Class(function(self, inst)
     self.current_exp = 0
     self.next_level_exp = 1
     -----------------------------------
+    self.DataTable = {}
+    -----------------------------------
+    self.__onload_fns = {}
+    self._onsave_fns = {}
+    self._on_pre_onsave_fns = {}
+    -----------------------------------
     --- 等级 event fn
         self.level_events = self.level_events or {}
         for i = 1, self.max_level, 1 do
@@ -74,6 +80,28 @@ nil,
 })
 
 
+
+----------------------------------------------------------------------------------------------------------------------------------
+--- 数据储存读取
+    function chemist_com_level_sys:Get(index)
+        return self.DataTable[index]
+    end
+
+    function chemist_com_level_sys:Set(index,value)
+        self.DataTable[index] = value
+    end
+
+    function chemist_com_level_sys:Clear(index)
+        self.DataTable[index] = nil
+    end
+    function chemist_com_level_sys:Add(index,num)
+        num = num or 0
+        self.DataTable[index] = self.DataTable[index] or 0
+        self.DataTable[index] = self.DataTable[index] + num
+        return self.DataTable[index]
+    end
+----------------------------------------------------------------------------------------------------------------------------------
+---
 
 ----------------------------------------------------------------------------------------------------------------------------------
 --- 等级Event
@@ -181,21 +209,48 @@ nil,
         return next_level_exp
     end
 ----------------------------------------------------------------------------------------------------------------------------------
---- 添加 onload fn
-    function chemist_com_level_sys:SetOnLoadFn(fn)
+--- 添加 onload/onsave fn
+    function chemist_com_level_sys:AddOnLoadFn(fn)
         if type(fn) == "function" then
-            self._on_load_fn = fn
+            table.insert(self.__onload_fns,fn)
+        end
+    end
+    function chemist_com_level_sys:DoOnLoadFns()
+        for k, tempfn in pairs(self.__onload_fns) do
+            tempfn(self)
+        end
+    end
+    function chemist_com_level_sys:AddPreOnSaveFn(fn)
+        if type(fn) == "function" then
+            table.insert(self._on_pre_onsave_fns,fn)
+        end
+    end
+    function chemist_com_level_sys:DoPreOnSaveFns()
+        for k, tempfn in pairs(self._on_pre_onsave_fns) do
+            tempfn(self)
+        end
+    end
+    function chemist_com_level_sys:AddOnSaveFn(fn)
+        if type(fn) == "function" then
+            table.insert(self._onsave_fns,fn)
+        end
+    end
+    function chemist_com_level_sys:DoOnSaveFns()
+        for k, tempfn in pairs(self._onsave_fns) do
+            tempfn(self)
         end
     end
 ----------------------------------------------------------------------------------------------------------------------------------
 --- 储存/读取
     function chemist_com_level_sys:OnSave()
+        self:DoPreOnSaveFns()
         local data =
         {
             current_level = self.current_level,
             current_exp = self.current_exp,
+            DataTable = self.DataTable,
         }
-
+        self:DoOnSaveFns()
         return next(data) ~= nil and data or nil
     end
 
@@ -207,12 +262,14 @@ nil,
         if data.current_exp then
             self.current_exp = data.current_exp
         end
-
-
-        if self._on_load_fn then
-            self._on_load_fn()
+        if data.DataTable then
+            self.DataTable = data.DataTable
         end
+
+
+        self:DoOnLoadFns()
         local temp = self:Get_Next_Level_Exp()
+        -- print("info : chemist_com_level_sys OnLoad current_level",self.current_level)
     end
 ----------------------------------------------------------------------------------------------------------------------------------
 

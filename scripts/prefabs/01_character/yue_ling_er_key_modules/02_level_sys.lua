@@ -17,7 +17,53 @@ return function(inst)
     --------------------------------------------------------------------------------
         inst:AddComponent("chemist_com_level_sys")
 
+    --------------------------------------------------------------------------------    
+    ---- 洞穴穿越的时候数据读取/重读
+        -- inst:ListenForEvent("hungerdelta",function()
+        --     local hunger_current = inst.components.hunger.current
+        --     inst.components.chemist_com_level_sys:Set("hunger",hunger_current)
+        --     -- print("save_data.hunger_current",hunger_current)
+        -- end)
+        -- inst:ListenForEvent("sanitydelta",function()
+        --     local sanity_current = inst.components.sanity.current
+        --     inst.components.chemist_com_level_sys:Set("sanity",sanity_current)
+        --     -- print("save_data.sanity_current",sanity_current)
+
+        -- end)
+        -- inst:ListenForEvent("healthdelta",function()
+        --     local health_current = inst.components.health.currenthealth
+        --     inst.components.chemist_com_level_sys:Set("health",health_current)
+        --     -- print("save_data.health_current",health_current)
+        -- end)
+        inst.components.chemist_com_level_sys:AddOnSaveFn(function(com)
+            local hunger_current = inst.components.hunger.current
+            local sanity_current = inst.components.sanity.current
+            local health_current = inst.components.health.currenthealth
+            -- print("info onsave",hunger_current,sanity_current,health_current)
+            com:Set("hunger",hunger_current)
+            com:Set("sanity",sanity_current)
+            com:Set("health",health_current)
+        end)
+        local function base_value_init()
+            local hunger_current = inst.components.chemist_com_level_sys:Get("hunger")
+            local sanity_current = inst.components.chemist_com_level_sys:Get("sanity")
+            local health_current = inst.components.chemist_com_level_sys:Get("health")
+            if hunger_current then
+                inst.components.hunger.current = hunger_current
+            end
+            if sanity_current then
+                inst.components.sanity.current = sanity_current
+            end
+            if health_current then
+                inst.components.health.currenthealth = health_current
+            end
+            print("加载存档时，玩家数据已恢复。",sanity_current,hunger_current,health_current)
+        end
+        -- inst.components.chemist_com_level_sys:AddOnLoadFn(base_value_init)
     --------------------------------------------------------------------------------
+    --------------------------------------------------------------------------------
+    ---- 等级更新
+
         local function level_refresh()
             local level = inst.components.chemist_com_level_sys:Get_Level()
             --------------------------------------------------------------------------------
@@ -52,7 +98,10 @@ return function(inst)
     --------------------------------------------------------------------------------
         inst.components.chemist_com_level_sys.max_level = 200
         inst.components.chemist_com_level_sys:Add_Level_Changed_Fn(level_refresh)
-        inst.components.chemist_com_level_sys:SetOnLoadFn(level_refresh)
+        inst.components.chemist_com_level_sys:AddOnLoadFn(function()
+            level_refresh()
+            base_value_init()
+        end)
 
 
         for i = 1, 200, 1 do
@@ -65,8 +114,6 @@ return function(inst)
                 end)
             end
         end
-    --------------------------------------------------------------------------------
-    ----
     --------------------------------------------------------------------------------
     ---- 换角色的时候保存玩家等级.
         inst:ListenForEvent("ms_playerreroll",function()    --- 通过绚丽之门选角色的时候触发
