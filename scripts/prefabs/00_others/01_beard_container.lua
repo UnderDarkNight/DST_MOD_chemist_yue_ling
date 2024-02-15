@@ -149,6 +149,18 @@ local function fn3()
             end
         end)
     -----------------------------------------------------------------------
+    ---- 换角色的时候移除
+        inst:ListenForEvent("equipped",function(_,_table)
+            if _table and _table.owner then
+                _table.owner:ListenForEvent("ms_playerreroll",function()
+                    if inst:IsValid() then
+                        inst.components.container:DropEverything()
+                        inst:Remove()
+                    end
+                end)
+            end
+        end)
+    -----------------------------------------------------------------------
         -- inst:ListenForEvent("itemget",function(_,_table)
         --     if _table and _table.item then
         --         local owner = inst.components.inventoryitem:GetGrandOwner()

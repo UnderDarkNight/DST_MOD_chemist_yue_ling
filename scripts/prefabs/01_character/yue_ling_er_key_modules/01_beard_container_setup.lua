@@ -29,11 +29,13 @@ return function(inst)
 
         ------------------------------------------------------------------------------------------
         --- 玩家重选的时候删除
-            inst:ListenForEvent("ms_playerreroll",function()
-                local beard_container = inst.replica.inventory:GetEquippedItem(EQUIPSLOTS.BEARD)
-                beard_container.components.container:DropEverything()
-                beard_container:Remove()
-            end)
+            -- local beard_container = inst.replica.inventory:GetEquippedItem(EQUIPSLOTS.BEARD)
+            -- if not beard_container then
+            --     inst:ListenForEvent("ms_playerreroll",function()
+            --         beard_container.components.container:DropEverything()
+            --         beard_container:Remove()
+            --     end)
+            -- end
         ------------------------------------------------------------------------------------------
     end)
 end
