@@ -180,7 +180,7 @@ local function fn()
     inst.components.inventoryitem.atlasname = "images/inventoryimages/chemist_item_plant_growth_medicine.xml"
 
     inst:AddComponent("stackable")
-    inst.components.stackable.maxsize = 10
+    -- inst.components.stackable.maxsize = 10
 
     -------------------------------------------------------------------
     --- 落水影子

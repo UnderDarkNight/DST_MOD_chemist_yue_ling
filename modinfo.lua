@@ -120,29 +120,9 @@ configuration_options =
         {description = "ON", data = true},
       },
       default = false,
-  },
+    },
 
 ----------------------------------------------------------------------------------------------------------
--- ----- 角色相关的管理设置
---     {
---       name = "FFFFFFF",
---       label = IsChinese() and "角色相关设置" or "Character-related settings", --- 隔断测试
---       hover = "",
---       options = {{description = "", data = 0}},
---       default = 0,
---     },
-
---     {
---       name = "ALLOW_CHARACTERS",
---       label = IsChinese() and "加载角色" or "Load Characters",
---       hover = IsChinese() and "允许使用本MOD的角色" or "The characters in this mod are allowed to be used",
---       options =
---       {
---         {description = IsChinese() and "加载" or "ON", data = true},
---         {description = IsChinese() and "不加载" or "OFF", data = false},
---       },
---       default = true,
---     },
     {
       name = "SKILL_BOOK_OPEN",
       label = "技能书 Skill Book",
@@ -150,13 +130,17 @@ configuration_options =
       options = keys_option,
       default = "KEY_F5",
     },
---     {
---       name = "SPELL_KEY_B",
---       label = IsChinese() and "角色辅助技能" or "Auxiliary Spell",
---       hover = IsChinese() and "角色辅助技能" or "Auxiliary Spell",
---       options = keys_option,
---       default = "KEY_F6",
---     },
+    {
+      name = "FX_ONLY_FOLLOW",
+      label = "特效绕圈",
+      hover = "特效绕圈",
+      options =
+      {
+        {description = "ON", data = false},
+        {description = "OFF", data = true},
+      },
+      default = false,
+    },
 ----------------------------------------------------------------------------------------------------------
 
   

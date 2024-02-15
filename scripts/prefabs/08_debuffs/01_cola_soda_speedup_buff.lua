@@ -32,6 +32,7 @@ local function OnAttached(inst,target) -- 玩家得到 debuff 的瞬间。 穿�
                 bloom_off = true,
                 clockwise = math.random(100) < 50,
                 scale = 0.7,
+                only_follow = TUNING["chemist_yue_ling.Config"].FX_ONLY_FOLLOW,
             })
             inst:ListenForEvent("onremove", function()
                 fx_spriter:Remove()

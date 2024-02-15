@@ -197,6 +197,7 @@ local flg,error_code = pcall(function()
             bank_build = "chemist_buff__fx_spriter_damage",
             bloom_off = true,
             clockwise = true,
+            only_follow = true,
         })
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")

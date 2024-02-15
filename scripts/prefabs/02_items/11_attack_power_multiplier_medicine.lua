@@ -136,7 +136,7 @@ local function create_fn(level)
         inst.components.inventoryitem.atlasname = "images/inventoryimages/"..prefab_name..".xml"
     
         inst:AddComponent("stackable")
-        inst.components.stackable.maxsize = 10
+        -- inst.components.stackable.maxsize = 10
     
         -------------------------------------------------------------------
         --- 落水影子

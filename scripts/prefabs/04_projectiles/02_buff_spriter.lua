@@ -214,6 +214,7 @@ local function fn()
         --     bank_build = ""
         --     scale = 1,
         --     clockwise = false，
+        --     only_follow = false, --- 单纯跟随，不环绕
         -- }
         if not type(_table) == "table" or _table.player == nil then
             inst:Remove()
@@ -252,17 +253,24 @@ local function fn()
                                     -- inst:StopClosing()
                                     ----------------------------------------------------------------
                                     --- 自动到下一个点
-                                        if not _table.clockwise then
-                                            inst.__follow_num = inst.__follow_num + 1
-                                            if inst.__follow_num > point_num then
-                                                inst.__follow_num = 1
-                                            end
+                                        
+                                        if _table.only_follow then  ---- 跟随点
+                                            inst.__follow_num = math.random(point_num)
                                         else
-                                            inst.__follow_num = inst.__follow_num - 1
-                                            if inst.__follow_num < 1 then
-                                                inst.__follow_num = point_num
-                                            end
+                                            --------- 环绕点
+                                                if not _table.clockwise then
+                                                    inst.__follow_num = inst.__follow_num + 1
+                                                    if inst.__follow_num > point_num then
+                                                        inst.__follow_num = 1
+                                                    end
+                                                else
+                                                    inst.__follow_num = inst.__follow_num - 1
+                                                    if inst.__follow_num < 1 then
+                                                        inst.__follow_num = point_num
+                                                    end
+                                                end
                                         end
+
                                         pt = points[inst.__follow_num]
                                         dis = inst:Distance_Points(pt,Vector3(inst.Transform:GetWorldPosition()))
                                         local speed = (_table.speed or dis) * (_table.speed_mult or 1)
@@ -391,6 +399,7 @@ return Prefab("chemist_buff__fx_spriter", fn, assets)
             bloom_off = true,   --- 关闭荧光
             scale = 1,
             clockwise = false,  --- 顺时针
+            only_follow = fals，--- 单纯跟随
         })
 
 ]]--
