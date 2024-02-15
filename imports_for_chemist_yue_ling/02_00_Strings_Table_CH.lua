@@ -76,7 +76,17 @@ TUNING["chemist_yue_ling.Strings"][this_language] = TUNING["chemist_yue_ling.Str
                 ["recipe_desc"] = "对植物使用",
             },
             ["chemist_item_exp_medicine"] = {
-                ["name"] = "经验药剂",
+                ["name"] = "经验药剂 Lv1",
+                ["inspect_str"] = "独属于药剂师的药剂",
+                ["recipe_desc"] = "独属于药剂师的药剂",
+            },
+            ["chemist_item_exp_medicine2"] = {
+                ["name"] = "经验药剂 Lv2",
+                ["inspect_str"] = "独属于药剂师的药剂",
+                ["recipe_desc"] = "独属于药剂师的药剂",
+            },
+            ["chemist_item_exp_medicine3"] = {
+                ["name"] = "经验药剂 Lv3",
                 ["inspect_str"] = "独属于药剂师的药剂",
                 ["recipe_desc"] = "独属于药剂师的药剂",
             },

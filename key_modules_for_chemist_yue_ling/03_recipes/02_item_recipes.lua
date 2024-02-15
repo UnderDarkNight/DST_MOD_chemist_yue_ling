@@ -190,7 +190,7 @@
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------
----- 经验药剂
+---- 经验药剂 lv1
 --------------------------------------------------------------------------------------------------------------------------------------------
     AddRecipeToFilter("chemist_item_exp_medicine","CHARACTER")     ---- 添加物品到目标标签
     AddRecipe2(
@@ -207,6 +207,46 @@
         {"CHARACTER"}
     )
     RemoveRecipeFromFilter("chemist_item_exp_medicine","MODS")                       -- -- 在【模组物品】标签里移除这个。
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 经验药剂 lv2
+--------------------------------------------------------------------------------------------------------------------------------------------
+    AddRecipeToFilter("chemist_item_exp_medicine2","CHARACTER")     ---- 添加物品到目标标签
+    AddRecipe2(
+        "chemist_item_exp_medicine2",            --  --  inst.prefab  实体名字
+        { Ingredient("petals", 10) ,  Ingredient("boneshard", 10) , Ingredient("chemist_food_wisdom_apple", 10) ,  }, 
+        TECH.NONE, 
+        {
+            -- no_deconstruction=true,
+            builder_tag = "chemist_yue_ling",
+            atlas = "images/inventoryimages/chemist_item_exp_medicine2.xml",
+            -- atlas = GetInventoryItemAtlas("chemist_yue_ling_item_blissful_memory.tex"),
+            image = "chemist_item_exp_medicine2.tex",
+        },
+        {"CHARACTER"}
+    )
+    RemoveRecipeFromFilter("chemist_item_exp_medicine2","MODS")                       -- -- 在【模组物品】标签里移除这个。
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 经验药剂 lv3
+--------------------------------------------------------------------------------------------------------------------------------------------
+    AddRecipeToFilter("chemist_item_exp_medicine3","CHARACTER")     ---- 添加物品到目标标签
+    AddRecipe2(
+        "chemist_item_exp_medicine3",            --  --  inst.prefab  实体名字
+        { Ingredient("petals", 100) ,  Ingredient("boneshard", 100) , Ingredient("chemist_food_wisdom_apple", 100) ,  }, 
+        TECH.NONE, 
+        {
+            -- no_deconstruction=true,
+            builder_tag = "chemist_yue_ling",
+            atlas = "images/inventoryimages/chemist_item_exp_medicine3.xml",
+            -- atlas = GetInventoryItemAtlas("chemist_yue_ling_item_blissful_memory.tex"),
+            image = "chemist_item_exp_medicine3.tex",
+        },
+        {"CHARACTER"}
+    )
+    RemoveRecipeFromFilter("chemist_item_exp_medicine3","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------

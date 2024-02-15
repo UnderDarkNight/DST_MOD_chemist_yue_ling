@@ -28,6 +28,10 @@ return function(inst)
         "prefabs/01_character/yue_ling_er_key_modules/07_recipes_icon_swticher",                    ---- 制作栏图标切换
         "prefabs/01_character/yue_ling_er_key_modules/08_pickable_event",                    ---- 采集event
 
+        "prefabs/01_character/yue_ling_er_key_modules/09_builder",                    ---- 开局自带一本科技一本魔法
+
+        "prefabs/01_character/yue_ling_er_key_modules/10_key_event_listener",                    ---- 快捷键
+
     }
     for k, lua_addr in pairs(modules) do
         local temp_fn = require(lua_addr)
@@ -44,6 +48,7 @@ return function(inst)
     inst:AddTag("farmplantfastpicker")  --- 种植作物快速采集
     inst:AddTag("fastpicker")  --- 可采集目标快速采集
 
+    inst:AddTag("reader")
 
     inst.customidleanim = "idle_wendy"  -- 闲置站立动画
     inst.soundsname = "wendy"           -- 角色声音

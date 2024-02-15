@@ -143,13 +143,13 @@ configuration_options =
 --       },
 --       default = true,
 --     },
---     {
---       name = "SPELL_KEY_A",
---       label = IsChinese() and "角色主要技能" or "Primary Spell",
---       hover = IsChinese() and "角色主要技能" or "Primary Spell",
---       options = keys_option,
---       default = "KEY_F5",
---     },
+    {
+      name = "SKILL_BOOK_OPEN",
+      label = "技能书 Skill Book",
+      hover = "技能书 Skill Book",
+      options = keys_option,
+      default = "KEY_F5",
+    },
 --     {
 --       name = "SPELL_KEY_B",
 --       label = IsChinese() and "角色辅助技能" or "Auxiliary Spell",

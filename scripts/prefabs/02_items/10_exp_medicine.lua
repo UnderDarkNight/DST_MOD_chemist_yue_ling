@@ -12,6 +12,12 @@ local assets =
     Asset("ANIM", "anim/chemist_item_exp_medicine.zip"),
     Asset( "IMAGE", "images/inventoryimages/chemist_item_exp_medicine.tex" ),  -- 背包贴图
     Asset( "ATLAS", "images/inventoryimages/chemist_item_exp_medicine.xml" ),
+    Asset("ANIM", "anim/chemist_item_exp_medicine2.zip"),
+    Asset( "IMAGE", "images/inventoryimages/chemist_item_exp_medicine2.tex" ),  -- 背包贴图
+    Asset( "ATLAS", "images/inventoryimages/chemist_item_exp_medicine2.xml" ),
+    Asset("ANIM", "anim/chemist_item_exp_medicine3.zip"),
+    Asset( "IMAGE", "images/inventoryimages/chemist_item_exp_medicine3.tex" ),  -- 背包贴图
+    Asset( "ATLAS", "images/inventoryimages/chemist_item_exp_medicine3.xml" ),
 }
 
 local function fn()
@@ -110,4 +116,57 @@ local function fn()
     return inst
 end
 
-return Prefab("chemist_item_exp_medicine", fn, assets)
+local function fn_lv2()
+    local inst = fn()
+    inst.AnimState:SetBank("chemist_item_exp_medicine2")
+    inst.AnimState:SetBuild("chemist_item_exp_medicine2")
+    inst.AnimState:PlayAnimation("idle")
+
+    if not TheWorld.ismastersim then
+        return inst
+    end
+
+    inst.components.chemist_com_drinkable:SetOnDrinkFn(function(inst,doer)
+        inst.components.stackable:Get():Remove()
+        -- print("info  喝下去")
+
+        -- doer.components.chemist_com_level_sys:LevelUp()
+        doer.components.chemist_com_level_sys:Add_Exp(10)
+        -- local next_level_exp = doer.components.chemist_com_level_sys:Get_Next_Level_Exp()
+        -- print("下一级需要经验",next_level_exp)
+        return true
+    end)
+    inst.components.inventoryitem.imagename = "chemist_item_exp_medicine2"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/chemist_item_exp_medicine2.xml"
+
+    return inst
+end
+
+local function fn_lv3()
+    local inst = fn()
+    inst.AnimState:SetBank("chemist_item_exp_medicine3")
+    inst.AnimState:SetBuild("chemist_item_exp_medicine3")
+    inst.AnimState:PlayAnimation("idle")
+
+    if not TheWorld.ismastersim then
+        return inst
+    end
+
+    inst.components.chemist_com_drinkable:SetOnDrinkFn(function(inst,doer)
+        inst.components.stackable:Get():Remove()
+        -- print("info  喝下去")
+
+        -- doer.components.chemist_com_level_sys:LevelUp()
+        doer.components.chemist_com_level_sys:Add_Exp(100)
+        -- local next_level_exp = doer.components.chemist_com_level_sys:Get_Next_Level_Exp()
+        -- print("下一级需要经验",next_level_exp)
+        return true
+    end)
+    inst.components.inventoryitem.imagename = "chemist_item_exp_medicine3"
+    inst.components.inventoryitem.atlasname = "images/inventoryimages/chemist_item_exp_medicine3.xml"
+
+    return inst
+end
+return Prefab("chemist_item_exp_medicine", fn, assets),
+        Prefab("chemist_item_exp_medicine2", fn_lv2, assets),
+            Prefab("chemist_item_exp_medicine3", fn_lv3, assets)

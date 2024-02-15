@@ -29,6 +29,7 @@ local prefabs_name_list = {
 
 
     "01_firenettles_bullet",                           --- 火荨麻 弹药
+    "02_buff_spriter",                           --- buff 精灵
 
 }
 

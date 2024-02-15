@@ -80,11 +80,15 @@ local function create_fn(level)
                             }
                             local buff_prefab = "chemist_yue_ling_buff_attack_power_multiplier_medicine"
                             -- local buff_inst = doer:Get
-                            for i = 1, 10, 1 do ----- 移除已有BUFF，为了保险，多做几次
-                                doer:RemoveDebuff(buff_prefab)
+                            for i = 1, 30, 1 do ----- 移除已有BUFF，为了保险，多做几次
+                                -- doer:RemoveDebuff(buff_prefab)
+                                local temp_debuff_inst = doer:GetDebuff(buff_prefab)
+                                if temp_debuff_inst then
+                                    temp_debuff_inst:Remove()
+                                end
                             end
                             local ret_mult = mult_with_level[level] or 1.2
-                            local time = TUNING.CHEMIST_YUE_LING_DEBUGGING_MODE and 15 or 300
+                            local time = TUNING.CHEMIST_YUE_LING_DEBUGGING_MODE and 60 or 300
                             doer.components.chemist_com_database:Set(buff_prefab..".timer" , time)
                             doer.components.chemist_com_database:Set(buff_prefab..".mult" , ret_mult)
 

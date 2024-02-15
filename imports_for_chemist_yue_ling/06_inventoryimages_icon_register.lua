@@ -22,6 +22,8 @@ local files_name = {
 		"chemist_item_wisdom_medicine",										--- 智慧药剂
 		"chemist_item_jinkela_medicine",									--- 金坷垃药剂
 		"chemist_item_exp_medicine",										--- 经验药剂
+		"chemist_item_exp_medicine2",										--- 经验药剂
+		"chemist_item_exp_medicine3",										--- 经验药剂
 
 		"chemist_item_attack_power_multiplier_medicine_lv_1",				--- 攻击倍增药剂
 		"chemist_item_attack_power_multiplier_medicine_lv_2",				--- 攻击倍增药剂

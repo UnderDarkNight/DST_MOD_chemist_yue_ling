@@ -57,7 +57,7 @@ return function(inst)
 
         for i = 1, 200, 1 do
             inst.components.chemist_com_level_sys:Add_Level_Event(i,function()
-                print("info 等级到达：",i)
+                -- print("info 等级到达：",i)
             end)
             if i%2 == 0 then
                 inst.components.chemist_com_level_sys:Add_Level_Event(i,function()

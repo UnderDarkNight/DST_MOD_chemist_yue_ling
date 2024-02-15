@@ -69,7 +69,17 @@ TUNING["chemist_yue_ling.Strings"][this_language] = TUNING["chemist_yue_ling.Str
                 ["recipe_desc"] = "Use on plants",
             },
             ["chemist_item_exp_medicine"] = {
-                ["name"] = "Exp Medicine",
+                ["name"] = "Exp Medicine Lv1",
+                ["inspect_str"] = "A medicine that belongs exclusively to the chemist.",
+                ["recipe_desc"] = "A medicine that belongs exclusively to the chemist.",
+            },
+            ["chemist_item_exp_medicine2"] = {
+                ["name"] = "Exp Medicine Lv2",
+                ["inspect_str"] = "A medicine that belongs exclusively to the chemist.",
+                ["recipe_desc"] = "A medicine that belongs exclusively to the chemist.",
+            },
+            ["chemist_item_exp_medicine3"] = {
+                ["name"] = "Exp Medicine Lv3",
                 ["inspect_str"] = "A medicine that belongs exclusively to the chemist.",
                 ["recipe_desc"] = "A medicine that belongs exclusively to the chemist.",
             },

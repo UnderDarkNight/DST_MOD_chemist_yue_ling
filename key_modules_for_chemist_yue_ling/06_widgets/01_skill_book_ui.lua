@@ -35,6 +35,8 @@ AddClassPostConstruct("screens/playerhud",function(self)
     function self:Chemist_Skill_Book_Open()
         if self.__chemist_skill_book_widget then
             self.__chemist_skill_book_widget:Kill()
+            self.__chemist_skill_book_widget = nil
+            return
         end
         ----------------------------------------------------------------
             local root = self:AddChild(Screen())

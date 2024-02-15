@@ -48,6 +48,14 @@ local function OnAttached(inst,target) -- 玩家得到 debuff 的瞬间。 穿�
     end
 
 
+    if target.components.farmplantstress and target.components.growable then
+
+        inst:DoPeriodicTask(10,function()
+            if target.components.pickable and target.components.pickable:CanBePicked() then
+                target.components.growable:StopGrowing()
+            end
+        end)
+    end
 
     -----------------------------------------------------
 end

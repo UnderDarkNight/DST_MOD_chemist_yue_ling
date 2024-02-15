@@ -173,9 +173,31 @@ local flg,error_code = pcall(function()
     ----------------------------------------------------------------------------------------------------------------
     ---- 
       
-        local beard_container = ThePlayer.replica.inventory:GetEquippedItem(EQUIPSLOTS.BEARD)
-        print(beard_container)
-        beard_container.components.container:Close()
+        -- local beard_container = ThePlayer.replica.inventory:GetEquippedItem(EQUIPSLOTS.BEARD)
+        -- print(beard_container)
+        -- beard_container.components.container:Close()
+    ----------------------------------------------------------------------------------------------------------------
+    ----
+        if ThePlayer.__spriter then
+            ThePlayer.__spriter:Remove()
+        end
+
+        ThePlayer.__spriter = SpawnPrefab("chemist_buff__fx_spriter")
+        ThePlayer.__spriter:PushEvent("Set",{
+            player = ThePlayer,  --- 跟随目标
+            range = 3,           --- 环绕点半径
+            point_num = 15,       --- 环绕点
+            -- new_pt_time = 0.5 ,    --- 新的跟踪点时间
+            -- speed = 8,           --- 强制固定速度
+            speed_mult = 2,      --- 速度倍速
+            next_pt_dis = 0.5,      --- 触碰下一个点的距离
+            speed_soft_delta = 20, --- 软增加
+            y = 1.5,
+            tail_time = 0.2,
+            bank_build = "chemist_buff__fx_spriter_damage",
+            bloom_off = true,
+            clockwise = true,
+        })
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

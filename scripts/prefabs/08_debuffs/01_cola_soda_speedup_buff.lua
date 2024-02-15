@@ -1,4 +1,9 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------
+    local assets =
+    {
+        Asset("ANIM", "anim/chemist_buff__fx_spriter_cola.zip"),
+    }
+------------------------------------------------------------------------------------------------------------------------------------------------
 
 local function OnAttached(inst,target) -- 玩家得到 debuff 的瞬间。 穿越洞穴、重新进存档 也会执行。
     inst.entity:SetParent(target.entity)
@@ -7,6 +12,31 @@ local function OnAttached(inst,target) -- 玩家得到 debuff 的瞬间。 穿�
     -----------------------------------------------------    
 
         player.components.locomotor:SetExternalSpeedMultiplier(inst, "chemist_buff_cola_soda_speedup", TUNING.CHEMIST_YUE_LING_DEBUGGING_MODE and 2 or 1.2)
+
+        -----------------------------------------------------
+        ---- 特效
+            local fx_spriter = SpawnPrefab("chemist_buff__fx_spriter")
+            inst.fx_spriter = fx_spriter
+            fx_spriter:PushEvent("Set",{
+                player = ThePlayer,  --- 跟随目标
+                range = 3,           --- 环绕点半径
+                point_num = 15,       --- 环绕点
+                -- new_pt_time = 0.5 ,    --- 新的跟踪点时间
+                -- speed = 8,           --- 强制固定速度
+                speed_mult = 2,      --- 速度倍速
+                next_pt_dis = 0.5,      --- 触碰下一个点的距离
+                speed_soft_delta = 20, --- 软增加
+                y = 1.5,
+                tail_time = 0.2,
+                bank_build = "chemist_buff__fx_spriter_cola",
+                bloom_off = true,
+                clockwise = math.random(100) < 50,
+                scale = 0.7,
+            })
+            inst:ListenForEvent("onremove", function()
+                fx_spriter:Remove()
+            end)
+        -----------------------------------------------------
 
     -----------------------------------------------------
 end
@@ -22,6 +52,9 @@ local function OnUpdate(inst)
     if time <= 0 then
         player.components.locomotor:RemovePredictExternalSpeedMultiplier(inst, "chemist_buff_cola_soda_speedup")
         inst:Remove()
+        if inst.fx_spriter then
+            inst.fx_spriter:Remove()
+        end
     end
 
 end
@@ -60,4 +93,4 @@ local function fn()
     return inst
 end
 
-return Prefab("chemist_buff_cola_soda_speedup", fn)
+return Prefab("chemist_buff_cola_soda_speedup", fn,assets)

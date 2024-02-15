@@ -66,7 +66,7 @@ end
 -- 这里的的函数只在主机执行  一般组件之类的都写在这里
 local master_postinit = function(inst)
 	-- 人物音效
-	inst.soundsname = "wilson"
+	inst.soundsname = "wendy"
 
 	
 	-- 三维	

@@ -80,13 +80,13 @@
         TECH.NONE, --- TECH.NONE
         {
             nounlock=true,
-            -- no_deconstruction=true,
+            no_deconstruction=true,
             -- builder_tag = "chemist_yue_ling",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
             placer = "chemist_building_pharmaceutical_manufacturing_station_placer",                       -------- 建筑放置器        
             atlas = "images/map_icons/chemist_building_pharmaceutical_manufacturing_station.xml",
             image = "chemist_building_pharmaceutical_manufacturing_station.tex",
         },
-        {"CHARACTER"}
+        {"CHARACTER","STRUCTURES"}
     )
     RemoveRecipeFromFilter("chemist_building_pharmaceutical_manufacturing_station","MODS")                       -- -- 在【模组物品】标签里移除这个。
 --------------------------------------------------------------------------------------------------------------------------------------------
