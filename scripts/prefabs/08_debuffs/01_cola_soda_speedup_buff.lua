@@ -18,7 +18,7 @@ local function OnAttached(inst,target) -- 玩家得到 debuff 的瞬间。 穿�
             local fx_spriter = SpawnPrefab("chemist_buff__fx_spriter")
             inst.fx_spriter = fx_spriter
             fx_spriter:PushEvent("Set",{
-                player = ThePlayer,  --- 跟随目标
+                player = player,  --- 跟随目标
                 range = 3,           --- 环绕点半径
                 point_num = 15,       --- 环绕点
                 -- new_pt_time = 0.5 ,    --- 新的跟踪点时间

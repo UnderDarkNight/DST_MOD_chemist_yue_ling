@@ -134,7 +134,7 @@ local function fn3()
     inst.components.equippable:SetOnUnequip(function(_,owner)
         inst.components.container:Close(owner)
     end)
-    -- inst.components.equippable.retrictedtag = "chemist_yue_ling"
+    inst.components.equippable.retrictedtag = "chemist_yue_ling"
 
     -----------------------------------------------------------------------
     ---- 保鲜
