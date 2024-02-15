@@ -17,6 +17,7 @@ return function(inst)
         "prefabs/01_character/yue_ling_er_key_modules/02_level_sys",                    ---- 等级系统
         "prefabs/01_character/yue_ling_er_key_modules/03_double_dropper",                    ---- 双倍掉落检查
 
+        "prefabs/01_character/yue_ling_er_key_modules/04_00_skill_points_init",                     ---- 技能册加点保存
         "prefabs/01_character/yue_ling_er_key_modules/04_01_skill_point_page_1",                    ---- 技能册 第 1 页 执行函数
         "prefabs/01_character/yue_ling_er_key_modules/04_02_skill_point_page_2",                    ---- 技能册 第 2 页 执行函数
 

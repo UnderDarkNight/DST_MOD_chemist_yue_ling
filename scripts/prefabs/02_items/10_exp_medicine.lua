@@ -122,6 +122,14 @@ local function fn_lv2()
     inst.AnimState:SetBuild("chemist_item_exp_medicine2")
     inst.AnimState:PlayAnimation("idle")
 
+    inst:DoTaskInTime(0.5,function()
+        local replica_com = inst.replica.chemist_com_drinkable or inst.replica._.chemist_com_drinkable
+        if replica_com then
+            replica_com:SetLayer("horn01")
+            replica_com:SetBuild("chemist_item_exp_medicine2")
+        end
+    end)
+
     if not TheWorld.ismastersim then
         return inst
     end
@@ -147,7 +155,14 @@ local function fn_lv3()
     inst.AnimState:SetBank("chemist_item_exp_medicine3")
     inst.AnimState:SetBuild("chemist_item_exp_medicine3")
     inst.AnimState:PlayAnimation("idle")
-
+    inst:DoTaskInTime(0.5,function()
+        local replica_com = inst.replica.chemist_com_drinkable or inst.replica._.chemist_com_drinkable
+        if replica_com then
+            replica_com:SetLayer("horn01")
+            replica_com:SetBuild("chemist_item_exp_medicine3")
+        end
+    end)
+    
     if not TheWorld.ismastersim then
         return inst
     end

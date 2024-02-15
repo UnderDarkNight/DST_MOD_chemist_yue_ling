@@ -116,30 +116,32 @@ return function(inst)
         end
     --------------------------------------------------------------------------------
     ---- 换角色的时候保存玩家等级.
-        inst:ListenForEvent("ms_playerreroll",function()    --- 通过绚丽之门选角色的时候触发
-            local current_level = inst.replica.chemist_com_level_sys:GetCurrentLevel()
-            local current_exp = inst.replica.chemist_com_level_sys:GetCurrentExp()
-            local data = {
-                current_level = current_level,
-                current_exp = current_exp,
-            }
-            local index = "chemist_com_level_sys."..tostring(inst.userid)
-            TheWorld.components.chemist_com_database:Set(index,data)
-        end)
-        inst:DoTaskInTime(0,function()
-            local index = "chemist_com_level_sys."..tostring(inst.userid)
-            local data = TheWorld.components.chemist_com_database:Get(index)
-            if data and inst.components.chemist_com_level_sys.current_level == 0 then
-                inst.components.chemist_com_level_sys:LevelUp(data.current_level or 0)
-                inst.components.chemist_com_level_sys:Add_Exp(data.current_exp or 0)
-                print("fake error : 玩家等级重新更新到：",data.current_level,data.current_exp)
+        if not TheWorld:HasTag("cave") then
+            inst:ListenForEvent("ms_playerreroll",function()    --- 通过绚丽之门选角色的时候触发
+                local current_level = inst.replica.chemist_com_level_sys:GetCurrentLevel()
+                local current_exp = inst.replica.chemist_com_level_sys:GetCurrentExp()
+                local data = {
+                    current_level = current_level,
+                    current_exp = current_exp,
+                }
+                local index = "chemist_com_level_sys."..tostring(inst.userid)
+                TheWorld.components.chemist_com_database:Set(index,data)
+            end)
+            inst:DoTaskInTime(0,function()
+                local index = "chemist_com_level_sys."..tostring(inst.userid)
+                local data = TheWorld.components.chemist_com_database:Get(index)
+                if data and inst.components.chemist_com_level_sys.current_level == 0 then
+                    inst.components.chemist_com_level_sys:LevelUp(data.current_level or 0)
+                    inst.components.chemist_com_level_sys:Add_Exp(data.current_exp or 0)
+                    print("fake error : 玩家等级重新更新到：",data.current_level,data.current_exp)
 
-                inst.components.health:SetPercent(1)
-                inst.components.hunger:SetPercent(1)
-                inst.components.sanity:SetPercent(1)
-            end
-            TheWorld.components.chemist_com_database:Set(index,nil)
-        end)
+                    inst.components.health:SetPercent(1)
+                    inst.components.hunger:SetPercent(1)
+                    inst.components.sanity:SetPercent(1)
+                end
+                TheWorld.components.chemist_com_database:Set(index,nil)
+            end)
+        end
     --------------------------------------------------------------------------------
 
 end
