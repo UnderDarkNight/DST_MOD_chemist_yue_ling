@@ -42,9 +42,14 @@ local function OnAttached(inst,target) -- 玩家得到 debuff 的瞬间。 穿�
 
                 end
 
+                target:DoTaskInTime(0,function()
+                    if target:IsValid() and target.components.pickable:CanBeFertilized() then
+                        target.components.pickable:Fertilize(inst)
+                    end
+                end)
                 return old_pick_fn(self, ...)
             end
-
+            -- print("info pickable hooked 02_plants_can_not_be_barren")
     end
 
 
@@ -102,12 +107,11 @@ local function fn()
     -- inst:DoPeriodicTask(1, OnUpdate, nil, TheWorld.ismastersim)  -- 定时执行任务
 
 
-    inst:AddComponent("fertilizer")    
-    inst.components.fertilizer.fertilizervalue = TUNING.TREEGROWTH_FERTILIZE
-    inst.components.fertilizer.soil_cycles = TUNING.TREEGROWTH_SOILCYCLES
-    inst.components.fertilizer.withered_cycles = TUNING.TREEGROWTH_WITHEREDCYCLES
-    inst.components.fertilizer:SetNutrients(FERTILIZER_DEFS.treegrowthsolution.nutrients)
 
+    inst:AddComponent("fertilizer")
+    inst.components.fertilizer.fertilizervalue = 100
+    inst.components.fertilizer.soil_cycles = 100
+    inst.components.fertilizer:SetNutrients(100,100,100)
 
     return inst
 end
