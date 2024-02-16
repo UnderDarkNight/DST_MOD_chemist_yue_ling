@@ -21,21 +21,13 @@ return function(inst)
             local beard_container = inst.replica.inventory:GetEquippedItem(EQUIPSLOTS.BEARD)
             if beard_container then
                 beard_container.components.container:Open(inst)
+            else
+                inst.components.inventory:Equip(SpawnPrefab("chemist_other_beard_container"))
             end
         end
         inst:ListenForEvent("unequip",beard_container_open_fn)
         inst:ListenForEvent("equip",beard_container_open_fn)
 
 
-        ------------------------------------------------------------------------------------------
-        --- 玩家重选的时候删除
-            -- local beard_container = inst.replica.inventory:GetEquippedItem(EQUIPSLOTS.BEARD)
-            -- if not beard_container then
-            --     inst:ListenForEvent("ms_playerreroll",function()
-            --         beard_container.components.container:DropEverything()
-            --         beard_container:Remove()
-            --     end)
-            -- end
-        ------------------------------------------------------------------------------------------
     end)
 end

@@ -69,7 +69,7 @@ local assets =
             -- inst.components.container.openlimit = 1  ---- 限制1个人打开
             container_Widget_change(inst.components.container)
             -- inst.components.container:WidgetSetup("beard_sack_1")
-
+            -- inst.components.container.stay_open_on_hide = true
 
             -------------------------------------------------------------------------------------------------
             --- 往放进去的东西发送事件
@@ -123,10 +123,12 @@ local function fn3()
 
     inst:AddComponent("inventoryitem")
     inst.components.inventoryitem.cangoincontainer = false
+    inst.components.inventoryitem.keepondeath = true --- 死亡不掉落
 
     inst:AddComponent("equippable")
     inst.components.equippable.equipslot = EQUIPSLOTS.BEARD
-    inst.components.equippable:SetPreventUnequipping(true)
+    inst.components.equippable:SetPreventUnequipping(true)  --- 死亡不掉落
+
     inst.components.equippable:SetOnEquip(function(_,owner)
         inst.components.container:Open(owner)
         -- inst.components.container:Close(owner)
@@ -140,43 +142,34 @@ local function fn3()
     ---- 保鲜
 
     -----------------------------------------------------------------------
+    ---
+        local function DropEverythingAndRemove()
+            if inst:IsValid() then
+                inst.components.container:Close()
+                inst.components.container:DropEverything()
+                inst:Remove()
+            end
+        end
+    -----------------------------------------------------------------------
     ---- 被其他MOD打掉落的时候处理
         inst:ListenForEvent("unequipped",function(_,_table)
-            if _table and _table.owner then
-                inst:DoTaskInTime(0,function()
-                    _table.owner.components.inventory:Equip(inst)
-                end)
-            end
+            -- inst.components.container:DropEverything()
+            -- inst:Remove()
+            DropEverythingAndRemove()
         end)
     -----------------------------------------------------------------------
     ---- 换角色的时候移除
         inst:ListenForEvent("equipped",function(_,_table)
             if _table and _table.owner then
-                _table.owner:ListenForEvent("ms_playerreroll",function()
-                    if inst:IsValid() then
-                        inst.components.container:DropEverything()
-                        inst:Remove()
-                    end
+                _table.owner:ListenForEvent("ms_playerreroll",DropEverythingAndRemove)
+                _table.owner:ListenForEvent("death",function()
+                    -- inst.components.container:Close()
+                    DropEverythingAndRemove()
                 end)
             end
         end)
     -----------------------------------------------------------------------
-        -- inst:ListenForEvent("itemget",function(_,_table)
-        --     if _table and _table.item then
-        --         local owner = inst.components.inventoryitem:GetGrandOwner()
-        --         _table.item.owner = owner
-        --         _table.item.container_inst = inst
-        --     end
-        -- end)
-    -----------------------------------------------------------------------
-        -- inst:ListenForEvent("open_widget",function()
-        --     if inst.components.inventoryitem:GetGrandOwner() then
-        --         inst.components.container:Open(inst.components.inventoryitem:GetGrandOwner())
-        --     end
-        -- end)
-        -- inst:ListenForEvent("item_equiped",function()
-        --     inst:PushEvent("open_widget")
-        -- end)
+
     -----------------------------------------------------------------------
     MakeHauntableLaunchAndDropFirstItem(inst)
 

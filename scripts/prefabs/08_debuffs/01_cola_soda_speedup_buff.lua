@@ -38,12 +38,23 @@ local function OnAttached(inst,target) -- 玩家得到 debuff 的瞬间。 穿�
                 fx_spriter:Remove()
             end)
         -----------------------------------------------------
+        ---- 死亡
+            player:ListenForEvent("death",function()
+                inst.components.debuff:OnDetach()
+
+            end)
+        -----------------------------------------------------
 
     -----------------------------------------------------
 end
 
 local function OnDetached(inst) -- 被外部命令  inst:RemoveDebuff 移除debuff 的时候 执行
     local player = inst.entity:GetParent()
+    player.components.locomotor:RemovePredictExternalSpeedMultiplier(inst, "chemist_buff_cola_soda_speedup")
+    if inst.fx_spriter then
+        inst.fx_spriter:Remove()
+    end
+    inst:Remove()
 end
 
 local function OnUpdate(inst)
@@ -51,11 +62,7 @@ local function OnUpdate(inst)
 
     local time = player.components.chemist_com_database:Add("chemist_buff_cola_soda_speedup.time",-1)
     if time <= 0 then
-        player.components.locomotor:RemovePredictExternalSpeedMultiplier(inst, "chemist_buff_cola_soda_speedup")
-        inst:Remove()
-        if inst.fx_spriter then
-            inst.fx_spriter:Remove()
-        end
+        inst.components.debuff:OnDetach()
     end
 
 end

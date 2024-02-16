@@ -173,7 +173,8 @@ local flg,error_code = pcall(function()
     ----------------------------------------------------------------------------------------------------------------
     ---- 
       
-        -- local beard_container = ThePlayer.replica.inventory:GetEquippedItem(EQUIPSLOTS.BEARD)
+        local beard_container = ThePlayer.replica.inventory:GetEquippedItem(EQUIPSLOTS.BEARD)
+        beard_container.components.container:Open(ThePlayer)
         -- print(beard_container)
         -- beard_container.components.container:Close()
     ----------------------------------------------------------------------------------------------------------------
@@ -217,7 +218,7 @@ local flg,error_code = pcall(function()
             -- TheWorld.components.farming_manager:AddTileNutrients(tile_x, tile_z,100,100,100)
 
 
-            TheWorld.components.farming_manager:AddSoilMoistureAtPoint(x, y, z, 100)
+            -- TheWorld.components.farming_manager:AddSoilMoistureAtPoint(x, y, z, 100)
 
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
