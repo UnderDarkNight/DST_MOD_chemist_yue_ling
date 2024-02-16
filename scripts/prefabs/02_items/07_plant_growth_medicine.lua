@@ -14,6 +14,10 @@
                 --helper function for book_gardening
                 local function MaximizePlant(inst)
                     if inst.components.farmplantstress ~= nil then
+                        inst.components.farmplantstress.GetFinalStressState  = function()   --- 压力值最小
+                            return FARM_PLANT_STRESS.NONE
+                        end
+                        inst.force_oversized = true --- 强制巨大化
                         if inst.components.farmplanttendable then
                             inst.components.farmplanttendable:TendTo()
                         end
