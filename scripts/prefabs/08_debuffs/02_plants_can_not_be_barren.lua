@@ -43,7 +43,7 @@ local function OnAttached(inst,target) -- 玩家得到 debuff 的瞬间。 穿�
                 end
 
                 target:DoTaskInTime(0,function()
-                    if target:IsValid() and target.components.pickable:CanBeFertilized() then
+                    if target:IsValid() and target.components.pickable and target.components.pickable:CanBeFertilized() then
                         target.components.pickable:Fertilize(inst)
                     end
                 end)
