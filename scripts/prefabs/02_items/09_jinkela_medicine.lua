@@ -37,11 +37,30 @@ local assets =
     Asset( "ATLAS", "images/inventoryimages/chemist_item_jinkela_medicine.xml" ),
 }
 
+
+
+local prefabs =
+{
+
+}
+
+local FERTILIZER_DEFS = require("prefabs/fertilizer_nutrient_defs").FERTILIZER_DEFS
+
+
+local function GetFertilizerKey(inst)
+    return "poop"
+end
+
+local function fertilizerresearchfn(inst)
+    return inst:GetFertilizerKey()
+end
+
 local function fn()
     local inst = CreateEntity()
 
     inst.entity:AddTransform()
     inst.entity:AddAnimState()
+    inst.entity:AddSoundEmitter()
     inst.entity:AddNetwork()
 
     MakeInventoryPhysics(inst)
@@ -49,17 +68,16 @@ local function fn()
     inst.AnimState:SetBank("chemist_item_jinkela_medicine")
     inst.AnimState:SetBuild("chemist_item_jinkela_medicine")
     inst.AnimState:PlayAnimation("idle")
-    
-    -- inst.pickupsound = "wood"
-    inst:AddTag("medicine_bottle")
 
-    -- inst:AddTag("quick_drink")
+    MakeInventoryFloatable(inst, "med", 0.1, 0.73)
+    MakeDeployableFertilizerPristine(inst)
 
-    MakeInventoryFloatable(inst, "med", 0.1, 0.75)
+    inst:AddTag("fertilizerresearchable")
+    inst:AddTag("fertilizer")
+
+    inst.GetFertilizerKey = GetFertilizerKey
 
     inst.entity:SetPristine()
-
-
     ---------------------------------------------------------------------------------------------------------
     --- 物品使用.
         if TheWorld.ismastersim then
@@ -95,45 +113,71 @@ local function fn()
         end)
 
     ---------------------------------------------------------------------------------------------------------
-
     if not TheWorld.ismastersim then
         return inst
     end
 
-
-
-
-    MakeHauntableLaunchAndIgnite(inst)
-
-    ---------------------
-
     inst:AddComponent("inspectable")
 
     inst:AddComponent("inventoryitem")
-    -- inst.components.inventoryitem:ChangeImageName("chemist_equipment_chemical_launching_gun")
     inst.components.inventoryitem.imagename = "chemist_item_jinkela_medicine"
     inst.components.inventoryitem.atlasname = "images/inventoryimages/chemist_item_jinkela_medicine.xml"
 
     inst:AddComponent("stackable")
-    -- inst.components.stackable.maxsize = 10
 
-    -------------------------------------------------------------------
-    --- 落水影子
-        -- local function shadow_init(inst)
-        --     if inst:IsOnOcean(false) then       --- 如果在海里（不包括船）
-        --         inst.AnimState:Hide("SHADOW")
-        --         -- inst.AnimState:PlayAnimation("water")
-        --     else                                
-        --         inst.AnimState:Show("SHADOW")
-        --         -- inst.AnimState:PlayAnimation("idle")
-        --     end
-        -- end
-        -- inst:ListenForEvent("on_landed",shadow_init)
-        -- shadow_init(inst)
-    -------------------------------------------------------------------
+    inst:AddComponent("fertilizerresearchable")
+    inst.components.fertilizerresearchable:SetResearchFn(fertilizerresearchfn)
 
-    -------------------------------------------------------------------
+
+    inst.flies = inst:SpawnChild("flies")
+
+    MakeHauntableLaunchAndIgnite(inst)
+
+    ---------------------------------------------------------------------------------
+    ---- 
+        --[[
+
+            local function fertilizer_ondeploy(inst, pt, deployer)
+                local tile_x, tile_z = TheWorld.Map:GetTileCoordsAtPoint(pt:Get())
+                local nutrients = inst.components.fertilizer.nutrients
+                TheWorld.components.farming_manager:AddTileNutrients(tile_x, tile_z, nutrients[1], nutrients[2], nutrients[3])
+
+                inst.components.fertilizer:OnApplied(deployer)
+                if deployer ~= nil and deployer.SoundEmitter ~= nil and inst.components.fertilizer.fertilize_sound ~= nil then
+                    deployer.SoundEmitter:PlaySound(inst.components.fertilizer.fertilize_sound)
+                end
+            end
+
+        ]]--
+        MakeDeployableFertilizer(inst)
+        inst.components.deployable.ondeploy = function(inst, pt, deployer)
+            inst.SoundEmitter:PlaySound("dontstarve/common/fertilize")
+            inst.components.stackable:Get():Remove()
+
+            -------------------------------------------------------------------------------------------
+            ---- 给作物上buff
+                local mid_pt = Vector3(TheWorld.Map:GetTileCenterPoint(pt.x,0,pt.z))
+                local musthavetags = {"chemist_tag.plants"}
+                local canthavetags = {"chemist_buff_can_not_be_barren","burnt"}
+                local ents = TheSim:FindEntities(mid_pt.x, 0, mid_pt.z, 3, musthavetags, canthavetags)
+                for k, temp_plant in pairs(ents) do
+                    fertilize2target(temp_plant)
+                end
+            -------------------------------------------------------------------------------------------
+            ---- 给田地施肥
+                local tile_x, tile_z = TheWorld.Map:GetTileCoordsAtPoint(mid_pt.x,0,mid_pt.z)
+                -- TheWorld.components.farming_manager:SetTileNutrients(tile_x, tile_z,0,0,0)
+                TheWorld.components.farming_manager:AddTileNutrients(tile_x, tile_z,100,100,100)
+
+            -------------------------------------------------------------------------------------------
+            ---- 添加水分
+                TheWorld.components.farming_manager:AddSoilMoistureAtPoint(mid_pt.x, 0, mid_pt.z, 100)
+            -------------------------------------------------------------------------------------------
+
+            -- SpawnPrefab("log").Transform:SetPosition(mid_pt.x, 0, mid_pt.z)
+        end
+    ---------------------------------------------------------------------------------
     return inst
 end
 
-return Prefab("chemist_item_jinkela_medicine", fn, assets)
+return Prefab("chemist_item_jinkela_medicine", fn, assets, prefabs)

@@ -178,27 +178,47 @@ local flg,error_code = pcall(function()
         -- beard_container.components.container:Close()
     ----------------------------------------------------------------------------------------------------------------
     ----
-        if ThePlayer.__spriter then
-            ThePlayer.__spriter:Remove()
-        end
+        -- if ThePlayer.__spriter then
+        --     ThePlayer.__spriter:Remove()
+        -- end
 
-        ThePlayer.__spriter = SpawnPrefab("chemist_buff__fx_spriter")
-        ThePlayer.__spriter:PushEvent("Set",{
-            player = ThePlayer,  --- 跟随目标
-            range = 3,           --- 环绕点半径
-            point_num = 15,       --- 环绕点
-            -- new_pt_time = 0.5 ,    --- 新的跟踪点时间
-            -- speed = 8,           --- 强制固定速度
-            speed_mult = 2,      --- 速度倍速
-            next_pt_dis = 0.5,      --- 触碰下一个点的距离
-            speed_soft_delta = 20, --- 软增加
-            y = 1.5,
-            tail_time = 0.2,
-            bank_build = "chemist_buff__fx_spriter_damage",
-            bloom_off = true,
-            clockwise = true,
-            only_follow = true,
-        })
+        -- ThePlayer.__spriter = SpawnPrefab("chemist_buff__fx_spriter")
+        -- ThePlayer.__spriter:PushEvent("Set",{
+        --     player = ThePlayer,  --- 跟随目标
+        --     range = 3,           --- 环绕点半径
+        --     point_num = 15,       --- 环绕点
+        --     -- new_pt_time = 0.5 ,    --- 新的跟踪点时间
+        --     -- speed = 8,           --- 强制固定速度
+        --     speed_mult = 2,      --- 速度倍速
+        --     next_pt_dis = 0.5,      --- 触碰下一个点的距离
+        --     speed_soft_delta = 20, --- 软增加
+        --     y = 1.5,
+        --     tail_time = 0.2,
+        --     bank_build = "chemist_buff__fx_spriter_damage",
+        --     bloom_off = true,
+        --     clockwise = true,
+        --     only_follow = true,
+        -- })
+    ----------------------------------------------------------------------------------------------------------------
+    --- 田地施肥测试
+
+        -- local function fertilizer_ondeploy(inst, pt, deployer)
+        --     local tile_x, tile_z = TheWorld.Map:GetTileCoordsAtPoint(pt:Get())
+        --     local nutrients = inst.components.fertilizer.nutrients
+        --     TheWorld.components.farming_manager:AddTileNutrients(tile_x, tile_z, nutrients[1], nutrients[2], nutrients[3])
+
+        --     inst.components.fertilizer:OnApplied(deployer)
+        --     if deployer ~= nil and deployer.SoundEmitter ~= nil and inst.components.fertilizer.fertilize_sound ~= nil then
+        --         deployer.SoundEmitter:PlaySound(inst.components.fertilizer.fertilize_sound)
+        --     end
+        -- end
+            -- local tile_x, tile_z = TheWorld.Map:GetTileCoordsAtPoint(x,y,z)
+            -- TheWorld.components.farming_manager:SetTileNutrients(tile_x, tile_z,0,0,0)
+            -- TheWorld.components.farming_manager:AddTileNutrients(tile_x, tile_z,100,100,100)
+
+
+            TheWorld.components.farming_manager:AddSoilMoistureAtPoint(x, y, z, 100)
+
     ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)

@@ -234,6 +234,7 @@ local function fn()
             --     -- 1-2
             --     return 2
             -- end
+            inst.components.preserver.perish_rate_multiplier = 1
             inst:ListenForEvent("refresh.preserver",function()
                 local current_num = inst.components.chemist_com_database:Add("bluegem",0)
                 -- print("info 蓝宝石个数",current_num)
