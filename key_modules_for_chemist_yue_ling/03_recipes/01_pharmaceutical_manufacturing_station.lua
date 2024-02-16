@@ -169,16 +169,16 @@
         image = "chemist_item_cola_soda.tex",
     })
 
---------------------------------------------------------------------------------------------------------------------------------------------
---- 植物生长药剂 
---------------------------------------------------------------------------------------------------------------------------------------------
-    Add_Recipe_2_Machine({
-        prefab = "chemist_item_plant_growth_medicine",
-        Ingredients = { Ingredient("glommerfuel", 1) , Ingredient("spoiled_food", 1) , Ingredient("poop", 1), Ingredient("chemist_item_empty_bottle", 1)  },
-        -- builder_tag = "fwd_in_pdt_test33333333333366666",
-        atlas = "images/inventoryimages/chemist_item_plant_growth_medicine.xml",
-        image = "chemist_item_plant_growth_medicine.tex",
-    })
+-- --------------------------------------------------------------------------------------------------------------------------------------------
+-- --- 植物生长药剂 
+-- --------------------------------------------------------------------------------------------------------------------------------------------
+--     Add_Recipe_2_Machine({
+--         prefab = "chemist_item_plant_growth_medicine",
+--         Ingredients = { Ingredient("glommerfuel", 1) , Ingredient("spoiled_food", 1) , Ingredient("poop", 1), Ingredient("chemist_item_empty_bottle", 1)  },
+--         -- builder_tag = "fwd_in_pdt_test33333333333366666",
+--         atlas = "images/inventoryimages/chemist_item_plant_growth_medicine.xml",
+--         image = "chemist_item_plant_growth_medicine.tex",
+--     })
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 --- 攻击药剂 

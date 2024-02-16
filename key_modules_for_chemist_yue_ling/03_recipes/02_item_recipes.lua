@@ -168,6 +168,25 @@
     )
     RemoveRecipeFromFilter("chemist_item_jinkela_medicine","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
+--------------------------------------------------------------------------------------------------------------------------------------------
+----植物生长药剂
+--------------------------------------------------------------------------------------------------------------------------------------------
+    AddRecipeToFilter("chemist_item_plant_growth_medicine","CHARACTER")     ---- 添加物品到目标标签
+    AddRecipe2(
+        "chemist_item_plant_growth_medicine",            --  --  inst.prefab  实体名字
+        { Ingredient("glommerfuel", 1) , Ingredient("spoiled_food", 1) , Ingredient("poop", 1), Ingredient("chemist_item_empty_bottle", 1)  },
+        TECH.NONE, 
+        {
+            -- no_deconstruction=true,
+            builder_tag = "chemist_yue_ling",
+            atlas = "images/inventoryimages/chemist_item_plant_growth_medicine.xml",
+            -- atlas = GetInventoryItemAtlas("chemist_yue_ling_item_blissful_memory.tex"),
+            image = "chemist_item_plant_growth_medicine.tex",
+        },
+        {"CHARACTER"}
+    )
+    RemoveRecipeFromFilter("chemist_item_plant_growth_medicine","MODS")                       -- -- 在【模组物品】标签里移除这个。
+
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 ---- 智慧果
