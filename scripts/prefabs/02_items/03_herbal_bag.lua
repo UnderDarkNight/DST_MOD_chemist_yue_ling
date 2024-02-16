@@ -25,6 +25,11 @@ local assets =
             if recipe then
                 return true
             end
+
+            if cooking.IsCookingIngredient[food_base_prefab] then --- 可烹饪的食物
+                return true
+            end
+
             return false
 
         end)
@@ -158,7 +163,7 @@ local function fn()
             --     --- 新鲜值 降低倍数
             --     return 2
             -- end
-            inst.components.preserver.perish_rate_multiplier = 0.5 -- 腐烂速度减半
+            inst.components.preserver.perish_rate_multiplier = -1.1
         end
     ------------------------------------------------------------------------------------------------------------
 

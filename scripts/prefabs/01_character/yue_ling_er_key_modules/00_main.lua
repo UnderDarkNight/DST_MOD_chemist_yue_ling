@@ -33,6 +33,8 @@ return function(inst)
 
         "prefabs/01_character/yue_ling_er_key_modules/10_key_event_listener",                    ---- 快捷键
 
+        "prefabs/01_character/yue_ling_er_key_modules/11_double_pick",                    ---- 采集双倍
+
     }
     for k, lua_addr in pairs(modules) do
         local temp_fn = require(lua_addr)
