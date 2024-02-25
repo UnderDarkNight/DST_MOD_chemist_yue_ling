@@ -304,7 +304,7 @@ local function fn()
     inst.components.inventoryitem.imagename = "chemist_equipment_sublime_backpack"
     inst.components.inventoryitem.atlasname = "images/inventoryimages/chemist_equipment_sublime_backpack.xml"
     
-    inst.components.inventoryitem.cangoincontainer = true
+    inst.components.inventoryitem.cangoincontainer = false
 
     inst:AddComponent("equippable")
 
