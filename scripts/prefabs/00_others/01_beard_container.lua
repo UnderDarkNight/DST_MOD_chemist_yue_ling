@@ -130,11 +130,19 @@ local function fn3()
     inst.components.equippable:SetPreventUnequipping(true)  --- 死亡不掉落
 
     inst.components.equippable:SetOnEquip(function(_,owner)
-        inst.components.container:Open(owner)
+        if owner and owner.prefab == "chemist_yue_ling" then
+            inst.components.container:Open(owner)
+        else
+            inst:Remove()
+        end
         -- inst.components.container:Close(owner)
     end)
     inst.components.equippable:SetOnUnequip(function(_,owner)
-        inst.components.container:Close(owner)
+        if owner and owner.prefab == "chemist_yue_ling" then
+            inst.components.container:Close(owner)
+        else
+            inst:Remove()
+        end
     end)
     inst.components.equippable.retrictedtag = "chemist_yue_ling"
 
@@ -159,16 +167,20 @@ local function fn3()
         end)
     -----------------------------------------------------------------------
     ---- 换角色的时候移除
-        inst:ListenForEvent("equipped",function(_,_table)
-            if _table and _table.owner then
+        inst:ListenForEvent("equipped",function(_,_table)            
+            if _table and _table.owner and _table.owner.prefab == "chemist_yue_ling" then
                 _table.owner:ListenForEvent("ms_playerreroll",DropEverythingAndRemove)
                 _table.owner:ListenForEvent("death",function()
                     -- inst.components.container:Close()
                     DropEverythingAndRemove()
                 end)
+            else
+                inst:Remove()
             end
         end)
     -----------------------------------------------------------------------
+    ----
+        inst:ListenForEvent("on_landed",DropEverythingAndRemove)
 
     -----------------------------------------------------------------------
     MakeHauntableLaunchAndDropFirstItem(inst)
