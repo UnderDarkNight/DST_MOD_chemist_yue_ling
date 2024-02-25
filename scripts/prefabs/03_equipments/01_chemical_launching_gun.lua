@@ -211,7 +211,7 @@ local function fn()
                 return
             end
             local item = _table.prev_item
-            item:AddTag("in_gun")
+            item:RemoveTag("in_gun")
         end)
     ---------------------------------------------------------------------
     return inst

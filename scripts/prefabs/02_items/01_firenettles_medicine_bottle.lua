@@ -77,6 +77,9 @@ local function fn()
 
                 replica_com:SetText(inst.prefab,STRINGS.ACTIONS.CHANGE_TACKLE.AMMO)
                 replica_com:SetTestFn(function(inst, player,right_click)
+                    if inst:HasTag("in_gun") then
+                        return false
+                    end
                     local weapon = player.replica.combat:GetWeapon()
                     if inst.replica.inventoryitem:IsGrandOwner(player) 
                         and weapon and weapon:HasTag("chemist_equipment_chemical_launching_gun")
