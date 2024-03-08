@@ -8,7 +8,9 @@
     local function OnAttached(inst,target) -- 玩家得到 debuff 的瞬间。 穿越洞穴、重新进存档 也会执行。
         inst.entity:SetParent(target.entity)
         inst.Network:SetClassifiedTarget(target)
-        local player = inst.entity:GetParent()
+        -- local player = inst.entity:GetParent()
+        local player = target
+        inst.target = target
         -----------------------------------------------------
             pcall(function()
                 
@@ -56,19 +58,24 @@
     end
 
     local function OnDetached(inst) -- 被外部命令  inst:RemoveDebuff 移除debuff 的时候 执行
-        local player = inst.entity:GetParent()
-        player.components.combat.externaldamagemultipliers:RemoveModifier(inst)
-        inst:Remove()
-        if TUNING.CHEMIST_YUE_LING_DEBUGGING_MODE then
-            print("攻击药水 计时结束")
+        -- local player = inst.entity:GetParent()
+        local player = inst.target
+        if player then
+            player.components.combat.externaldamagemultipliers:RemoveModifier(inst)
+            if TUNING.CHEMIST_YUE_LING_DEBUGGING_MODE then
+                print("攻击药水 计时结束")
+            end
         end
         if inst.fx_spriter then
             inst.fx_spriter:Remove()
+            inst.fx_spriter = nil
         end
+        inst:Remove()
     end
 
     local function OnUpdate(inst)
-        local player = inst.entity:GetParent()
+        -- local player = inst.entity:GetParent()
+        local player = inst.target
         pcall(function()
                 local timer =  player.components.chemist_com_database:Add("chemist_yue_ling_buff_attack_power_multiplier_medicine.timer",-1)
                 if timer <= 0 then

@@ -3,7 +3,9 @@
 local function OnAttached(inst,target) -- 玩家得到 debuff 的瞬间。 穿越洞穴、重新进存档 也会执行。
     inst.entity:SetParent(target.entity)
     inst.Network:SetClassifiedTarget(target)
-    local player = inst.entity:GetParent()
+    -- local player = inst.entity:GetParent()
+    local player = target
+    inst.target = target
     -----------------------------------------------------
     -- local old_mult = player.components.builder.ingredientmod or 1
     -- player.components.builder.ingredientmod = 0

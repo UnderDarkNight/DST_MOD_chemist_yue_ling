@@ -9,6 +9,7 @@ local function OnAttached(inst,target) -- 玩家得到 debuff 的瞬间。 穿�
     inst.entity:SetParent(target.entity)
     inst.Network:SetClassifiedTarget(target)
     local player = inst.entity:GetParent()
+    inst.target = target
     -----------------------------------------------------    
 
         player.components.locomotor:SetExternalSpeedMultiplier(inst, "chemist_buff_cola_soda_speedup", TUNING.CHEMIST_YUE_LING_DEBUGGING_MODE and 2 or 1.2)
@@ -50,16 +51,21 @@ local function OnAttached(inst,target) -- 玩家得到 debuff 的瞬间。 穿�
 end
 
 local function OnDetached(inst) -- 被外部命令  inst:RemoveDebuff 移除debuff 的时候 执行
-    local player = inst.entity:GetParent()
-    player.components.locomotor:RemovePredictExternalSpeedMultiplier(inst, "chemist_buff_cola_soda_speedup")
+    -- local player = inst.entity:GetParent()
+    local player = inst.target
+    if player then
+        player.components.locomotor:RemovePredictExternalSpeedMultiplier(inst, "chemist_buff_cola_soda_speedup")
+    end
     if inst.fx_spriter then
         inst.fx_spriter:Remove()
+        inst.fx_spriter = nil
     end
     inst:Remove()
 end
 
 local function OnUpdate(inst)
-    local player = inst.entity:GetParent()
+    -- local player = inst.entity:GetParent()
+    local player = inst.target
 
     local time = player.components.chemist_com_database:Add("chemist_buff_cola_soda_speedup.time",-1)
     if time <= 0 then

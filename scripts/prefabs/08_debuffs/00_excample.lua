@@ -3,18 +3,23 @@
 local function OnAttached(inst,target) -- 玩家得到 debuff 的瞬间。 穿越洞穴、重新进存档 也会执行。
     inst.entity:SetParent(target.entity)
     inst.Network:SetClassifiedTarget(target)
-    local player = inst.entity:GetParent()
+    -- local player = inst.entity:GetParent()
+    inst.target = target
+    local player = inst.target
     -----------------------------------------------------
     
     -----------------------------------------------------
 end
 
 local function OnDetached(inst) -- 被外部命令  inst:RemoveDebuff 移除debuff 的时候 执行
-    local player = inst.entity:GetParent()
+    -- local player = inst.entity:GetParent()
+    local player = inst.target
+
 end
 
 local function OnUpdate(inst)
-    local player = inst.entity:GetParent()
+    -- local player = inst.entity:GetParent()
+    local player = inst.target
 
 end
 
