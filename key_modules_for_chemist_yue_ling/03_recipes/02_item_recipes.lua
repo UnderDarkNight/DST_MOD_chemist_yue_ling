@@ -156,7 +156,7 @@
     AddRecipeToFilter("chemist_item_wisdom_medicine","CHARACTER")     ---- 添加物品到目标标签
     AddRecipe2(
         "chemist_item_wisdom_medicine",            --  --  inst.prefab  实体名字
-        { Ingredient("chemist_food_wisdom_apple", 10) }, 
+        { Ingredient("chemist_food_wisdom_apple", 10),Ingredient("nightmarefuel", 5) }, 
         TECH.NONE, 
         {
             -- no_deconstruction=true,
