@@ -20,7 +20,9 @@ return function(inst)
         local beard_container_open_fn = function()
             local beard_container = inst.replica.inventory:GetEquippedItem(EQUIPSLOTS.BEARD)
             if beard_container then
-                beard_container.components.container:Open(inst)
+                if beard_container.components.container then
+                    beard_container.components.container:Open(inst)
+                end
             else
                 inst.components.inventory:Equip(SpawnPrefab("chemist_other_beard_container"))
             end
