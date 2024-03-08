@@ -63,9 +63,9 @@ local function fn()
         inst.components.edible.foodtype = FOODTYPE.VEGGIE
         -- inst.components.edible:SetOnEatenFn(function(inst,eater)
         -- end)
-        inst.components.edible.hungervalue = 0
-        inst.components.edible.sanityvalue = 5
-        inst.components.edible.healthvalue = 0
+        inst.components.edible.hungervalue = 2
+        inst.components.edible.sanityvalue = 0
+        inst.components.edible.healthvalue = 2
     -------------------------------------------------------------------
     return inst
 end

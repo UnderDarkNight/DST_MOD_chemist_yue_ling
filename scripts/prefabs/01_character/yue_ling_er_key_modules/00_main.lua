@@ -35,6 +35,10 @@ return function(inst)
 
         "prefabs/01_character/yue_ling_er_key_modules/11_double_pick",                    ---- 采集双倍
 
+        "prefabs/01_character/yue_ling_er_key_modules/12_plants_frendly_sys",                    ---- 植物友好模块
+
+        "prefabs/01_character/yue_ling_er_key_modules/13_new_spawn_gift",                    ---- 新手礼包
+
     }
     for k, lua_addr in pairs(modules) do
         local temp_fn = require(lua_addr)
@@ -57,6 +61,7 @@ return function(inst)
     inst.soundsname = "wendy"           -- 角色声音
 
     -- inst:AddTag("stronggrip")      --- 不被打掉武器
+
 
     local scale = 1.2
     inst.AnimState:SetScale(scale, scale,scale)

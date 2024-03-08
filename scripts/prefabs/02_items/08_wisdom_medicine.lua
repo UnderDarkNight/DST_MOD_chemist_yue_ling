@@ -53,11 +53,20 @@ local function fn()
                     ---- 代码来自 book_research_station
                         local player = doer
 
-                        player.components.builder:GiveTempTechBonus({SCIENCE = 2, MAGIC = 2, SEAFARING = 2})
+                        -- player.components.builder:GiveTempTechBonus({SCIENCE = 2, MAGIC = 2, SEAFARING = 2})
 
                         local fx = SpawnPrefab(player.components.rider ~= nil and player.components.rider:IsRiding() and "fx_book_research_station_mount" or "fx_book_research_station")
                         fx.Transform:SetPosition(player.Transform:GetWorldPosition())
                         fx.Transform:SetRotation(player.Transform:GetRotation())
+
+                        local buff_index = "chemist_yue_ling_buff_reinforcement_wisdom_medicine"
+                        while true do
+                            local buff_inst = doer:GetDebuff(buff_index)
+                            if buff_inst then
+                                break
+                            end
+                            doer:AddDebuff(buff_index,buff_index)
+                        end
                     ------------------------------------------------------------
                     
                     return true

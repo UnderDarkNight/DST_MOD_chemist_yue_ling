@@ -143,5 +143,10 @@ return function(inst)
             end)
         end
     --------------------------------------------------------------------------------
+    ---- 50 级的时候伤害倍数 修正
+        inst.components.chemist_com_level_sys:Add_Level_Event(50,function()
+            inst.components.combat.damagemultiplier = 1
+        end)
+    --------------------------------------------------------------------------------
 
 end

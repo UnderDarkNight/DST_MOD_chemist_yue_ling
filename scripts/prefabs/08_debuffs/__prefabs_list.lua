@@ -32,6 +32,7 @@ local prefabs_name_list = {
     "02_plants_can_not_be_barren",                          --- 金坷垃给植物的buff
 
     "03_damage_mult_buff",                          --- 攻击力增加BUFF
+    "04_wisdom_medicine_buff",                          --- 智慧药水buff
 
 }
 

@@ -28,6 +28,10 @@ TUNING["chemist_yue_ling.Strings"][this_language] = TUNING["chemist_yue_ling.Str
                 ["inspect_str"] = "munitions",
                 ["recipe_desc"] = "munitions",
             },
+            ["chemist_spell_firenettles_medicine_bottle_maker"] = {
+                ["name"] = "Firenettles Medicine Bottle ( batch )",
+                ["recipe_desc"] = "munitions",
+            },
             ["chemist_item_empty_bottle"] = {
                 ["name"] = "Empty Bottle",
                 ["inspect_str"] = "Empty Bottle",

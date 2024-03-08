@@ -34,6 +34,10 @@ local prefabs_name_list = {
     "03_attack_power_multiplier_medicine_maker",                           --- 攻击药剂制作
     "04_triple_recovery_medicine_maker",                           --- 三维恢复药剂制作
 
+    "05_firenettles_medicine_bottles_maker",                           --- 火荨麻药剂、批量
+
+    "06_exp_medicine3_maker",                           --- 经验药剂LV3 
+
 }
 
 ---------------------------------------------------------------------------

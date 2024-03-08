@@ -89,7 +89,8 @@ local function fn()
                     return false
                 end)
 
-                replica_com:SetSGAction("give")
+                -- replica_com:SetSGAction("give")
+                replica_com:SetSGAction("chemist_equipt_sg_action")
                 
             end
         end)
@@ -150,7 +151,14 @@ local function fn()
             bullet.components.projectile:SetOnHitFn(function()
                 
                 if target and target.components.combat and target.components.health then
-                    target.components.combat:GetAttacked(attacker,100)
+                    local base_damage = 100
+
+                    local basemultiplier = attacker.components.combat.damagemultiplier
+                    local externaldamagemultipliers = attacker.components.combat.externaldamagemultipliers:Get()
+
+                    local ret_damage = base_damage * basemultiplier * externaldamagemultipliers
+
+                    target.components.combat:GetAttacked(attacker,ret_damage)
     
                     for i = 1, 10, 1 do
                         target:DoTaskInTime(i,function()

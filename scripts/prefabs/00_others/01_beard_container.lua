@@ -111,6 +111,7 @@ local function fn3()
     inst.AnimState:PlayAnimation("anim")
     
     inst:AddTag("hana_beard_container")
+    inst:AddTag("bramble_resistant")
 
     inst.entity:SetPristine()
     

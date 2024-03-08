@@ -35,13 +35,17 @@ TUNING["chemist_yue_ling.Strings"][this_language] = TUNING["chemist_yue_ling.Str
                 ["inspect_str"] = "弹药",
                 ["recipe_desc"] = "弹药",
             },
+            ["chemist_spell_firenettles_medicine_bottle_maker"] = {
+                ["name"] = "火荨麻药剂（批量）",
+                ["recipe_desc"] = "弹药",
+            },
             ["chemist_item_empty_bottle"] = {
                 ["name"] = "空药剂瓶",
                 ["inspect_str"] = "空药剂瓶",
                 ["recipe_desc"] = "空药剂瓶",
             },
             ["chemist_item_herbal_bag"] = {
-                ["name"] = "药材袋",
+                ["name"] = "食物保鲜袋",
                 ["inspect_str"] = "能放些吃的和药材",
                 ["recipe_desc"] = "能放些吃的和药材",
             },
@@ -86,6 +90,11 @@ TUNING["chemist_yue_ling.Strings"][this_language] = TUNING["chemist_yue_ling.Str
                 ["recipe_desc"] = "独属于药剂师的药剂",
             },
             ["chemist_item_exp_medicine3"] = {
+                ["name"] = "经验药剂 Lv3",
+                ["inspect_str"] = "独属于药剂师的药剂",
+                ["recipe_desc"] = "独属于药剂师的药剂",
+            },
+            ["chemist_spell_exp_medicine3_maker"] = {
                 ["name"] = "经验药剂 Lv3",
                 ["inspect_str"] = "独属于药剂师的药剂",
                 ["recipe_desc"] = "独属于药剂师的药剂",

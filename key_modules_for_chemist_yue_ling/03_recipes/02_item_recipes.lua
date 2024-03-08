@@ -53,7 +53,7 @@
     AddRecipeToFilter("chemist_item_pill_box","CHARACTER")     ---- 添加物品到目标标签
     AddRecipe2(
         "chemist_item_pill_box",            --  --  inst.prefab  实体名字
-        { Ingredient("driftwood_log", 10) ,Ingredient("log", 10),Ingredient("opalpreciousgem", 1) }, 
+        { Ingredient("driftwood_log", 10) ,Ingredient("log", 10) }, 
         TECH.NONE, 
         {
             -- no_deconstruction=true,
@@ -69,12 +69,12 @@
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------
----- 药材袋
+---- 药材袋 食物保鲜袋
 --------------------------------------------------------------------------------------------------------------------------------------------
     AddRecipeToFilter("chemist_item_herbal_bag","CHARACTER")     ---- 添加物品到目标标签
     AddRecipe2(
         "chemist_item_herbal_bag",            --  --  inst.prefab  实体名字
-        { Ingredient("dragon_scales", 1) ,Ingredient("bearger_fur", 1),Ingredient("opalpreciousgem", 1) }, 
+        { Ingredient("pigskin", 3) ,Ingredient("beefalowool", 3) }, 
         TECH.NONE, 
         {
             -- no_deconstruction=true,
@@ -117,10 +117,11 @@
     AddRecipeToFilter("chemist_item_firenettles_medicine_bottle","CHARACTER")     ---- 添加物品到目标标签
     AddRecipe2(
         "chemist_item_firenettles_medicine_bottle",            --  --  inst.prefab  实体名字
-        { Ingredient("firenettles", 1),Ingredient("ash", 1),Ingredient("chemist_item_empty_bottle", 1)  }, 
+        { Ingredient("firenettles", 1),Ingredient("chemist_item_empty_bottle", 1)  }, 
         TECH.NONE, 
         {
             -- no_deconstruction=true,
+            numtogive = 3,
             builder_tag = "chemist_yue_ling",
             atlas = "images/inventoryimages/chemist_item_firenettles_medicine_bottle.xml",
             -- atlas = GetInventoryItemAtlas("chemist_yue_ling_item_blissful_memory.tex"),
@@ -129,6 +130,25 @@
         {"CHARACTER"}
     )
     RemoveRecipeFromFilter("chemist_item_firenettles_medicine_bottle","MODS")                       -- -- 在【模组物品】标签里移除这个。
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 火荨麻 药剂瓶（批量）
+--------------------------------------------------------------------------------------------------------------------------------------------
+    AddRecipeToFilter("chemist_spell_firenettles_medicine_bottle_maker","CHARACTER")     ---- 添加物品到目标标签
+    AddRecipe2(
+        "chemist_spell_firenettles_medicine_bottle_maker",            --  --  inst.prefab  实体名字
+        { Ingredient("firenettles", 10),Ingredient("chemist_item_empty_bottle", 10)  }, 
+        TECH.NONE, 
+        {
+            -- no_deconstruction=true,
+            -- numtogive = 3,
+            builder_tag = "chemist_yue_ling",
+            atlas = "images/inventoryimages/chemist_item_firenettles_medicine_bottle.xml",
+            -- atlas = GetInventoryItemAtlas("chemist_yue_ling_item_blissful_memory.tex"),
+            image = "chemist_item_firenettles_medicine_bottle.tex",
+        },
+        {"CHARACTER"}
+    )
+    RemoveRecipeFromFilter("chemist_spell_firenettles_medicine_bottle_maker","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 ---- 智慧 药剂瓶
@@ -136,7 +156,7 @@
     AddRecipeToFilter("chemist_item_wisdom_medicine","CHARACTER")     ---- 添加物品到目标标签
     AddRecipe2(
         "chemist_item_wisdom_medicine",            --  --  inst.prefab  实体名字
-        { Ingredient("powcake", 1) , Ingredient("chemist_food_wisdom_apple", 10) }, 
+        { Ingredient("chemist_food_wisdom_apple", 10) }, 
         TECH.NONE, 
         {
             -- no_deconstruction=true,
@@ -155,7 +175,7 @@
     AddRecipeToFilter("chemist_item_jinkela_medicine","CHARACTER")     ---- 添加物品到目标标签
     AddRecipe2(
         "chemist_item_jinkela_medicine",            --  --  inst.prefab  实体名字
-        { Ingredient("glommerfuel", 2) , Ingredient("spoiled_food", 5) , Ingredient("poop", 5) }, 
+        { Ingredient("compost", 1) , Ingredient("spoiled_food", 2) , Ingredient("poop", 2) }, 
         TECH.NONE, 
         {
             -- no_deconstruction=true,
@@ -174,7 +194,7 @@
     AddRecipeToFilter("chemist_item_plant_growth_medicine","CHARACTER")     ---- 添加物品到目标标签
     AddRecipe2(
         "chemist_item_plant_growth_medicine",            --  --  inst.prefab  实体名字
-        { Ingredient("glommerfuel", 1) , Ingredient("spoiled_food", 1) , Ingredient("poop", 1), Ingredient("chemist_item_empty_bottle", 1)  },
+        { Ingredient("spoiled_food", 1) , Ingredient("poop", 1)  },
         TECH.NONE, 
         {
             -- no_deconstruction=true,
@@ -214,7 +234,7 @@
     AddRecipeToFilter("chemist_item_exp_medicine","CHARACTER")     ---- 添加物品到目标标签
     AddRecipe2(
         "chemist_item_exp_medicine",            --  --  inst.prefab  实体名字
-        { Ingredient("petals", 1) ,  Ingredient("boneshard", 1) , Ingredient("chemist_food_wisdom_apple", 1) ,  }, 
+        { Ingredient("red_cap", 1) ,  Ingredient("green_cap", 1) ,Ingredient("blue_cap", 1) ,  Ingredient("chemist_food_wisdom_apple", 1) ,  }, 
         TECH.NONE, 
         {
             -- no_deconstruction=true,
@@ -234,7 +254,7 @@
     AddRecipeToFilter("chemist_item_exp_medicine2","CHARACTER")     ---- 添加物品到目标标签
     AddRecipe2(
         "chemist_item_exp_medicine2",            --  --  inst.prefab  实体名字
-        { Ingredient("petals", 10) ,  Ingredient("boneshard", 10) , Ingredient("chemist_food_wisdom_apple", 10) ,  }, 
+        { Ingredient("fig", 1) ,  Ingredient("chemist_food_wisdom_apple", 5) ,  }, 
         TECH.NONE, 
         {
             -- no_deconstruction=true,
@@ -254,7 +274,7 @@
     AddRecipeToFilter("chemist_item_exp_medicine3","CHARACTER")     ---- 添加物品到目标标签
     AddRecipe2(
         "chemist_item_exp_medicine3",            --  --  inst.prefab  实体名字
-        { Ingredient("petals", 100) ,  Ingredient("boneshard", 100) , Ingredient("chemist_food_wisdom_apple", 100) ,  }, 
+        { Ingredient("mandrake", 1) ,   Ingredient("chemist_food_wisdom_apple", 5) ,  }, 
         TECH.NONE, 
         {
             -- no_deconstruction=true,
@@ -266,6 +286,25 @@
         {"CHARACTER"}
     )
     RemoveRecipeFromFilter("chemist_item_exp_medicine3","MODS")                       -- -- 在【模组物品】标签里移除这个。
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 经验药剂 lv3 配方2
+--------------------------------------------------------------------------------------------------------------------------------------------
+    AddRecipeToFilter("chemist_spell_exp_medicine3_maker","CHARACTER")     ---- 添加物品到目标标签
+    AddRecipe2(
+        "chemist_spell_exp_medicine3_maker",            --  --  inst.prefab  实体名字
+        { Ingredient("deerclops_eyeball", 1) ,   Ingredient("chemist_food_wisdom_apple", 5) ,  }, 
+        TECH.NONE, 
+        {
+            -- no_deconstruction=true,
+            builder_tag = "chemist_yue_ling",
+            atlas = "images/inventoryimages/chemist_item_exp_medicine3.xml",
+            -- atlas = GetInventoryItemAtlas("chemist_yue_ling_item_blissful_memory.tex"),
+            image = "chemist_item_exp_medicine3.tex",
+        },
+        {"CHARACTER"}
+    )
+    RemoveRecipeFromFilter("chemist_spell_exp_medicine3_maker","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------
@@ -294,7 +333,7 @@
     AddRecipeToFilter("chemist_spell_attack_power_multiplier_medicine_maker","CHARACTER")     ---- 添加物品到目标标签
     AddRecipe2(
         "chemist_spell_attack_power_multiplier_medicine_maker",            --  --  inst.prefab  实体名字
-        {  Ingredient("pepper", 12) ,  Ingredient("houndstooth", 12) , Ingredient("chemist_food_wisdom_apple", 12) ,  }, 
+        {  Ingredient("rock_avocado_fruit", 2) ,  Ingredient("houndstooth", 2) , Ingredient("chemist_food_wisdom_apple", 2) ,  }, 
         TECH.NONE, 
         {
             -- no_deconstruction=true,
@@ -314,7 +353,7 @@
     AddRecipeToFilter("chemist_spell_triple_recovery_medicine_maker","CHARACTER")     ---- 添加物品到目标标签
     AddRecipe2(
         "chemist_spell_triple_recovery_medicine_maker",            --  --  inst.prefab  实体名字
-        { Ingredient("red_cap", 12) ,  Ingredient("green_cap", 12) ,  Ingredient("blue_cap", 12) , Ingredient("moon_cap", 12) , Ingredient("chemist_food_wisdom_apple", 12) ,  }, 
+        { Ingredient("berries", 5) ,  Ingredient("chemist_food_wisdom_apple", 5) ,  }, 
         TECH.NONE, 
         {
             -- no_deconstruction=true,
@@ -387,5 +426,24 @@
             image = "chemist_building_moonshine_converter.tex",
         },
         {"CHARACTER","STRUCTURES"}
+    )
+    RemoveRecipeFromFilter("chemist_building_mushroom_house","MODS")                       -- -- 在【模组物品】标签里移除这个。
+    
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 月光转换器
+--------------------------------------------------------------------------------------------------------------------------------------------
+    AddRecipeToFilter("firenettles_seeds","CHARACTER")     ---- 添加物品到目标标签
+    AddRecipe2(
+        "firenettles_seeds",            --  --  inst.prefab  实体名字
+        { Ingredient(CHARACTER_INGREDIENT.HEALTH, 5)  }, 
+        TECH.NONE, 
+        {
+            nounlock=true,
+            no_deconstruction=true,
+            builder_tag = "chemist_yue_ling",    --------- -- 【builder_tag】只给指定tag的角色能制造这件物品，角色添加/移除 tag 都能立马解锁/隐藏该物品
+            atlas = "images/inventoryimages/firenettles_seeds.xml",
+            image = "firenettles_seeds.tex",
+        },
+        {"CHARACTER","GARDENING"}
     )
     RemoveRecipeFromFilter("chemist_building_mushroom_house","MODS")                       -- -- 在【模组物品】标签里移除这个。

@@ -152,7 +152,7 @@
 --------------------------------------------------------------------------------------------------------------------------------------------
     Add_Recipe_2_Machine({
         prefab = "chemist_item_restorative_medicine_bottle",
-        Ingredients = { Ingredient("spidergland", 1),Ingredient("honey", 1),Ingredient("chemist_food_wisdom_apple", 1),Ingredient("chemist_item_empty_bottle", 1)  },
+        Ingredients = { Ingredient("red_cap", 1),Ingredient("berries", 1),Ingredient("chemist_food_wisdom_apple", 1) },
         -- builder_tag = "fwd_in_pdt_test33333333333366666",
         atlas = "images/inventoryimages/chemist_item_restorative_medicine_bottle.xml",
         image = "chemist_item_restorative_medicine_bottle.tex",
@@ -163,7 +163,7 @@
 --------------------------------------------------------------------------------------------------------------------------------------------
     Add_Recipe_2_Machine({
         prefab = "chemist_item_cola_soda",
-        Ingredients = { Ingredient("ice", 2) , Ingredient("chemist_food_wisdom_apple", 1),Ingredient("chemist_item_empty_bottle", 1)  },
+        Ingredients = { Ingredient("ice", 2) , Ingredient("chemist_food_wisdom_apple", 2),Ingredient("red_cap", 2)  },
         -- builder_tag = "fwd_in_pdt_test33333333333366666",
         atlas = "images/inventoryimages/chemist_item_cola_soda.xml",
         image = "chemist_item_cola_soda.tex",

@@ -104,87 +104,73 @@ local assets =
         local accept_fns = {
             ["green_cap"] = {
                 ["test_fn"] = function(inst,item,doer)
+                            if inst:HasTag("unlocked.green") then
+                                return false
+                            end
                             local item_num = item.replica.stackable:StackSize()
-                            if not inst:HasTag("unlocked.green") then ---- 没解锁的时候，需要 10 个一组
-                                if item_num >= 10 then
-                                    return true
-                                end
-                            else    ---- 解锁后 10个一组
-                                if item_num >= 10 then
-                                    return true
-                                end
+                            if item_num >= 10 then
+                                return true
                             end
                             return false
+
                 end,
                 ["onaccept_fn"] = function(inst,item,doer)
-                            if not inst:HasTag("unlocked.green") then
-                                item.components.stackable:Get(10):Remove()
-                                inst:PushEvent("type_unlock.green")
-                                return true
-                            else
-                                item.components.stackable:Get(10):Remove()
-                                inst.components.chemist_com_database:Add("green",1)
-                                inst.components.chemist_com_database:Add("level",1)
-                                return true
-                            end
+
+                            item.components.stackable:Get(10):Remove()
+                            inst:PushEvent("type_unlock.green")                                
+                            inst.components.chemist_com_database:Add("green",1)
+                            inst.components.chemist_com_database:Add("level",1)
+                            return true
+                            
                 end
             },
             ["blue_cap"] = {
                 ["test_fn"] = function(inst,item,doer)
+                            if inst:HasTag("unlocked.blue") then
+                                return false
+                            end
                             local item_num = item.replica.stackable:StackSize()
-                            if not inst:HasTag("unlocked.blue") then ---- 没解锁的时候，需要 10 个一组
-                                if item_num >= 10 then
-                                    return true
-                                end
-                            else    ---- 解锁后 10个一组
-                                if item_num >= 10 then
-                                    return true
-                                end
+                            if item_num >= 10 then
+                                return true
                             end
                             return false
                 end,
                 ["onaccept_fn"] = function(inst,item,doer)
-                            if not inst:HasTag("unlocked.blue") then
-                                item.components.stackable:Get(10):Remove()
-                                inst:PushEvent("type_unlock.blue")
-                                return true
-                            else
-                                item.components.stackable:Get(10):Remove()
-                                inst.components.chemist_com_database:Add("blue",1)
-                                inst.components.chemist_com_database:Add("level",1)
-                                return true
-                            end
+
+                            item.components.stackable:Get(10):Remove()
+                            inst:PushEvent("type_unlock.blue")
+                            inst.components.chemist_com_database:Add("blue",1)
+                            inst.components.chemist_com_database:Add("level",1)
+                            return true
+                            
                 end
             },
             ["moon_cap"] = {
                 ["test_fn"] = function(inst,item,doer)
+                            if inst:HasTag("unlocked.moon") then
+                                return false
+                            end
                             local item_num = item.replica.stackable:StackSize()
-                            if not inst:HasTag("unlocked.moon") then ---- 没解锁的时候，需要 10 个一组
-                                if item_num >= 10 then
-                                    return true
-                                end
-                            else    ---- 解锁后 10个一组
-                                if item_num >= 10 then
-                                    return true
-                                end
+                            if item_num >= 10 then
+                                return true
                             end
                             return false
                 end,
                 ["onaccept_fn"] = function(inst,item,doer)
-                            if not inst:HasTag("unlocked.moon") then
-                                item.components.stackable:Get(10):Remove()
-                                inst:PushEvent("type_unlock.moon")
-                                return true
-                            else
-                                item.components.stackable:Get(10):Remove()
-                                inst.components.chemist_com_database:Add("moon",1)
-                                inst.components.chemist_com_database:Add("level",1)
-                                return true
-                            end
+
+                            item.components.stackable:Get(10):Remove()
+                            inst:PushEvent("type_unlock.moon")
+                            inst.components.chemist_com_database:Add("moon",1)
+                            inst.components.chemist_com_database:Add("level",1)
+                            return true
+                            
                 end
             },
             ["red_cap"] = {
                 ["test_fn"] = function(inst,item,doer)
+                            if inst:HasTag("unlocked.red") then
+                                return false
+                            end
                             local item_num = item.replica.stackable:StackSize()
                             if item_num >= 10 then
                                 return true
@@ -192,6 +178,7 @@ local assets =
                 end,
                 ["onaccept_fn"] = function(inst,item,doer)
                             item.components.stackable:Get(10):Remove()
+                            inst:PushEvent("type_unlock.red")
                             inst.components.chemist_com_database:Add("red",1)
                             inst.components.chemist_com_database:Add("level",1)
                             return true
@@ -230,6 +217,11 @@ local assets =
             return
         end
 
+        inst:ListenForEvent("type_unlock.red",function()
+            inst:AddTag("unlocked.red")
+            inst.components.chemist_com_database:Set("unlocked.red",true)
+            -- inst.AnimState:ShowSymbol("green")
+        end)
         inst:ListenForEvent("type_unlock.green",function()
             inst:AddTag("unlocked.green")
             inst.components.chemist_com_database:Set("unlocked.green",true)
@@ -247,6 +239,9 @@ local assets =
         end)
 
         inst.components.chemist_com_database:AddOnLoadFn(function(com)
+            if com:Get("unlocked.red") then
+                inst:PushEvent("type_unlock.red")
+            end
             if com:Get("unlocked.green") then
                 inst:PushEvent("type_unlock.green")
             end
@@ -268,10 +263,10 @@ local assets =
         end
 
         inst:WatchWorldState("cycles",function()
-            local days = inst.components.chemist_com_database:Add("days",1)
-            if days >= 3 then
-                inst.components.chemist_com_database:Set("days",0)
-            end
+            -- local days = inst.components.chemist_com_database:Add("days",1)
+            -- if days >= 3 then
+            --     inst.components.chemist_com_database:Set("days",0)
+            -- end
             inst:PushEvent("mushroom_grow")
         end)
 
@@ -284,15 +279,14 @@ local assets =
                 level = 1
             end
             
-            local stack_num = level*3
+            local stack_num = level*5
+            if stack_num > 20 then
+                stack_num = 20
+            end
 
             ---------------------------------------
             ---- 默认红蘑菇
                 local red_cap = SpawnPrefab("red_cap")
-                local max_num = red_cap.components.stackable.maxsize
-                if stack_num > max_num then
-                    stack_num = max_num
-                end
                 red_cap.components.stackable.stacksize = stack_num
                 inst.components.container:GiveItem(red_cap)
             ---------------------------------------

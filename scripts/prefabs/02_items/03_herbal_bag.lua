@@ -202,7 +202,8 @@ local function fn()
                     return false
                 end)
 
-                replica_com:SetSGAction("give")
+                -- replica_com:SetSGAction("give")
+                replica_com:SetSGAction("chemist_equipt_sg_action")
                 
             end
         end)
