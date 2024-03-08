@@ -7,29 +7,32 @@ local function OnAttached(inst,target) -- 玩家得到 debuff 的瞬间。 穿�
     -----------------------------------------------------
     -- local old_mult = player.components.builder.ingredientmod or 1
     -- player.components.builder.ingredientmod = 0
-    local freebuildmode_old_flag = player.components.builder.freebuildmode
+    player:DoTaskInTime(1,function()        
+    
+                if player.components.builder.freebuildmode then
+                    return
+                end
+                player.components.builder:GiveAllRecipes()
 
-    if not freebuildmode_old_flag then
-        player.components.builder:GiveAllRecipes()
-    end
+                local build_event_fn = function()
+                    -- player.components.builder.ingredientmod = old_mult
+                    if player.components.builder.freebuildmode then
+                        player.components.builder:GiveAllRecipes()
+                    end
 
-    local build_event_fn = function()
-        -- player.components.builder.ingredientmod = old_mult
-        if not freebuildmode_old_flag then
-            player.components.builder:GiveAllRecipes()
-        end
+                    inst:Remove()
+                    if TUNING.CHEMIST_YUE_LING_DEBUGGING_MODE then
+                        print("智慧药剂BUFF Removed")
+                    end
+                end
+                inst:ListenForEvent("buildstructure", build_event_fn,player)
+                inst:ListenForEvent("builditem", build_event_fn,player)
 
-        inst:Remove()
-        if TUNING.CHEMIST_YUE_LING_DEBUGGING_MODE then
-            print("智慧药剂BUFF Removed")
-        end
-    end
-    inst:ListenForEvent("buildstructure", build_event_fn,player)
-    inst:ListenForEvent("builditem", build_event_fn,player)
+                if TUNING.CHEMIST_YUE_LING_DEBUGGING_MODE then
+                    print("智慧药剂BUFF Added")
+                end
 
-    if TUNING.CHEMIST_YUE_LING_DEBUGGING_MODE then
-        print("智慧药剂BUFF Added")
-    end
+    end)
     -----------------------------------------------------
 end
 
