@@ -69,6 +69,7 @@ local function OnAttached(inst,target) -- 玩家得到 debuff 的瞬间。 穿�
                     level = level,
                     x = 200,
                     y = 10,
+                    scale = 0.5
                 })
             else
                 player.components.chemist_com_rpc_event:PushEvent("chemist_revival_medicine_buttons",{
@@ -76,6 +77,7 @@ local function OnAttached(inst,target) -- 玩家得到 debuff 的瞬间。 穿�
                     x = -530,
                     y = -270,
                     a = 0.2,
+                    scale = 0.25,
                     info_only = true,
                 })
             end
