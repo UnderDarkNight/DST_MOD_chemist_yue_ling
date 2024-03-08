@@ -7,8 +7,9 @@ return function(inst)
         if inst.components.chemist_com_database == nil then
             inst:AddComponent("chemist_com_database") --- 通用用数据库
         end
-        
-        inst:AddComponent("chemist_com_rpc_event") --- RPC 信道封装
+        if inst.components.chemist_com_rpc_event == nil then
+            inst:AddComponent("chemist_com_rpc_event") --- RPC 信道封装
+        end
         inst:AddComponent("chemist_com_skill_point_sys") --- 技能册系统
     end
 
@@ -20,6 +21,7 @@ return function(inst)
         "prefabs/01_character/yue_ling_er_key_modules/04_00_skill_points_init",                     ---- 技能册加点保存
         "prefabs/01_character/yue_ling_er_key_modules/04_01_skill_point_page_1",                    ---- 技能册 第 1 页 执行函数
         "prefabs/01_character/yue_ling_er_key_modules/04_02_skill_point_page_2",                    ---- 技能册 第 2 页 执行函数
+        "prefabs/01_character/yue_ling_er_key_modules/04_03_skill_point_page_3",                    ---- 技能册 第 3 页 执行函数
 
 
         "prefabs/01_character/yue_ling_er_key_modules/05_empty_bottle_maker",                    ---- 制作空瓶，有概率 得多几个

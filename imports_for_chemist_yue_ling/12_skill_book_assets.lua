@@ -16,6 +16,10 @@ local temp_assets = {
         Asset("IMAGE", "images/widget/chemist_skill_book_triple_recovery_medicine.tex"),
         Asset("ATLAS", "images/widget/chemist_skill_book_triple_recovery_medicine.xml"),
 
+    ----- 复活药剂
+        Asset("IMAGE", "images/widget/chemist_skill_book_revival_medicine.tex"),
+        Asset("ATLAS", "images/widget/chemist_skill_book_revival_medicine.xml"),
+
 
 
 

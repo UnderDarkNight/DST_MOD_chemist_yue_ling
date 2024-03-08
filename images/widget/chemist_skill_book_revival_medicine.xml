@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Atlas>
+	<Texture filename="chemist_skill_book_revival_medicine.tex" />
+	<Elements>
+		<Element name="button_double_lv_max.tex" u1="0.001" u2="0.1073984375" v2="0.6562265625" v1="0.6054921875" variant="" />
+		<Element name="button_double_lv_up.tex" u1="0.001" u2="0.1073984375" v2="0.6034921875" v1="0.5527578125" variant="" />
+		<Element name="button_lv_max.tex" u1="0.001" u2="0.0820078125" v2="0.5507578125" v1="0.4931875" variant="" />
+		<Element name="button_lv_up.tex" u1="0.1093984375" u2="0.1913828125" v2="0.629859375" v1="0.573265625" variant="" />
+		<Element name="double_bg.tex" u1="0.001" u2="0.4726328125" v2="0.35446875" v1="0.1494375" variant="" />
+		<Element name="double_info_lv_0.tex" u1="0.001" u2="0.2050546875" v2="0.4911875" v1="0.459984375" variant="" />
+		<Element name="double_info_lv_1.tex" u1="0.0840078125" u2="0.2880625" v2="0.5507578125" v1="0.5195546875" variant="" />
+		<Element name="double_info_lv_2.tex" u1="0.588890625" u2="0.7929453125" v2="0.9589609375" v1="0.9277578125" variant="" />
+		<Element name="double_info_lv_3.tex" u1="0.588890625" u2="0.7929453125" v2="0.9257578125" v1="0.8945546875" variant="" />
+		<Element name="double_info_lv_4.tex" u1="0.588890625" u2="0.7929453125" v2="0.8925546875" v1="0.8613515625" variant="" />
+		<Element name="double_info_lv_5.tex" u1="0.5869375" u2="0.7909921875" v2="0.8593515625" v1="0.8281484375" variant="" />
+		<Element name="double_lv_0.tex" u1="0.5869375" u2="0.6933359375" v2="0.8261484375" v1="0.7754140625" variant="" />
+		<Element name="double_lv_1.tex" u1="0.7949453125" u2="0.90134375" v2="0.999" v1="0.948265625" variant="" />
+		<Element name="double_lv_2.tex" u1="0.7949453125" u2="0.90134375" v2="0.946265625" v1="0.89553125" variant="" />
+		<Element name="double_lv_3.tex" u1="0.001" u2="0.1073984375" v2="0.1474375" v1="0.096703125" variant="" />
+		<Element name="double_lv_4.tex" u1="0.6953359375" u2="0.801734375" v2="0.8261484375" v1="0.7754140625" variant="" />
+		<Element name="double_lv_5.tex" u1="0.001" u2="0.1073984375" v2="0.999" v1="0.948265625" variant="" />
+		<Element name="icon_bg.tex" u1="0.1093984375" u2="0.3115" v2="0.999" v1="0.7988515625" variant="" />
+		<Element name="icon_lv_0.tex" u1="0.001" u2="0.1034921875" v2="0.946265625" v1="0.8340078125" variant="" />
+		<Element name="icon_lv_1.tex" u1="0.3135" u2="0.4159921875" v2="0.999" v1="0.8867421875" variant="" />
+		<Element name="icon_lv_2.tex" u1="0.3135" u2="0.4140390625" v2="0.8847421875" v1="0.772484375" variant="" />
+		<Element name="icon_lv_3.tex" u1="0.001" u2="0.1191171875" v2="0.7968515625" v1="0.6582265625" variant="" />
+		<Element name="icon_lv_4.tex" u1="0.1211171875" u2="0.2304453125" v2="0.7968515625" v1="0.631859375" variant="" />
+		<Element name="icon_lv_5.tex" u1="0.2324453125" u2="0.340796875" v2="0.770484375" v1="0.59865625" variant="" />
+		<Element name="info_text.tex" u1="0.342796875" u2="0.999" v2="0.770484375" v1="0.4472890625" variant="" />
+		<Element name="text_lv_0.tex" u1="0.4179921875" u2="0.586890625" v2="0.999" v1="0.9609609375" variant="" />
+		<Element name="text_lv_1.tex" u1="0.4179921875" u2="0.586890625" v2="0.9589609375" v1="0.920921875" variant="" />
+		<Element name="text_lv_2.tex" u1="0.4179921875" u2="0.586890625" v2="0.918921875" v1="0.8808828125" variant="" />
+		<Element name="text_lv_3.tex" u1="0.4160390625" u2="0.5849375" v2="0.8788828125" v1="0.84084375" variant="" />
+		<Element name="text_lv_4.tex" u1="0.4160390625" u2="0.5849375" v2="0.83884375" v1="0.8008046875" variant="" />
+		<Element name="text_lv_5.tex" u1="0.588890625" u2="0.7577890625" v2="0.999" v1="0.9609609375" variant="" />
+		<Element name="title.tex" u1="0.001" u2="0.465796875" v2="0.4452890625" v1="0.35646875" variant="" />
+	</Elements>
+</Atlas>

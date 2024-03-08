@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Atlas>
+	<Texture filename="chemist_revival_medicine_buttons.tex" />
+	<Elements>
+		<Element name="lv_1.tex" u1="0.001" u2="0.2031015625" v2="0.999" v1="0.596703125" variant="" />
+		<Element name="lv_2.tex" u1="0.2051015625" u2="0.407203125" v2="0.999" v1="0.596703125" variant="" />
+		<Element name="lv_3.tex" u1="0.001" u2="0.2031015625" v2="0.594703125" v1="0.19240625" variant="" />
+		<Element name="lv_4.tex" u1="0.2051015625" u2="0.407203125" v2="0.594703125" v1="0.19240625" variant="" />
+		<Element name="lv_5.tex" u1="0.409203125" u2="0.6113046875" v2="0.999" v1="0.596703125" variant="" />
+	</Elements>
+</Atlas>

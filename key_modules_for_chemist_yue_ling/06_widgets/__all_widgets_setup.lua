@@ -5,3 +5,5 @@
 
 
 modimport("key_modules_for_chemist_yue_ling/06_widgets/01_skill_book_ui.lua")  --- 技能书
+
+modimport("key_modules_for_chemist_yue_ling/06_widgets/02_revival_medicine_button.lua")  --- 复活按钮

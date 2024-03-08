@@ -70,7 +70,7 @@ local function fn()
     -- inst.components.debuff:SetExtendedFn(ExtendDebuff)
     -- ExtendDebuff(inst)
 
-    inst:DoPeriodicTask(1, OnUpdate, nil, TheWorld.ismastersim)  -- 定时执行任务
+    -- inst:DoPeriodicTask(1, OnUpdate, nil, TheWorld.ismastersim)  -- 定时执行任务
 
 
     return inst

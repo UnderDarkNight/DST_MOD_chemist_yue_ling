@@ -221,6 +221,30 @@ local flg,error_code = pcall(function()
             -- TheWorld.components.farming_manager:AddSoilMoistureAtPoint(x, y, z, 100)
 
     ----------------------------------------------------------------------------------------------------------------
+    --- 特效颜色测试
+        -- SpawnPrefab("chemist_fx_explode"):PushEvent("Set",{
+        --     target = ThePlayer,
+        --     color = Vector3(102/255,0,204/255),
+        --     MultColour_Flag = true
+        -- })
+    ----------------------------------------------------------------------------------------------------------------
+    ---
+            -- local npc = SpawnPrefab("woodie")
+            -- npc.Transform:SetPosition(x, y, z)
+            -- npc.components.health:Kill()
+    ----------------------------------------------------------------------------------------------------------------
+    --- 复活按钮
+            -- ThePlayer.components.chemist_com_rpc_event:PushEvent("chemist_revival_medicine_buttons",{
+            --     level = 1,
+            --     x = -530,
+            --     y = -270,
+            --     a = 0.2,
+            --     -- scale = 0.5,
+            --     info_only = true,
+            -- })
+            local debuff_inst = ThePlayer:GetDebuff("chemist_yue_ling_buff_revival_medicine_medicine")
+            print(debuff_inst)
+    ----------------------------------------------------------------------------------------------------------------
     print("WARNING:PCALL END   +++++++++++++++++++++++++++++++++++++++++++++++++")
 end)
 

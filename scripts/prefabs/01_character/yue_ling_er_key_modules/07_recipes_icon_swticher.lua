@@ -58,6 +58,25 @@ return function(inst)
                             AllRecipes[prefab_name].image = file_name
                 end,
             ----------------------------------------------------------------------------------------------
+                ["chemist_spell_revival_medicine_maker"] = function(prefab_name)
+                            local level = ThePlayer.replica.chemist_com_skill_point_sys:Get("revival_medicine.item_level") or 0
+                            if level < 1 then
+                                level = 1
+                            end
+                            if level > 5 then
+                                level = 5                                
+                            end
+                            
+                            local file_name = "chemist_item_revival_medicine_lv_"..tostring(level)..".tex"
+                            AllRecipes[prefab_name].atlas = GetInventoryItemAtlas(file_name)
+                            AllRecipes[prefab_name].image = file_name
+
+                            ---- 另外一个maker
+                            prefab_name = prefab_name .. "2"
+                            AllRecipes[prefab_name].atlas = GetInventoryItemAtlas(file_name)
+                            AllRecipes[prefab_name].image = file_name
+                end,
+            ----------------------------------------------------------------------------------------------
         }
 
 

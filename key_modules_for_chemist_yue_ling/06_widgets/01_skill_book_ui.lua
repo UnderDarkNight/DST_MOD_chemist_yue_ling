@@ -156,6 +156,7 @@ AddClassPostConstruct("screens/playerhud",function(self)
                 local files_path = {
                     [1] = "widgets/01_chemist_skill_book_page_1",
                     [2] = "widgets/02_chemist_skill_book_page_2",
+                    [3] = "widgets/02_chemist_skill_book_page_3",
                 }
             ------------------------------------------------------------------
             -- 使用 dofile 加载

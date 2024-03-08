@@ -33,6 +33,7 @@ local prefabs_name_list = {
 
     "03_damage_mult_buff",                          --- 攻击力增加BUFF
     "04_wisdom_medicine_buff",                          --- 智慧药水buff
+    "05_revival_medicine_buff",                          --- 复活药水buff
 
 }
 

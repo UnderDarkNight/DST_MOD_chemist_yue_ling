@@ -38,6 +38,13 @@ local files_name = {
 		"chemist_item_triple_recovery_medicine_lv_5",				--- 三维恢复药剂
 
 		"chemist_item_skill_points_reset_medicine",				--- 技能点重置药剂
+
+		
+		"chemist_item_revival_medicine_lv_1",				--- 复活药水
+		"chemist_item_revival_medicine_lv_2",				--- 复活药水
+		"chemist_item_revival_medicine_lv_3",				--- 复活药水
+		"chemist_item_revival_medicine_lv_4",				--- 复活药水
+		"chemist_item_revival_medicine_lv_5",				--- 复活药水
 	---------------------------------------------------------------------------------------
 	-- 03_equipments
 		"chemist_equipment_chemical_launching_gun",											--- 药剂发射器

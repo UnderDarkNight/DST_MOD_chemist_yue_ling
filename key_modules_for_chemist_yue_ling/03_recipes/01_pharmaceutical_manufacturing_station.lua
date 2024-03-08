@@ -201,3 +201,14 @@
         image = "chemist_item_triple_recovery_medicine_lv_1.tex",
         builder_tag = "chemist_yue_ling",
     })
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+--- 复活药剂 
+--------------------------------------------------------------------------------------------------------------------------------------------
+    Add_Recipe_2_Machine({
+        prefab = "chemist_spell_revival_medicine_maker2",
+        Ingredients =  { Ingredient(CHARACTER_INGREDIENT.HEALTH, 5)  }, 
+        atlas = "images/inventoryimages/chemist_item_revival_medicine_lv_1.xml",
+        image = "chemist_item_revival_medicine_lv_1.tex",
+        builder_tag = "chemist_yue_ling",
+    })

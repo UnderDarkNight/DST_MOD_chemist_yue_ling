@@ -38,6 +38,8 @@ local prefabs_name_list = {
 
     "06_exp_medicine3_maker",                           --- 经验药剂LV3 
 
+    "07_revival_medicine_maker",                           --- 复活药水 
+
 }
 
 ---------------------------------------------------------------------------

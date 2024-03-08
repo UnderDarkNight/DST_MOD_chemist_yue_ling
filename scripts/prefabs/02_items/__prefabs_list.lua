@@ -44,6 +44,8 @@ local prefabs_name_list = {
 
     "13_skill_points_reset_medicine",              -- 技能点重置药剂
 
+    "14_revival_medicine",              -- 复活药水
+
 }
 
 ---------------------------------------------------------------------------

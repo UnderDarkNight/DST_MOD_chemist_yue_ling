@@ -6,8 +6,8 @@ end
 local temp_assets = {
 
 
-	-- Asset("IMAGE", "images/inventoryimages/chemist_yue_ling_empty_icon.tex"),
-	-- Asset("ATLAS", "images/inventoryimages/chemist_yue_ling_empty_icon.xml"),
+	Asset("IMAGE", "images/widget/chemist_revival_medicine_buttons.tex"),
+	Asset("ATLAS", "images/widget/chemist_revival_medicine_buttons.xml"),
 	
 	-- Asset("SHADER", "shaders/mod_test_shader.ksh"),		--- 测试用的
 

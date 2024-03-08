@@ -132,6 +132,26 @@ TUNING["chemist_yue_ling.Strings"][this_language] = TUNING["chemist_yue_ling.Str
                 ["name"] = "Skill Points Reset Medicine",
                 ["inspect_str"] = "Skill Points Reset Medicine",
             },
+            ["chemist_item_revival_medicine_lv_1"] = {
+                ["name"] = "Lv1 Revival Medicine",
+                ["inspect_str"] = "Lv1 Revival Medicine",
+            },
+            ["chemist_item_revival_medicine_lv_2"] = {
+                ["name"] = "Lv2 Revival Medicine",
+                ["inspect_str"] = "Lv2 Revival Medicine",
+            },
+            ["chemist_item_revival_medicine_lv_3"] = {
+                ["name"] = "Lv3 Revival Medicine",
+                ["inspect_str"] = "Lv3 Revival Medicine",
+            },
+            ["chemist_item_revival_medicine_lv_4"] = {
+                ["name"] = "Lv4 Revival Medicine",
+                ["inspect_str"] = "Lv4 Revival Medicine",
+            },
+            ["chemist_item_revival_medicine_lv_5"] = {
+                ["name"] = "Lv5 Revival Medicine",
+                ["inspect_str"] = "Lv5 Revival Medicine",
+            },
         --------------------------------------------------------------------
         --- 03_equipments
             ["chemist_equipment_chemical_launching_gun"] = {
@@ -171,6 +191,11 @@ TUNING["chemist_yue_ling.Strings"][this_language] = TUNING["chemist_yue_ling.Str
                 ["recipe_desc"] = "Fruit of Wisdom on the Tree of Wisdom, You and I under the Tree of Wisdom",
             },
         --------------------------------------------------------------------
+        --- 08_debuffs
+            ["chemist_yue_ling_buff_revival_medicine_medicine"] = {
+                ["name"] = "Revival Medicine",
+            },
+        --------------------------------------------------------------------
         --- 09_spells
             ["chemist_spell_empty_bottle_maker"] = {
                 ["name"] = "Empty Bottle",
@@ -204,6 +229,17 @@ TUNING["chemist_yue_ling.Strings"][this_language] = TUNING["chemist_yue_ling.Str
             ["chemist_spell_triple_recovery_medicine_maker2"] = {
                 ["name"] = "Triple Recovery Medicine",
                 ["recipe_desc"] = "Triple Recovery Medicine",
+            },
+            ["chemist_spell_revival_medicine_maker"] = {
+                ["name"] = "Revival Medicine",
+                ["inspect_str"] = "Revival Medicine",
+                ["recipe_desc"] = "Revival Medicine",
+                ["fail_talks"] = {"Failed again.","Oops, failed.","Hands are shaking."},
+                ["double_talks"] = {"Made some more.","Getting better at it.","If I'm careful, I can do more."},
+            },
+            ["chemist_spell_revival_medicine_maker2"] = {
+                ["name"] = "Revival Medicine",
+                ["recipe_desc"] = "Revival Medicine",
             },
         --------------------------------------------------------------------
         --- 10_plant_and_seeds

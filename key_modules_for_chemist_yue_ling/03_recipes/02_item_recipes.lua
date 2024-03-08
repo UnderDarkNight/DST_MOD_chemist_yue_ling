@@ -366,6 +366,25 @@
     )
     RemoveRecipeFromFilter("chemist_spell_triple_recovery_medicine_maker","MODS")                       -- -- 在【模组物品】标签里移除这个。
 
+--------------------------------------------------------------------------------------------------------------------------------------------
+---- 复活药剂
+--------------------------------------------------------------------------------------------------------------------------------------------
+    AddRecipeToFilter("chemist_spell_revival_medicine_maker","CHARACTER")     ---- 添加物品到目标标签
+    AddRecipe2(
+        "chemist_spell_revival_medicine_maker",            --  --  inst.prefab  实体名字
+        { Ingredient(CHARACTER_INGREDIENT.HEALTH, 10)  }, 
+        TECH.NONE, 
+        {
+            -- no_deconstruction=true,
+            builder_tag = "chemist_yue_ling",
+            atlas = "images/inventoryimages/chemist_item_revival_medicine_lv_1.xml",
+            -- atlas = GetInventoryItemAtlas("chemist_yue_ling_item_blissful_memory.tex"),
+            image = "chemist_item_revival_medicine_lv_1.tex",
+        },
+        {"CHARACTER"}
+    )
+    RemoveRecipeFromFilter("chemist_spell_revival_medicine_maker","MODS")                       -- -- 在【模组物品】标签里移除这个。
+
 
 --------------------------------------------------------------------------------------------------------------------------------------------
 ---- 技能书
