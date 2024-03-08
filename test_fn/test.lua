@@ -311,7 +311,7 @@ local flg,error_code = pcall(function()
             -- for k, v in pairs(TheFrontEnd) do
             --     print(k,v,type(v))
             -- end
-        -------------
+        ------------- 虚拟点击 目标 botton
             ThePlayer:DoTaskInTime(0.5,function()
             local crash_flag,reason = pcall(function()
                 print("+++++++++++++++++++++++++++++++++++++++++++++++++++++")

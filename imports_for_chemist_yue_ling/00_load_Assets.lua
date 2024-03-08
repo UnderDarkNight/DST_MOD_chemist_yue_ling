@@ -8,6 +8,9 @@ local temp_assets = {
 
 	Asset("IMAGE", "images/widget/chemist_revival_medicine_buttons.tex"),
 	Asset("ATLAS", "images/widget/chemist_revival_medicine_buttons.xml"),
+
+	-- Asset("IMAGE", "images/inventoryimages/rock_avocado_fruit.tex"),
+	-- Asset("ATLAS", "images/inventoryimages/rock_avocado_fruit.xml"),
 	
 	-- Asset("SHADER", "shaders/mod_test_shader.ksh"),		--- 测试用的
 
