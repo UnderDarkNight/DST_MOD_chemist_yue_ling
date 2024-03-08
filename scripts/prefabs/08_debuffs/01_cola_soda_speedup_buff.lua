@@ -41,10 +41,9 @@ local function OnAttached(inst,target) -- 玩家得到 debuff 的瞬间。 穿�
         -----------------------------------------------------
         ---- 死亡
             -- player:ListenForEvent("death",function()
-            player:ListenForEvent("ms_becameghost",function()
+            inst:ListenForEvent("ms_becameghost",function()
                 inst.components.debuff:OnDetach()
-
-            end)
+            end,player)
         -----------------------------------------------------
 
     -----------------------------------------------------

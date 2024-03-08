@@ -51,9 +51,9 @@
             end)
         -----------------------------------------------------
             -- player:ListenForEvent("death",function()
-            player:ListenForEvent("ms_becameghost",function()
+            inst:ListenForEvent("ms_becameghost",function()
                 inst.components.debuff:OnDetach()
-            end)
+            end,player)
         -----------------------------------------------------
     end
 
