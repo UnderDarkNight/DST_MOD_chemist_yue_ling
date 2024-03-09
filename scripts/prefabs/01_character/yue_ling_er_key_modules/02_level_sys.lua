@@ -144,8 +144,19 @@ return function(inst)
         end
     --------------------------------------------------------------------------------
     ---- 50 级的时候伤害倍数 修正
-        inst.components.chemist_com_level_sys:Add_Level_Event(50,function()
-            inst.components.combat.damagemultiplier = 1
+        local function LevelUp_50()
+            inst:DoTaskInTime(0,function()
+                inst.components.combat.damagemultiplier = 1
+                if TUNING.CHEMIST_YUE_LING_DEBUGGING_MODE then
+                    TheNet:Announce("攻击倍率改成1")
+                end
+            end)
+        end
+        inst.components.chemist_com_level_sys:Add_Level_Event(50,LevelUp_50)
+        inst.components.chemist_com_level_sys:AddOnLoadFn(function()
+            if inst.components.chemist_com_level_sys.current_level >= 50 then
+                LevelUp_50()
+            end
         end)
     --------------------------------------------------------------------------------
 
