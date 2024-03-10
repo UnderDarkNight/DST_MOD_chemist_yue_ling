@@ -185,7 +185,7 @@
 --------------------------------------------------------------------------------------------------------------------------------------------
     Add_Recipe_2_Machine({
         prefab = "chemist_spell_attack_power_multiplier_medicine_maker2",
-        Ingredients = {  Ingredient("pepper", 12) ,  Ingredient("houndstooth", 12) , Ingredient("chemist_food_wisdom_apple", 12) ,  }, 
+        Ingredients = { Ingredient("rock_avocado_fruit", 2) ,  Ingredient("houndstooth", 2) , Ingredient("chemist_food_wisdom_apple", 2) ,  }, 
         atlas = "images/inventoryimages/chemist_item_attack_power_multiplier_medicine_lv_1.xml",
         image = "chemist_item_attack_power_multiplier_medicine_lv_1.tex",
         builder_tag = "chemist_yue_ling",
@@ -196,7 +196,7 @@
 --------------------------------------------------------------------------------------------------------------------------------------------
     Add_Recipe_2_Machine({
         prefab = "chemist_spell_triple_recovery_medicine_maker2",
-        Ingredients =  { Ingredient("red_cap", 12) ,  Ingredient("green_cap", 12) ,  Ingredient("blue_cap", 12) , Ingredient("moon_cap", 12) , Ingredient("chemist_food_wisdom_apple", 12) ,  }, 
+        Ingredients =  { Ingredient("berries", 5) ,  Ingredient("chemist_food_wisdom_apple", 5) ,   }, 
         atlas = "images/inventoryimages/chemist_item_triple_recovery_medicine_lv_1.xml",
         image = "chemist_item_triple_recovery_medicine_lv_1.tex",
         builder_tag = "chemist_yue_ling",
@@ -207,7 +207,7 @@
 --------------------------------------------------------------------------------------------------------------------------------------------
     Add_Recipe_2_Machine({
         prefab = "chemist_spell_revival_medicine_maker2",
-        Ingredients =  { Ingredient(CHARACTER_INGREDIENT.HEALTH, 5)  }, 
+        Ingredients =  { Ingredient(CHARACTER_INGREDIENT.HEALTH, 20)  }, 
         atlas = "images/inventoryimages/chemist_item_revival_medicine_lv_1.xml",
         image = "chemist_item_revival_medicine_lv_1.tex",
         builder_tag = "chemist_yue_ling",

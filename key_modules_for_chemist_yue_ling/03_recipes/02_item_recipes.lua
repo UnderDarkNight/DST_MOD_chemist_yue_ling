@@ -372,7 +372,7 @@
     AddRecipeToFilter("chemist_spell_revival_medicine_maker","CHARACTER")     ---- 添加物品到目标标签
     AddRecipe2(
         "chemist_spell_revival_medicine_maker",            --  --  inst.prefab  实体名字
-        { Ingredient(CHARACTER_INGREDIENT.HEALTH, 10)  }, 
+        { Ingredient(CHARACTER_INGREDIENT.HEALTH, 20)  }, 
         TECH.NONE, 
         {
             -- no_deconstruction=true,
