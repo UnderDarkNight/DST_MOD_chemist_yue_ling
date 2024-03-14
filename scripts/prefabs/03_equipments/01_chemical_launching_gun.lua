@@ -192,8 +192,7 @@ local function fn()
     inst.components.equippable:SetOnEquip(onequip)
     inst.components.equippable:SetOnUnequip(onunequip)
     -- inst.components.equippable.walkspeedmult = TUNING.CANE_SPEED_MULT
-    inst.components.equippable.retrictedtag = "chemist_yue_ling"    --- 限制穿戴的玩家，必须有这个tag才能穿
-
+	inst.components.equippable.restrictedtag = "chemist_yue_ling"   --- 角色专属武器
 
     MakeHauntableLaunch(inst)
 

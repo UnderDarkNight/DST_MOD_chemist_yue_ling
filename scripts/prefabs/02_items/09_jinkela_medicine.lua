@@ -74,6 +74,8 @@ local function fn()
 
     inst:AddTag("fertilizerresearchable")
     inst:AddTag("fertilizer")
+    inst:AddTag("medicine_bottle")
+
 
     inst.GetFertilizerKey = GetFertilizerKey
 
