@@ -28,11 +28,11 @@
                     inst.fx_spriter = fx_spriter
                     fx_spriter:PushEvent("Set",{
                         player = player,  --- 跟随目标
-                        range = 3,           --- 环绕点半径
+                        range = 4,           --- 环绕点半径
                         point_num = 15,       --- 环绕点
                         -- new_pt_time = 0.5 ,    --- 新的跟踪点时间
                         -- speed = 8,           --- 强制固定速度
-                        speed_mult = 2,      --- 速度倍速
+                        speed_mult = 1,      --- 速度倍速
                         next_pt_dis = 0.5,      --- 触碰下一个点的距离
                         speed_soft_delta = 20, --- 软增加
                         y = 1.5,
